@@ -1,3 +1,5 @@
+# Manages the input/logic for the Canvas
+
 extends Control
 
 var active_mixer
@@ -45,7 +47,7 @@ func _process(delta):
 		})
 	
 func select_image(image_path):
-	active_texture = load("res://art/%s" % image_path)
+	active_texture = load("res://art/images/%s" % image_path)
 
 func select_mixer(mixer_name):
 	active_mixer = get_node(mixer_name)

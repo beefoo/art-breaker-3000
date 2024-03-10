@@ -1,3 +1,5 @@
+# The direct child of Canvas, that "mixes" the current texture
+
 extends Control
 
 var is_active = false
