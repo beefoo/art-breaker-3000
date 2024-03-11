@@ -1,10 +1,21 @@
 extends Control
 
+var tool_config = {
+	"tools": [
+		{"name": "BandShuffle", "icon": "art/icons/shuffle.svg"},
+		{"name": "Multiplier", "icon": "art/icons/copy.svg"}
+	]
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var tools_menu = $ToolsMenu
+	tools_menu.create_buttons(tool_config["tools"])
+	tools_menu.tool_selected.connect(_on_tool_select)
+	_on_tool_select(tool_config["tools"][0]["name"])
 
+func _on_tool_select(name):
+	$Canvas.select_mixer(name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

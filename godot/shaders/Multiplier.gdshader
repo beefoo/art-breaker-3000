@@ -5,7 +5,6 @@ uniform sampler2D tex;
 uniform float time = 0.0;
 
 void fragment() {
-	//COLOR = texture(tex, UV);
 	float y = mod(UV.y + (time * speed), 1.0);
 	COLOR = texture(tex, vec2(UV.x, y));
 }

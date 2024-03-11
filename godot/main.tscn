@@ -30,14 +30,13 @@ script = ExtResource("1_1a1nr")
 
 [node name="Canvas" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 108.0
+offset_left = 120.0
 offset_top = 80.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("2_nl6l0")
 
 [node name="BandShuffle" type="Control" parent="Canvas"]
-visible = false
 material = SubResource("ShaderMaterial_1ip8i")
 anchors_preset = 0
 offset_right = 40.0

@@ -1,18 +1,13 @@
 extends Panel
 
-var button_config = {
-	"buttons": [
-		{"name": "BandShuffle", "icon": "art/icons/shuffle.svg"},
-		{"name": "Multiplier", "icon": "art/icons/copy.svg"}
-	]
-}
+signal tool_selected(name)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	create_buttons(button_config["buttons"])
+	pass
 
 func _on_press_button(button, name):
-	print(name)
+	tool_selected.emit(name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
