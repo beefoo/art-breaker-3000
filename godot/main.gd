@@ -2,8 +2,8 @@ extends Control
 
 var tool_config = {
 	"tools": [
-		{"name": "BandShuffle", "icon": "art/icons/shuffle.svg", "shader_params": ["time", "tex", "speed"]},
-		{"name": "Multiplier", "icon": "art/icons/copy.svg", "shader_params": ["time", "tex"]}
+		{"name": "BandShuffle", "icon": "art/icons/shuffle.svg", "shader_params": []},
+		{"name": "Multiplier", "icon": "art/icons/copy.svg", "shader_params": []}
 	]
 }
 
