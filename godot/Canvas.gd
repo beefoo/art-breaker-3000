@@ -3,7 +3,7 @@
 extends Control
 
 var active_mixer
-var active_mixer_name
+var active_mixer_data
 var active_texture
 
 var busy = false
@@ -86,9 +86,10 @@ func select_image(image_path):
 	_on_update_texture()
 
 # Select a mixer by name
-func select_mixer(mixer_name):
+func select_mixer(tool):
+	var mixer_data = tool.duplicate()
 	# Check if already selected
-	if active_mixer_name == mixer_name:
+	if active_mixer_data && active_mixer_data["name"] == mixer_data["name"]:
 		return
 	
 	# Deactivate existing mixer
@@ -96,7 +97,7 @@ func select_mixer(mixer_name):
 		active_mixer.deactivate()
 		
 	time = 0.0
-	active_mixer = get_node(mixer_name)
+	active_mixer = get_node(mixer_data["name"])
 	active_mixer.activate()
 	active_mixer.set_params({
 		"speed": 0.4,

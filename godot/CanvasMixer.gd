@@ -32,6 +32,6 @@ func deactivate():
 	hide()
 
 func set_params(params):
-	for name in params:
-		var value = params[name]
-		material.set_shader_parameter(name, value)
+	for property in params:
+		var value = params[property]
+		material.set_shader_parameter(property, value)

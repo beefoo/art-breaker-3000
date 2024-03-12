@@ -1,13 +1,13 @@
 extends Panel
 
-signal tool_selected(name)
+signal tool_selected(tool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
-func _on_press_button(button, name):
-	tool_selected.emit(name)
+func _on_press_button(button, tool):
+	tool_selected.emit(tool)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -17,8 +17,7 @@ func create_button(props):
 	var button = Button.new()
 	var texture = load("res://%s" % props["icon"])
 	var on_press = func():
-		_on_press_button(button, props["name"])
-		pass
+		_on_press_button(button, props.duplicate())
 		
 	button.set_size(props["size"])
 	button.set_position(props["position"])
