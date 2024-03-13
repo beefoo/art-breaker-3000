@@ -6,8 +6,6 @@ var is_active = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_size(get_parent().size)
-	set_position(Vector2.ZERO)
 	# If not visible, assume disabled
 	if not visible:
 		deactivate()
@@ -22,6 +20,7 @@ func _process(delta):
 # Show and enable processing
 func activate():
 	is_active = true
+	update_size()
 	set_process(true)
 	show()
 
@@ -35,3 +34,8 @@ func set_params(params):
 	for property in params:
 		var value = params[property]
 		material.set_shader_parameter(property, value)
+		
+func update_size():
+	set_size(get_parent().size)
+	set_position(Vector2.ZERO)
+	queue_redraw()

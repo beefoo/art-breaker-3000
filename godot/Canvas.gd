@@ -5,9 +5,9 @@ extends Control
 var active_mixer
 var active_mixer_data
 var active_texture
-
-var pointer_start
+var base_rect
 var pointer
+var pointer_start
 
 var busy = false
 var first_touch = true
@@ -16,6 +16,7 @@ var time = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	base_rect = get_rect()
 	select_image("loc-2010715115.png")
 
 # Called during every input event.
@@ -71,8 +72,31 @@ func _on_touch_start(event):
 		
 func _on_update_texture():
 	time = 0.0
+	
+	# Resize canvas to fit texture
+	var tex_size = active_texture.get_size()
+	var new_size = Vector2.ZERO
+	var new_position = Vector2.ZERO
+	# Image is more narrow than canvas
+	if tex_size.aspect() < base_rect.size.aspect():
+		var scale_tex = 1.0 * base_rect.size.y / tex_size.y
+		var new_width = roundi(tex_size.x * scale_tex)
+		var new_x = roundi((base_rect.size.x - new_width) * 0.5) + base_rect.position.x
+		new_size = Vector2(new_width, base_rect.size.y)
+		new_position = Vector2(new_x, base_rect.position.y)
+	# Image is more wide than canvas
+	else:
+		var scale_tex = 1.0 * base_rect.size.x / tex_size.x
+		var new_height = roundi(tex_size.y * scale_tex)
+		var new_y = roundi((base_rect.size.y - new_height) * 0.5) + base_rect.position.y
+		new_size = Vector2(base_rect.size.x, new_height)
+		new_position = Vector2(base_rect.position.x, new_y)
+	set_position(new_position)
+	set_size(new_size)
+	
 	# Set this as the new texture
 	if active_mixer != null:
+		active_mixer.update_size()
 		active_mixer.set_params({
 			"tex": active_texture,
 			"time": time
