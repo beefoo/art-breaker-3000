@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=13 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1a1nr"]
 [ext_resource type="Script" path="res://Canvas.gd" id="2_nl6l0"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://CanvasMixer.gd" id="4_t4eif"]
 [ext_resource type="Shader" path="res://shaders/Multiplier.gdshader" id="5_vj3fe"]
 [ext_resource type="Script" path="res://ToolsMenu.gd" id="6_4rrwa"]
+[ext_resource type="Shader" path="res://shaders/ColorCycle.gdshader" id="6_ds0cs"]
+[ext_resource type="Shader" path="res://shaders/PolkaDots.gdshader" id="7_5bg65"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ip8i"]
 shader = ExtResource("3_cm2yd")
@@ -13,6 +15,14 @@ shader_parameter/time = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ffmc"]
 shader = ExtResource("5_vj3fe")
+shader_parameter/time = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cl0id"]
+shader = ExtResource("6_ds0cs")
+shader_parameter/time = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3b1s2"]
+shader = ExtResource("7_5bg65")
 shader_parameter/time = 0.0
 
 [node name="Main" type="Control"]
@@ -44,6 +54,20 @@ script = ExtResource("4_t4eif")
 [node name="Multiplier" type="Control" parent="Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_0ffmc")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_t4eif")
+
+[node name="ColorCycle" type="Control" parent="Canvas"]
+material = SubResource("ShaderMaterial_cl0id")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_t4eif")
+
+[node name="PolkaDots" type="Control" parent="Canvas"]
+material = SubResource("ShaderMaterial_3b1s2")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
