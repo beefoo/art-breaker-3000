@@ -13,7 +13,6 @@ shader_parameter/time = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ffmc"]
 shader = ExtResource("5_vj3fe")
-shader_parameter/speed = 1.0
 shader_parameter/time = 0.0
 
 [node name="Main" type="Control"]

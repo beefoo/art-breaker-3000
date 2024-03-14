@@ -48,7 +48,7 @@ func _on_touch_end(event):
 	var canvas_image = viewport_img.get_region(canvas_region)
 	active_texture = ImageTexture.create_from_image(canvas_image)
 	# Set this as the new texture for the mixer's shader
-	_on_update_texture()
+	_on_update_texture(false)
 	busy = false
 	
 func _on_touch_move(event):
@@ -70,29 +70,30 @@ func _on_touch_start(event):
 		
 	pressing = true
 		
-func _on_update_texture():
+func _on_update_texture(needsResize):
 	time = 0.0
 	
-	# Resize canvas to fit texture
-	var tex_size = active_texture.get_size()
-	var new_size = Vector2.ZERO
-	var new_position = Vector2.ZERO
-	# Image is more narrow than canvas
-	if tex_size.aspect() < base_rect.size.aspect():
-		var scale_tex = 1.0 * base_rect.size.y / tex_size.y
-		var new_width = roundi(tex_size.x * scale_tex)
-		var new_x = roundi((base_rect.size.x - new_width) * 0.5) + base_rect.position.x
-		new_size = Vector2(new_width, base_rect.size.y)
-		new_position = Vector2(new_x, base_rect.position.y)
-	# Image is more wide than canvas
-	else:
-		var scale_tex = 1.0 * base_rect.size.x / tex_size.x
-		var new_height = roundi(tex_size.y * scale_tex)
-		var new_y = roundi((base_rect.size.y - new_height) * 0.5) + base_rect.position.y
-		new_size = Vector2(base_rect.size.x, new_height)
-		new_position = Vector2(base_rect.position.x, new_y)
-	set_position(new_position)
-	set_size(new_size)
+	if needsResize:
+		# Resize canvas to fit texture
+		var tex_size = active_texture.get_size()
+		var new_size = Vector2.ZERO
+		var new_position = Vector2.ZERO
+		# Image is more narrow than canvas
+		if tex_size.aspect() < base_rect.size.aspect():
+			var scale_tex = 1.0 * base_rect.size.y / tex_size.y
+			var new_width = roundi(tex_size.x * scale_tex)
+			var new_x = roundi((base_rect.size.x - new_width) * 0.5) + base_rect.position.x
+			new_size = Vector2(new_width, base_rect.size.y)
+			new_position = Vector2(new_x, base_rect.position.y)
+		# Image is more wide than canvas
+		else:
+			var scale_tex = 1.0 * base_rect.size.x / tex_size.x
+			var new_height = roundi(tex_size.y * scale_tex)
+			var new_y = roundi((base_rect.size.y - new_height) * 0.5) + base_rect.position.y
+			new_size = Vector2(base_rect.size.x, new_height)
+			new_position = Vector2(base_rect.position.x, new_y)
+		set_position(new_position)
+		set_size(new_size)
 	
 	# Set this as the new texture
 	if active_mixer != null:
@@ -141,7 +142,7 @@ func get_normalized_position(position):
 	
 func select_image(image_path):
 	active_texture = load("res://art/images/%s" % image_path)
-	_on_update_texture()
+	_on_update_texture(true)
 
 # Select a mixer by name
 func select_mixer(tool):
