@@ -9,6 +9,7 @@ var base_rect
 var pointer
 var pointer_start
 
+var aspect_ratio = 1.0
 var busy = false
 var first_touch = true
 var pressing = false
@@ -92,16 +93,14 @@ func _on_update_texture(needsResize):
 			var new_y = roundi((base_rect.size.y - new_height) * 0.5) + base_rect.position.y
 			new_size = Vector2(base_rect.size.x, new_height)
 			new_position = Vector2(base_rect.position.x, new_y)
+		aspect_ratio = tex_size.aspect()
 		set_position(new_position)
 		set_size(new_size)
 	
 	# Set this as the new texture
-	if active_mixer != null:
+	if active_mixer != null and active_mixer_data != null:
 		active_mixer.update_size()
-		active_mixer.set_params({
-			"tex": active_texture,
-			"time": time
-		})
+		set_shader_params_start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -112,16 +111,7 @@ func _process(delta):
 		time += delta;
 		
 	if active_mixer != null and active_mixer_data != null:
-		var shader_params = active_mixer_data["shader_params"]
-		var shader_values = {}
-		
-		shader_values["time"] = time;
-		if (shader_params.has("pointer_start")):
-			shader_values["pointer_start"] = pointer_start;
-		if (shader_params.has("pointer")):
-			shader_values["pointer"] = pointer;
-		
-		active_mixer.set_params(shader_values)
+		set_shader_params_process()
 
 func normalize_value(value, min_value, max_value):
 	var n = 0.0
@@ -163,4 +153,30 @@ func select_mixer(tool):
 		"tex": active_texture,
 		"time": time
 	})
+
+# Set shader parameters at every frame
+func set_shader_params_process():
+	var shader_params = active_mixer_data["shader_params"]
+	var shader_values = {}
+	
+	shader_values["time"] = time;
+	if (shader_params.has("pointer_start")):
+		shader_values["pointer_start"] = pointer_start;
+	if (shader_params.has("pointer")):
+		shader_values["pointer"] = pointer;
+	
+	active_mixer.set_params(shader_values)
+
+# Set shader parameters when texture updates or mixer is selected
+func set_shader_params_start():
+	var shader_params = active_mixer_data["shader_params"]
+	var shader_values = {
+		"tex": active_texture,
+		"time": time
+	}
+	
+	if (shader_params.has("aspect_ratio")):
+		shader_values["aspect_ratio"] = aspect_ratio;
+		
+	active_mixer.set_params(shader_values)
 	

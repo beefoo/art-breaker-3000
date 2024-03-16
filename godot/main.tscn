@@ -24,6 +24,7 @@ shader_parameter/time = 0.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3b1s2"]
 shader = ExtResource("7_5bg65")
 shader_parameter/time = 0.0
+shader_parameter/aspect_ratio = 1.0
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -60,6 +61,7 @@ offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
 [node name="ColorCycle" type="Control" parent="Canvas"]
+visible = false
 material = SubResource("ShaderMaterial_cl0id")
 anchors_preset = 0
 offset_right = 40.0
@@ -67,6 +69,7 @@ offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
 [node name="PolkaDots" type="Control" parent="Canvas"]
+visible = false
 material = SubResource("ShaderMaterial_3b1s2")
 anchors_preset = 0
 offset_right = 40.0
