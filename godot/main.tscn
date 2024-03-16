@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=15 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1a1nr"]
 [ext_resource type="Script" path="res://Canvas.gd" id="2_nl6l0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://ToolsMenu.gd" id="6_4rrwa"]
 [ext_resource type="Shader" path="res://shaders/ColorCycle.gdshader" id="6_ds0cs"]
 [ext_resource type="Shader" path="res://shaders/PolkaDots.gdshader" id="7_5bg65"]
+[ext_resource type="Shader" path="res://shaders/SpinShuffle.gdshader" id="8_826ax"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ip8i"]
 shader = ExtResource("3_cm2yd")
@@ -25,6 +26,11 @@ shader_parameter/time = 0.0
 shader = ExtResource("7_5bg65")
 shader_parameter/time = 0.0
 shader_parameter/aspect_ratio = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_15swl"]
+shader = ExtResource("8_826ax")
+shader_parameter/pointer_start = null
+shader_parameter/time = 0.0
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -71,6 +77,14 @@ script = ExtResource("4_t4eif")
 [node name="PolkaDots" type="Control" parent="Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_3b1s2")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_t4eif")
+
+[node name="SpinShuffle" type="Control" parent="Canvas"]
+visible = false
+material = SubResource("ShaderMaterial_15swl")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

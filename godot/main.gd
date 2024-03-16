@@ -5,7 +5,8 @@ var tool_config = {
 		{"name": "BandShuffle", "icon": "art/icons/shuffle.svg", "shader_params": []},
 		{"name": "Multiplier", "icon": "art/icons/copy.svg", "shader_params": []},
 		{"name": "ColorCycle", "icon": "art/icons/shuffle.svg", "shader_params": []},
-		{"name": "PolkaDots", "icon": "art/icons/copy.svg", "shader_params": ["aspect_ratio"]}
+		{"name": "PolkaDots", "icon": "art/icons/copy.svg", "shader_params": ["aspect_ratio"]},
+		{"name": "SpinShuffle", "icon": "art/icons/shuffle.svg", "shader_params": ["pointer_start"]}
 	]
 }
 

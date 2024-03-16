@@ -30,6 +30,6 @@ void fragment() {
 	float x = mod(UV.x * multiply_x, 1.0);
 	float y = mod(UV.y * multiply_y, 1.0);
 	float wobble = sin(time * WOBBLE_SPEED) * WOBBLE_AMOUNT + PI * 0.5;
-	vec2 rotated_uv = rotate(vec2(x, y), vec2(0.5, 0.5), wobble);
+	vec2 rotated_uv = mod(rotate(vec2(x, y), vec2(0.5, 0.5), wobble), 1.0);
 	COLOR = texture(tex, rotated_uv);
 }
