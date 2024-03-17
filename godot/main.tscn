@@ -11,7 +11,7 @@
 [ext_resource type="Shader" path="res://shaders/SpinShuffle.gdshader" id="8_826ax"]
 [ext_resource type="Shader" path="res://shaders/Pixelate.gdshader" id="9_hpvgh"]
 [ext_resource type="Shader" path="res://shaders/Kaleidoscope.gdshader" id="10_qxjt1"]
-[ext_resource type="Shader" path="res://shaders/PushPull.gdshader" id="11_ldfmq"]
+[ext_resource type="Shader" path="res://shaders/Distort.gdshader" id="11_ldfmq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ip8i"]
 shader = ExtResource("3_cm2yd")
@@ -46,6 +46,7 @@ shader_parameter/time = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o1ylq"]
 shader = ExtResource("11_ldfmq")
+shader_parameter/pointer_start = Vector2(0.5, 0.5)
 shader_parameter/pointer = Vector2(0, 0)
 shader_parameter/time = 0.0
 
@@ -123,7 +124,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="PushPull" type="Control" parent="Canvas"]
+[node name="Distort" type="Control" parent="Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_o1ylq")
 anchors_preset = 0
