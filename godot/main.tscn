@@ -1,6 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=21 format=3 uid="uid://by35kbh6nbtie"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_1a1nr"]
+[ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Script" path="res://Canvas.gd" id="2_nl6l0"]
 [ext_resource type="Shader" path="res://shaders/BandShuffle.gdshader" id="3_cm2yd"]
 [ext_resource type="Script" path="res://CanvasMixer.gd" id="4_t4eif"]
@@ -10,6 +10,8 @@
 [ext_resource type="Shader" path="res://shaders/PolkaDots.gdshader" id="7_5bg65"]
 [ext_resource type="Shader" path="res://shaders/SpinShuffle.gdshader" id="8_826ax"]
 [ext_resource type="Shader" path="res://shaders/Pixelate.gdshader" id="9_hpvgh"]
+[ext_resource type="Shader" path="res://shaders/Kaleidoscope.gdshader" id="10_qxjt1"]
+[ext_resource type="Shader" path="res://shaders/PushPull.gdshader" id="11_ldfmq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ip8i"]
 shader = ExtResource("3_cm2yd")
@@ -35,6 +37,16 @@ shader_parameter/time = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lbca7"]
 shader = ExtResource("9_hpvgh")
+shader_parameter/time = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lqloj"]
+shader = ExtResource("10_qxjt1")
+shader_parameter/pointer = Vector2(0, 0)
+shader_parameter/time = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o1ylq"]
+shader = ExtResource("11_ldfmq")
+shader_parameter/pointer = Vector2(0, 0)
 shader_parameter/time = 0.0
 
 [node name="Main" type="Control"]
@@ -98,6 +110,22 @@ script = ExtResource("4_t4eif")
 [node name="Pixelate" type="Control" parent="Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_lbca7")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_t4eif")
+
+[node name="Kaleidoscope" type="Control" parent="Canvas"]
+visible = false
+material = SubResource("ShaderMaterial_lqloj")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_t4eif")
+
+[node name="PushPull" type="Control" parent="Canvas"]
+visible = false
+material = SubResource("ShaderMaterial_o1ylq")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
