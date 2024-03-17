@@ -6,7 +6,8 @@ var tool_config = {
 		{"name": "Multiplier", "icon": "art/icons/copy.svg", "shader_params": []},
 		{"name": "ColorCycle", "icon": "art/icons/shuffle.svg", "shader_params": []},
 		{"name": "PolkaDots", "icon": "art/icons/copy.svg", "shader_params": ["aspect_ratio"]},
-		{"name": "SpinShuffle", "icon": "art/icons/shuffle.svg", "shader_params": ["pointer_start"]}
+		{"name": "SpinShuffle", "icon": "art/icons/shuffle.svg", "shader_params": ["pointer_start"]},
+		{"name": "Pixelate", "icon": "art/icons/copy.svg", "shader_params": []}
 	]
 }
 
