@@ -9,7 +9,8 @@ var tool_config = {
 		{"name": "SpinShuffle", "icon": "art/icons/shuffle.svg", "shader_params": ["pointer_start"]},
 		{"name": "Pixelate", "icon": "art/icons/copy.svg", "shader_params": []},
 		{"name": "Kaleidoscope", "icon": "art/icons/shuffle.svg", "shader_params": ["pointer"]},
-		{"name": "Distort", "icon": "art/icons/copy.svg", "shader_params": ["pointer_start", "pointer"]}
+		#{"name": "Distort", "icon": "art/icons/copy.svg", "shader_params": ["pointer_start", "pointer"]},
+		{"name": "Waves", "icon": "art/icons/copy.svg", "shader_params": []},	
 	]
 }
 
