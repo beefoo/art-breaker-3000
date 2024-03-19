@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=27 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Script" path="res://Canvas.gd" id="2_nl6l0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shader" path="res://shaders/Distort.gdshader" id="11_ldfmq"]
 [ext_resource type="Shader" path="res://shaders/Waves.gdshader" id="12_1sxth"]
 [ext_resource type="Shader" path="res://shaders/Rainbow.gdshader" id="13_u0tw2"]
+[ext_resource type="Shader" path="res://shaders/Magnet.gdshader" id="14_yge1n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ip8i"]
 shader = ExtResource("3_cm2yd")
@@ -59,6 +60,12 @@ shader_parameter/time = 0.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o0c0n"]
 shader = ExtResource("13_u0tw2")
 shader_parameter/pointer = null
+shader_parameter/time = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gp88u"]
+shader = ExtResource("14_yge1n")
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/pointer = Vector2(0, 0)
 shader_parameter/time = 0.0
 
 [node name="Main" type="Control"]
@@ -154,6 +161,14 @@ script = ExtResource("4_t4eif")
 [node name="Rainbow" type="Control" parent="Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_o0c0n")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_t4eif")
+
+[node name="Magnet" type="Control" parent="Canvas"]
+visible = false
+material = SubResource("ShaderMaterial_gp88u")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
