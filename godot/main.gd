@@ -13,6 +13,7 @@ var tool_config = {
 		{"name": "Waves", "icon": "art/icons/shuffle.svg", "shader_params": []},
 		{"name": "Rainbow", "icon": "art/icons/copy.svg", "shader_params": ["pointer"]},
 		{"name": "Magnet", "icon": "art/icons/shuffle.svg", "shader_params": ["aspect_ratio", "pointer"]},
+		{"name": "HourGlass", "icon": "art/icons/copy.svg", "shader_params": []},
 	]
 }
 
