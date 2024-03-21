@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=33 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Script" path="res://Canvas.gd" id="2_nl6l0"]
@@ -17,6 +17,7 @@
 [ext_resource type="Shader" path="res://shaders/Magnet.gdshader" id="14_yge1n"]
 [ext_resource type="Shader" path="res://shaders/HourGlass.gdshader" id="15_eel5w"]
 [ext_resource type="Shader" path="res://shaders/Ghost.gdshader" id="16_dejq1"]
+[ext_resource type="Shader" path="res://shaders/DiscoFloor.gdshader" id="17_ln2py"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ip8i"]
 shader = ExtResource("3_cm2yd")
@@ -79,6 +80,11 @@ shader = ExtResource("16_dejq1")
 shader_parameter/pointer_start = Vector2(0.5, 0.5)
 shader_parameter/pointer = Vector2(0.5, 0.5)
 shader_parameter/time = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2np54"]
+shader = ExtResource("17_ln2py")
+shader_parameter/time = 0.0
+shader_parameter/aspect_ratio = 1.0
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -197,6 +203,14 @@ script = ExtResource("4_t4eif")
 [node name="Ghost" type="Control" parent="Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_5pc3o")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_t4eif")
+
+[node name="DiscoFloor" type="Control" parent="Canvas"]
+visible = false
+material = SubResource("ShaderMaterial_2np54")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
