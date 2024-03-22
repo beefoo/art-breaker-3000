@@ -16,6 +16,7 @@ var tool_config = {
 		{"name": "HourGlass", "icon": "art/icons/copy.svg", "shader_params": []},
 		{"name": "Ghost", "icon": "art/icons/shuffle.svg", "shader_params": ["pointer_start", "pointer"]},
 		{"name": "DiscoFloor", "icon": "art/icons/copy.svg", "shader_params": ["aspect_ratio"]},
+		{"name": "Whirlpool", "icon": "art/icons/shuffle.svg", "shader_params": []},
 	]
 }
 
