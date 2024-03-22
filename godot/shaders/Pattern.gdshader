@@ -1,6 +1,5 @@
 shader_type canvas_item;
 
-uniform float aspect_ratio = 1.0;
 uniform vec2 pointer = vec2(0.0);
 uniform sampler2D tex;
 uniform float time = 0.0;
@@ -18,11 +17,13 @@ float has_started(float t) {
 void fragment() {
 	float started = has_started(time);
 	
+	// get bounds of sample area around pointer
 	float top = clamp(pointer.y - SAMPLE_SIZE * 0.5, 0.0, 1.0 - SAMPLE_SIZE);
 	float left = clamp(pointer.x - SAMPLE_SIZE * 0.5, 0.0, 1.0 - SAMPLE_SIZE);
 	float bottom = top + SAMPLE_SIZE;
 	float right = left + SAMPLE_SIZE;
 	
+	// get the UV of the sample
 	float row_h = 1.0 / ROWS;
 	float col_w = 1.0 / ROWS;
 	float x = mix(left, right, mod(UV.x, col_w) / col_w);
@@ -43,6 +44,7 @@ void fragment() {
 	vec2 new_uv = vec2(cos(angle), sin(angle)) * radius + pointer;
 	// Reflect outside the inner circle boundary.
 	new_uv = max(min(new_uv, 2.0 - new_uv), -new_uv);
+	
 	// take the original UV if we didn't start yet
 	vec2 final_uv = mix(UV, new_uv, started);
 	COLOR = texture(tex, final_uv);

@@ -17,7 +17,8 @@ var tool_config = {
 		{"name": "Ghost", "icon": "art/icons/shuffle.svg", "shader_params": ["pointer_start", "pointer"]},
 		{"name": "DiscoFloor", "icon": "art/icons/copy.svg", "shader_params": ["aspect_ratio"]},
 		{"name": "Whirlpool", "icon": "art/icons/shuffle.svg", "shader_params": []},
-		{"name": "Pattern", "icon": "art/icons/copy.svg", "shader_params": ["aspect_ratio", "pointer"]},
+		{"name": "Pattern", "icon": "art/icons/copy.svg", "shader_params": ["pointer"]},
+		{"name": "Weave", "icon": "art/icons/shuffle.svg", "shader_params": []},
 	]
 }
 
