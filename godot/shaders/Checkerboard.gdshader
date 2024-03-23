@@ -13,10 +13,6 @@ float has_started(float t) {
 	return min(ceil(t), 1.0);
 }
 
-float ease(float n) {
-	return (sin((n + 1.5) * PI) + 1.0) / 2.0;
-}
-
 float when_eq(float x, float y) {
   return 1.0 - abs(sign(x - y));
 }
