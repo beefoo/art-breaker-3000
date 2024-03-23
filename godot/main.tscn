@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=43 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Script" path="res://Canvas.gd" id="2_nl6l0"]
@@ -22,6 +22,7 @@
 [ext_resource type="Shader" path="res://shaders/Pattern.gdshader" id="19_p7tp3"]
 [ext_resource type="Shader" path="res://shaders/Weave.gdshader" id="20_yotuf"]
 [ext_resource type="Shader" path="res://shaders/Drain.gdshader" id="21_v2o2w"]
+[ext_resource type="Shader" path="res://shaders/Reflect.gdshader" id="22_x6u0h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ip8i"]
 shader = ExtResource("3_cm2yd")
@@ -106,6 +107,10 @@ shader_parameter/time = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r1rar"]
 shader = ExtResource("21_v2o2w")
+shader_parameter/time = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r004f"]
+shader = ExtResource("22_x6u0h")
 shader_parameter/time = 0.0
 
 [node name="Main" type="Control"]
@@ -265,6 +270,14 @@ script = ExtResource("4_t4eif")
 [node name="Drain" type="Control" parent="Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_r1rar")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_t4eif")
+
+[node name="Reflect" type="Control" parent="Canvas"]
+visible = false
+material = SubResource("ShaderMaterial_r004f")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
