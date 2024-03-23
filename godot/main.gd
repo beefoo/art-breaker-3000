@@ -21,6 +21,7 @@ var tool_config = {
 		{"name": "Weave", "icon": "art/icons/shuffle.svg", "shader_params": []},
 		{"name": "Drain", "icon": "art/icons/copy.svg", "shader_params": []},
 		{"name": "Reflect", "icon": "art/icons/shuffle.svg", "shader_params": []},
+		{"name": "Bend", "icon": "art/icons/copy.svg", "shader_params": ["aspect_ratio", "pointer"]},
 	]
 }
 
