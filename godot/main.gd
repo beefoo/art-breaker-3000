@@ -34,10 +34,10 @@ func _ready():
 	var tools_menu = $ToolsMenu
 	tools_menu.create_tool_buttons(tool_config["tools"])
 	tools_menu.tool_selected.connect(_on_tool_select)
-	_on_tool_select(tool_config["tools"][0])
+	_on_tool_select(tool_config["tools"][0], false)
 
-func _on_tool_select(tool):
-	$Canvas.select_mixer(tool)
+func _on_tool_select(tool, from_user):
+	$Canvas.select_mixer(tool, from_user)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

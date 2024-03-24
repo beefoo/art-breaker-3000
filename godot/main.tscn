@@ -160,6 +160,7 @@ offset_left = 120.0
 offset_top = 80.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+focus_mode = 2
 script = ExtResource("2_nl6l0")
 
 [node name="BandShuffle" type="Control" parent="Canvas"]

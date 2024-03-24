@@ -19,7 +19,7 @@ var time = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	base_rect = get_rect()
-	select_image("loc-2010715115.png")
+	select_image("mona_lisa_8-colors_1080.png")
 
 # Called during every input event.
 func _input(event):
@@ -37,6 +37,13 @@ func _input(event):
 	elif event is InputEventScreenDrag or pressing and event is InputEventMouseMotion:
 		_on_touch_move(event)
 		pass
+		
+	# Keyboard/controller enter key is pressed down
+	if event.is_action_pressed("ui_accept") and has_focus():
+		_on_touch_start(null)
+		
+	elif event.is_action_released("ui_accept") and has_focus():
+		_on_touch_end(null)
 	
 	# Custom events
 	if event.is_action_pressed("ui_reset"):
@@ -59,12 +66,15 @@ func _on_touch_end(event):
 	busy = false
 	
 func _on_touch_move(event):
-	pointer = get_normalized_position(event.position)
+	if event:
+		pointer = get_normalized_position(event.position)
 	
 func _on_touch_start(event):
 	time = 0.0
 	
-	pointer_start = get_normalized_position(event.position)
+	pointer_start = Vector2(0.5, 0.5)
+	if event:
+		pointer_start = get_normalized_position(event.position)
 	pointer = pointer_start
 	
 	if active_mixer != null:
@@ -151,7 +161,7 @@ func select_image(image_path):
 	_on_update_texture(true)
 
 # Select a mixer by name
-func select_mixer(tool):
+func select_mixer(tool, from_user):
 	var mixer_data = tool.duplicate()
 	# Check if already selected
 	if active_mixer_data && active_mixer_data["name"] == mixer_data["name"]:
@@ -169,6 +179,10 @@ func select_mixer(tool):
 		"tex": active_texture,
 		"time": time
 	})
+	
+	# Grab focus if triggered by user
+	if from_user:
+		grab_focus()
 
 # Set shader parameters at every frame
 func set_shader_params_process():

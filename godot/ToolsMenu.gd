@@ -1,6 +1,6 @@
 extends Panel
 
-signal tool_selected(tool)
+signal tool_selected(tool, from_user)
 
 var tool_buttons = []
 var nav_buttons = []
@@ -10,7 +10,7 @@ func _ready():
 	pass
 
 func _on_press_tool_button(button, tool):
-	tool_selected.emit(tool)
+	tool_selected.emit(tool, true)
 	
 func _on_press_nav_button(group_index):
 	var group_count = nav_buttons.size()
