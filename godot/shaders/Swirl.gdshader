@@ -13,6 +13,7 @@ float has_started(float t) {
 	return min(ceil(t), 1.0);
 }
 
+// https://godotshaders.com/snippet/swirl/
 float swirl(vec2 uv, float size, float arms, float t, float speed)
 {
 	float angle = atan(-uv.y + 0.5, uv.x - 0.5) ;

@@ -3,8 +3,8 @@ shader_type canvas_item;
 uniform sampler2D tex;
 uniform float time = 0.0;
 
-const int RES_X = 64;
-const int RES_Y = 64;
+const float RES_X = 64.0;
+const float RES_Y = 64.0;
 const float TWINKLE_SPEED = 16.0;
 const float TWINKLE_BRIGHTNESS = 0.1;
 
@@ -25,8 +25,8 @@ float has_started(float t) {
 // adapted from: https://godotshaders.com/shader/256-colour-pixelation/
 void fragment() {
 	float started = has_started(time);
-	float uvX = UV.x - mod(UV.x * float(RES_X), 1) / float(RES_X) * started;
-	float uvY = UV.y - mod(UV.y * float(RES_Y), 1) / float(RES_Y) * started;
+	float uvX = UV.x - mod(UV.x * RES_X, 1.0) / RES_X * started;
+	float uvY = UV.y - mod(UV.y * RES_Y, 1.0) / RES_Y * started;
 	vec2 grid_uv = vec2(uvX, uvY);
 	vec4 color = texture(tex, grid_uv);
 	vec3 remainder = mod(color.rgb, rgb255) * started;

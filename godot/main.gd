@@ -25,6 +25,7 @@ var tool_config = {
 		{"name": "Checkerboard", "icon": "art/icons/shuffle.svg", "shader_params": ["aspect_ratio"]},
 		{"name": "Smudge", "icon": "art/icons/copy.svg", "shader_params": ["pointer_start", "pointer"]},
 		{"name": "Swirl", "icon": "art/icons/shuffle.svg", "shader_params": []},
+		{"name": "Dissolve", "icon": "art/icons/copy.svg", "shader_params": []},
 	]
 }
 

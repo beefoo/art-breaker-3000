@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=53 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Script" path="res://Canvas.gd" id="2_nl6l0"]
@@ -27,6 +27,7 @@
 [ext_resource type="Shader" path="res://shaders/Checkerboard.gdshader" id="24_7hd3x"]
 [ext_resource type="Shader" path="res://shaders/Smudge.gdshader" id="25_ktcmp"]
 [ext_resource type="Shader" path="res://shaders/Swirl.gdshader" id="26_jewvf"]
+[ext_resource type="Shader" path="res://shaders/Dissolve.gdshader" id="27_s8c5i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ip8i"]
 shader = ExtResource("3_cm2yd")
@@ -136,6 +137,10 @@ shader_parameter/time = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ai2eq"]
 shader = ExtResource("26_jewvf")
+shader_parameter/time = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gmans"]
+shader = ExtResource("27_s8c5i")
 shader_parameter/time = 0.0
 
 [node name="Main" type="Control"]
@@ -335,6 +340,14 @@ script = ExtResource("4_t4eif")
 [node name="Swirl" type="Control" parent="Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_ai2eq")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_t4eif")
+
+[node name="Dissolve" type="Control" parent="Canvas"]
+visible = false
+material = SubResource("ShaderMaterial_gmans")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
