@@ -35,6 +35,18 @@ func _ready():
 	tools_menu.create_tool_buttons(tool_config["tools"])
 	tools_menu.tool_selected.connect(_on_tool_select)
 	_on_tool_select(tool_config["tools"][0], false)
+	
+	$SaveFileDialog.connect("file_selected", _on_file_selected)
+
+# Called during every input event.
+func _input(event):
+	
+	# Custom events
+	if event.is_action_pressed("ui_save"):
+		$SaveFileDialog.popup_centered()
+		
+func _on_file_selected(path):
+	$Canvas.save_image(path)
 
 func _on_tool_select(tool, from_user):
 	$Canvas.select_mixer(tool, from_user)

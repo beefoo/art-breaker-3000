@@ -47,7 +47,6 @@ func _input(event):
 	
 	# Custom events
 	if event.is_action_pressed("ui_reset"):
-		print("ui_reset")
 		reset_canvas()
 		
 func _on_touch_end(event):
@@ -155,6 +154,13 @@ func reset_canvas():
 		
 	active_texture = original_texture
 	_on_update_texture(false)
+	
+func save_image(image_path):
+	if active_texture == null:
+		return
+		
+	var active_image = active_texture.get_image()
+	active_image.save_png(image_path)
 	
 func select_image(image_path):
 	active_texture = load("res://art/images/%s" % image_path)

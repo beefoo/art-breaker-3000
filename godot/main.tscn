@@ -360,3 +360,7 @@ offset_top = 108.0
 offset_right = 108.0
 offset_bottom = 1080.0
 script = ExtResource("6_4rrwa")
+
+[node name="SaveFileDialog" type="FileDialog" parent="."]
+access = 2
+filters = PackedStringArray("*.png")
