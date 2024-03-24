@@ -6,6 +6,7 @@ var active_mixer
 var active_mixer_data
 var active_texture
 var base_rect
+var original_texture
 var pointer
 var pointer_start
 
@@ -36,6 +37,11 @@ func _input(event):
 	elif event is InputEventScreenDrag or pressing and event is InputEventMouseMotion:
 		_on_touch_move(event)
 		pass
+	
+	# Custom events
+	if event.is_action_pressed("ui_reset"):
+		print("ui_reset")
+		reset_canvas()
 		
 func _on_touch_end(event):
 	busy = true
@@ -71,10 +77,11 @@ func _on_touch_start(event):
 		
 	pressing = true
 		
-func _on_update_texture(needsResize):
+func _on_update_texture(is_new_image_source):
 	time = 0.0
 	
-	if needsResize:
+	# Resize canvas if new image source
+	if is_new_image_source:
 		# Resize canvas to fit texture
 		var tex_size = active_texture.get_size()
 		var new_size = Vector2.ZERO
@@ -96,6 +103,8 @@ func _on_update_texture(needsResize):
 		aspect_ratio = tex_size.aspect()
 		set_position(new_position)
 		set_size(new_size)
+		# Make a copy of the texture for resetting
+		original_texture = active_texture.duplicate()
 	
 	# Set this as the new texture
 	if active_mixer != null and active_mixer_data != null:
@@ -128,7 +137,14 @@ func get_normalized_position(position):
 		normalize_value(position.y, canvas_rect.position.y, canvas_rect.position.y + canvas_rect.size.y)
 	)
 	n_position = n_position.clamp(Vector2.ZERO, Vector2.ONE)
-	return n_position	
+	return n_position
+	
+func reset_canvas():	
+	if original_texture == null:
+		return
+		
+	active_texture = original_texture
+	_on_update_texture(false)
 	
 func select_image(image_path):
 	active_texture = load("res://art/images/%s" % image_path)
