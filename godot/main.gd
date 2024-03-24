@@ -43,7 +43,7 @@ func _input(event):
 	
 	# Custom events
 	if event.is_action_pressed("ui_save"):
-		$SaveFileDialog.popup_centered()
+		open_save_dialog()
 		
 func _on_file_selected(path):
 	$Canvas.save_image(path)
@@ -54,3 +54,16 @@ func _on_tool_select(tool, from_user):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func open_save_dialog():
+	var timestamp = Time.get_datetime_string_from_system().replace("T", "-").replace(":", "")
+	
+	# Try to use native file selector first
+	var on_file_selected = func(status, selected_paths, selected_filter_index):
+		if selected_paths.size() > 0:
+			_on_file_selected(selected_paths[0])
+	var error = DisplayServer.file_dialog_show("Save image", "", "art_breaker_%s.png" % timestamp, false, DisplayServer.FILE_DIALOG_MODE_SAVE_FILE, PackedStringArray(["*.png"]), on_file_selected)
+	
+	# Otherwise, use the Godot file dialog
+	if error != OK:
+		$SaveFileDialog.popup_centered()
