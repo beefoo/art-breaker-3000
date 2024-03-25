@@ -2,14 +2,14 @@ extends Control
 
 var tool_config = {
 	"tools": [
-		{"name": "BandShuffle", "icon": "art/icons/shuffle.svg", "shader_params": []},
-		{"name": "Multiplier", "icon": "art/icons/copy.svg", "shader_params": []},
-		{"name": "ColorCycle", "icon": "art/icons/shuffle.svg", "shader_params": []},
-		{"name": "PolkaDots", "icon": "art/icons/copy.svg", "shader_params": ["aspect_ratio"]},
-		{"name": "SpinShuffle", "icon": "art/icons/shuffle.svg", "shader_params": ["pointer_start"]},
-		{"name": "Pixelate", "icon": "art/icons/copy.svg", "shader_params": []},
-		{"name": "Kaleidoscope", "icon": "art/icons/shuffle.svg", "shader_params": ["pointer"]},
-		{"name": "Distort", "icon": "art/icons/copy.svg", "shader_params": ["pointer_start", "pointer"]},
+		{"name": "BandShuffle", "icon": "art/icons/BandShuffle.png", "shader_params": []},
+		{"name": "Multiplier", "icon": "art/icons/Multiplier.png", "shader_params": []},
+		{"name": "ColorCycle", "icon": "art/icons/ColorCycle.png", "shader_params": []},
+		{"name": "PolkaDots", "icon": "art/icons/PolkaDots.png", "shader_params": ["aspect_ratio"]},
+		{"name": "SpinShuffle", "icon": "art/icons/SpinShuffle.png", "shader_params": ["pointer_start"]},
+		{"name": "Pixelate", "icon": "art/icons/Pixelate.png", "shader_params": []},
+		{"name": "Kaleidoscope", "icon": "art/icons/Kaleidoscope.png", "shader_params": ["pointer"]},
+		{"name": "Distort", "icon": "art/icons/Distort.png", "shader_params": ["pointer_start", "pointer"]},
 		{"name": "Waves", "icon": "art/icons/copy.svg", "shader_params": []},
 		{"name": "Rainbow", "icon": "art/icons/shuffle.svg", "shader_params": ["pointer"]},
 		{"name": "Magnet", "icon": "art/icons/copy.svg", "shader_params": ["aspect_ratio", "pointer"]},

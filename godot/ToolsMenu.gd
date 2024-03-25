@@ -4,6 +4,7 @@ signal tool_selected(tool, from_user)
 
 var tool_buttons = []
 var nav_buttons = []
+var button_margin = 6.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,15 +45,16 @@ func create_tool_button(props):
 func create_tool_buttons(buttons):
 	var panel_h = size.y
 	var panel_w = size.x
-	var btn_w = panel_w
+	var margin = button_margin;
+	var btn_w = panel_w - margin * 2.0;
 	var btn_h = btn_w
-	var btn_x = 0.0
-	var btns_per_group = round(panel_h / btn_h) - 1
+	var btn_x = margin
+	var btns_per_group = round(panel_h / (btn_h + margin * 2.0)) - 1
 	var index = 0
 	var group = 0
 	var row = 0
 	for button in buttons:
-		var btn_y = row * btn_h;
+		var btn_y = row * (btn_h + margin) + margin
 		button["size"] = Vector2(btn_w, btn_h)
 		button["position"] = Vector2(btn_x, btn_y)
 		button["index"] = index
@@ -72,10 +74,10 @@ func create_nav_buttons(count):
 	var texture = load("res://art/icons/arrow.svg")
 	var panel_h = size.y
 	var panel_w = size.x
-	var btn_w = panel_w
+	var btn_w = panel_w - button_margin * 2.0
 	var btn_h = btn_w
-	var btn_x = 0.0
-	var btn_y = panel_h - btn_h;
+	var btn_x = button_margin
+	var btn_y = panel_h - btn_h - button_margin;
 	
 	for i in range(count):
 		var button = Button.new()
