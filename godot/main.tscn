@@ -357,7 +357,7 @@ script = ExtResource("4_t4eif")
 [node name="ToolsMenu" type="Panel" parent="."]
 layout_mode = 0
 offset_top = 56.0
-offset_right = 120.0
+offset_right = 116.0
 offset_bottom = 1080.0
 script = ExtResource("6_4rrwa")
 

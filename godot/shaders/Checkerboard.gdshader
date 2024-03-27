@@ -5,7 +5,6 @@ uniform sampler2D tex;
 uniform float time = 0.0;
 
 const float BASE_SPEED = 8.0;
-const float WOBBLE = 0.1;
 const float ROWS = 6.0;
 
 // 0.0 if time==0.0; 1.0 if time > 0.0
