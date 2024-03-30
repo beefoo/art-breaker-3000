@@ -31,10 +31,10 @@ var tool_config = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var tools_menu = $ToolsMenu
-	tools_menu.create_tool_buttons(tool_config["tools"])
-	tools_menu.tool_selected.connect(_on_tool_select)
-	_on_tool_select(tool_config["tools"][0], false)
+	#var tools_menu = $ToolsMenu
+	#tools_menu.create_tool_buttons(tool_config["tools"])
+	#tools_menu.tool_selected.connect(_on_tool_select)
+	#_on_tool_select(tool_config["tools"][0], false)
 	
 	$SaveFileDialog.connect("file_selected", _on_file_selected)
 
