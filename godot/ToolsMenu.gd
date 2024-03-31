@@ -10,8 +10,8 @@ var button_margin = 6.0
 func _ready():
 	pass
 
-func _on_press_tool_button(button, tool):
-	tool_selected.emit(tool, true)
+func _on_press_tool_button(tool_name):
+	tool_selected.emit(tool_name, true)
 	
 func _on_press_nav_button(group_index):
 	var group_count = nav_buttons.size()
@@ -27,48 +27,15 @@ func _on_press_nav_button(group_index):
 func _process(delta):
 	pass
 
-func create_tool_button(props):
-	var button = Button.new()
-	var texture = load("res://%s" % props["icon"])
+func init_tool_button(button):
 	var on_press = func():
-		_on_press_tool_button(button, props.duplicate())
-		
-	button.set_size(props["size"])
-	button.set_position(props["position"])
-	button.icon = texture
-	button.expand_icon = true
-	button.visible = props["group"] == 0
+		_on_press_tool_button(button.name)
 	button.pressed.connect(on_press)
-	add_child(button)
-	return button
-	
-func create_tool_buttons(buttons):
-	var panel_h = size.y
-	var panel_w = size.x
-	var margin = button_margin;
-	var btn_w = panel_w - margin * 2.0;
-	var btn_h = btn_w
-	var btn_x = margin
-	var btns_per_group = round(panel_h / (btn_h + margin * 2.0)) - 1
-	var index = 0
-	var group = 0
-	var row = 0
-	for button in buttons:
-		var btn_y = row * (btn_h + margin) + margin
-		button["size"] = Vector2(btn_w, btn_h)
-		button["position"] = Vector2(btn_x, btn_y)
-		button["index"] = index
-		button["group"] = group
-		button["gd_button"] = create_tool_button(button)
-		buttons[index] = button
-		row += 1
-		index += 1
-		if row >= btns_per_group:
-			row = 0
-			group += 1
-	tool_buttons = buttons
-	if buttons.size() > btns_per_group:
-		create_nav_buttons(ceil(float(buttons.size()) / btns_per_group))
+
+func init_tool_buttons():
+	for group in get_children():
+		for button in group.get_children():
+			init_tool_button(button)
 		
 func create_nav_buttons(count):
 	var texture = load("res://art/icons/arrow.svg")

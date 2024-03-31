@@ -2,39 +2,39 @@ extends Control
 
 var tool_config = {
 	"tools": [
-		{"name": "BandShuffle", "icon": "art/icons/BandShuffle.png", "shader_params": []},
-		{"name": "Multiplier", "icon": "art/icons/Multiplier.png", "shader_params": []},
-		{"name": "ColorCycle", "icon": "art/icons/ColorCycle.png", "shader_params": []},
-		{"name": "PolkaDots", "icon": "art/icons/PolkaDots.png", "shader_params": ["aspect_ratio"]},
-		{"name": "SpinShuffle", "icon": "art/icons/SpinShuffle.png", "shader_params": ["pointer_start"]},
-		{"name": "Pixelate", "icon": "art/icons/Pixelate.png", "shader_params": []},
-		{"name": "Kaleidoscope", "icon": "art/icons/Kaleidoscope.png", "shader_params": ["pointer"]},
-		{"name": "Distort", "icon": "art/icons/Distort.png", "shader_params": ["pointer_start", "pointer"]},
-		{"name": "Waves", "icon": "art/icons/Waves.png", "shader_params": []},
-		{"name": "Rainbow", "icon": "art/icons/Rainbow.png", "shader_params": ["pointer"]},
-		{"name": "Magnet", "icon": "art/icons/Magnet.png", "shader_params": ["aspect_ratio", "pointer"]},
-		{"name": "HourGlass", "icon": "art/icons/HourGlass.png", "shader_params": []},
-		{"name": "Ghost", "icon": "art/icons/Ghost.png", "shader_params": ["pointer_start", "pointer"]},
-		{"name": "DiscoFloor", "icon": "art/icons/DiscoFloor.png", "shader_params": ["aspect_ratio"]},
-		{"name": "Whirlpool", "icon": "art/icons/Whirlpool.png", "shader_params": []},
-		{"name": "Pattern", "icon": "art/icons/Pattern.png", "shader_params": ["pointer"]},
-		{"name": "Weave", "icon": "art/icons/Weave.png", "shader_params": []},
-		{"name": "Drain", "icon": "art/icons/Drain.png", "shader_params": []},
-		{"name": "Reflect", "icon": "art/icons/Reflect.png", "shader_params": []},
-		{"name": "Bend", "icon": "art/icons/Bend.png", "shader_params": ["aspect_ratio", "pointer"]},
-		{"name": "Checkerboard", "icon": "art/icons/Checkerboard.png", "shader_params": ["aspect_ratio"]},
-		{"name": "Smudge", "icon": "art/icons/Smudge.png", "shader_params": ["pointer_start", "pointer"]},
-		{"name": "Swirl", "icon": "art/icons/Swirl.png", "shader_params": []},
-		{"name": "Dissolve", "icon": "art/icons/Dissolve.png", "shader_params": []},
+		{"name": "BandShuffle", "shader_params": []},
+		{"name": "Multiplier", "shader_params": []},
+		{"name": "ColorCycle", "shader_params": []},
+		{"name": "PolkaDots", "shader_params": ["aspect_ratio"]},
+		{"name": "SpinShuffle", "shader_params": ["pointer_start"]},
+		{"name": "Pixelate", "shader_params": []},
+		{"name": "Kaleidoscope", "shader_params": ["pointer"]},
+		{"name": "Distort", "shader_params": ["pointer_start", "pointer"]},
+		{"name": "Waves", "shader_params": []},
+		{"name": "Rainbow", "shader_params": ["pointer"]},
+		{"name": "Magnet", "shader_params": ["aspect_ratio", "pointer"]},
+		{"name": "HourGlass", "shader_params": []},
+		{"name": "Ghost", "shader_params": ["pointer_start", "pointer"]},
+		{"name": "DiscoFloor", "shader_params": ["aspect_ratio"]},
+		{"name": "Whirlpool", "shader_params": []},
+		{"name": "Pattern", "shader_params": ["pointer"]},
+		{"name": "Weave", "shader_params": []},
+		{"name": "Drain", "shader_params": []},
+		{"name": "Reflect", "shader_params": []},
+		{"name": "Bend", "shader_params": ["aspect_ratio", "pointer"]},
+		{"name": "Checkerboard", "shader_params": ["aspect_ratio"]},
+		{"name": "Smudge", "shader_params": ["pointer_start", "pointer"]},
+		{"name": "Swirl", "shader_params": []},
+		{"name": "Dissolve", "shader_params": []},
 	]
 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#var tools_menu = $ToolsMenu
-	#tools_menu.create_tool_buttons(tool_config["tools"])
-	#tools_menu.tool_selected.connect(_on_tool_select)
-	#_on_tool_select(tool_config["tools"][0], false)
+	var tools_menu = $ToolsMenu
+	tools_menu.init_tool_buttons()
+	tools_menu.tool_selected.connect(_on_tool_select)
+	_on_tool_select(tool_config["tools"][0]["name"], false)
 	
 	$SaveFileDialog.connect("file_selected", _on_file_selected)
 
@@ -48,7 +48,12 @@ func _input(event):
 func _on_file_selected(path):
 	$Canvas.save_image(path)
 
-func _on_tool_select(tool, from_user):
+func _on_tool_select(tool_name, from_user):
+	var tool_found = tool_config["tools"].filter(func(t): return t["name"] == tool_name)
+	if tool_found.size() < 1:
+		print("Tool name not found: %s" % tool_name)
+		return
+	var tool = tool_found[0]
 	$Canvas.select_mixer(tool, from_user)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
