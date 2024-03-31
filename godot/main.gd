@@ -49,6 +49,7 @@ func _on_file_selected(path):
 	$Canvas.save_image(path)
 
 func _on_tool_select(tool_name, from_user):
+	$ToolsMenu.activate_tool_button(tool_name)
 	var tool_found = tool_config["tools"].filter(func(t): return t["name"] == tool_name)
 	if tool_found.size() < 1:
 		print("Tool name not found: %s" % tool_name)

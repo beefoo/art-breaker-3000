@@ -2,6 +2,7 @@ extends Panel
 
 signal tool_selected(tool, from_user)
 
+var active_button_i = -1
 var tool_buttons = []
 var nav_buttons = []
 var button_margin = 6.0
@@ -26,6 +27,11 @@ func _on_press_nav_button(group_index):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func activate_tool_button(tool_name):
+	for group in get_children():
+		for button in group.get_children():
+			button.set_active(button.name == tool_name)
 
 func init_tool_button(button):
 	var on_press = func():

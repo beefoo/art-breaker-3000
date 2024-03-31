@@ -2692,13 +2692,13 @@ size_flags_vertical = 3
 icon = ExtResource("38_57wie")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("2_nl6l0")
+script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup1/Distort"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_jcghn")
-frame = 7
-frame_progress = 0.589326
+frame = 2
+frame_progress = 0.342007
 centered = false
 
 [node name="ButtonGroup2" type="VBoxContainer" parent="ToolsMenu"]
@@ -2817,7 +2817,7 @@ size_flags_vertical = 3
 icon = ExtResource("56_ackvf")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("2_nl6l0")
+script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup2/Pattern"]
 visible = false
@@ -2942,7 +2942,7 @@ size_flags_vertical = 3
 icon = ExtResource("69_hfslr")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("2_nl6l0")
+script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup3/Dissolve"]
 visible = false
