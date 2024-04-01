@@ -5,7 +5,10 @@ var is_active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# resize and position animated sprite
+	# Disable default focus; we will style this using shaders instead
+	add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+	
+	# Resize and position animated sprite
 	var container = get_parent()
 	var container_w = container.size.x
 	var sprite_w = sprite.sprite_frames.get_frame_texture("default", 0).get_size().x
@@ -19,7 +22,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_hovered() || is_active:
+	
+	# Show or hide animation
+	if is_hovered() || has_focus() || is_active:
 		show_animation()
 	else:
 		hide_animation()
@@ -34,6 +39,12 @@ func set_active(value):
 	is_active = value
 
 func show_animation():
+	# If active, make outline green
+	if is_active:
+		sprite.material.set_shader_parameter("outline_color", Color(0.63, 0.89, 0.41, 1.0))
+	# Otherwise, make outline yellow
+	else:
+		sprite.material.set_shader_parameter("outline_color", Color(0.97, 0.87, 0.22, 1.0))
 	if sprite.visible:
 		return
 	sprite.show()

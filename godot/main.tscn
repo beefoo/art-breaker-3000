@@ -1,6 +1,7 @@
-[gd_scene load_steps=409 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=435 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
+[ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
 [ext_resource type="Script" path="res://Canvas.gd" id="2_nl6l0"]
 [ext_resource type="Shader" path="res://shaders/BandShuffle.gdshader" id="3_cm2yd"]
 [ext_resource type="Script" path="res://CanvasMixer.gd" id="4_t4eif"]
@@ -32,6 +33,7 @@
 [ext_resource type="Script" path="res://ToolButton.gd" id="30_vabsa"]
 [ext_resource type="Texture2D" uid="uid://uu08pl7i1tkl" path="res://art/spritesheets/BandShuffle.png" id="31_7iaca"]
 [ext_resource type="Texture2D" uid="uid://bdigdaqadqb0g" path="res://art/icons/Multiplier.png" id="32_q8xsi"]
+[ext_resource type="Shader" path="res://shaders/AnimatedSpriteBorder.gdshader" id="32_uoai7"]
 [ext_resource type="Texture2D" uid="uid://4pmw1gs18jul" path="res://art/icons/ColorCycle.png" id="33_0ceq5"]
 [ext_resource type="Texture2D" uid="uid://cqq4lv2tkdv2y" path="res://art/spritesheets/Multiplier.png" id="33_dpgri"]
 [ext_resource type="Texture2D" uid="uid://daydb48gc1qnf" path="res://art/icons/PolkaDots.png" id="34_6d2by"]
@@ -193,6 +195,10 @@ shader_parameter/time = 0.0
 shader = ExtResource("27_s8c5i")
 shader_parameter/time = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_46b5e"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ylceg"]
 atlas = ExtResource("31_7iaca")
 region = Rect2(0, 0, 128, 128)
@@ -285,6 +291,10 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fyr0c"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kjaa"]
 atlas = ExtResource("33_dpgri")
 region = Rect2(0, 0, 128, 128)
@@ -334,6 +344,10 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_um7d1"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o6ctj"]
 atlas = ExtResource("35_ee1ad")
@@ -427,6 +441,10 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_llyq1"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_gfvku"]
 atlas = ExtResource("37_1df0w")
 region = Rect2(0, 0, 128, 128)
@@ -518,6 +536,10 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bx15e"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ua4g"]
 atlas = ExtResource("39_r6bd8")
@@ -611,6 +633,10 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_re4l7"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rn1q5"]
 atlas = ExtResource("41_en4gu")
 region = Rect2(0, 0, 128, 128)
@@ -702,6 +728,10 @@ animations = [{
 "name": &"default",
 "speed": 6.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tlke1"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_plaf8"]
 atlas = ExtResource("43_6p15c")
@@ -795,6 +825,10 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t711h"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_m681j"]
 atlas = ExtResource("45_nwhch")
 region = Rect2(0, 0, 128, 128)
@@ -886,6 +920,10 @@ animations = [{
 "name": &"default",
 "speed": 6.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ekyf"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1lyfi"]
 atlas = ExtResource("47_tmnht")
@@ -979,6 +1017,10 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n8yne"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3codn"]
 atlas = ExtResource("49_iysvw")
 region = Rect2(0, 0, 128, 128)
@@ -1070,6 +1112,10 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gsiy1"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_320gl"]
 atlas = ExtResource("51_qk77t")
@@ -1163,6 +1209,10 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6s0h"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_lea2n"]
 atlas = ExtResource("53_m0kw3")
 region = Rect2(0, 0, 128, 128)
@@ -1254,6 +1304,10 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mxxs5"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a0qbg"]
 atlas = ExtResource("55_o2ux3")
@@ -1347,6 +1401,10 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_68su7"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_hdbju"]
 atlas = ExtResource("57_p1mgf")
 region = Rect2(0, 0, 128, 128)
@@ -1438,6 +1496,10 @@ animations = [{
 "name": &"default",
 "speed": 6.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_087fc"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kwyig"]
 atlas = ExtResource("59_tittg")
@@ -1531,6 +1593,10 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdgsk"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ef1c2"]
 atlas = ExtResource("61_6xi0i")
 region = Rect2(0, 0, 128, 128)
@@ -1622,6 +1688,10 @@ animations = [{
 "name": &"default",
 "speed": 3.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3mbw"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nh22o"]
 atlas = ExtResource("63_nk3ii")
@@ -1715,6 +1785,10 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oc5ay"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqdxl"]
 atlas = ExtResource("65_8dnfn")
 region = Rect2(0, 0, 128, 128)
@@ -1806,6 +1880,10 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nsg3c"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xfnoh"]
 atlas = ExtResource("67_qu0se")
@@ -1899,6 +1977,10 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lbqvg"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_b148h"]
 atlas = ExtResource("69_am5si")
 region = Rect2(0, 0, 128, 128)
@@ -1990,6 +2072,10 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oimqe"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mim0h"]
 atlas = ExtResource("71_wfll1")
@@ -2083,6 +2169,10 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rq8mn"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_73jqe"]
 atlas = ExtResource("73_whjpo")
 region = Rect2(0, 0, 128, 128)
@@ -2175,6 +2265,10 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_owil0"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_scqvm"]
 atlas = ExtResource("75_31e3w")
 region = Rect2(0, 0, 128, 128)
@@ -2266,6 +2360,10 @@ animations = [{
 "name": &"default",
 "speed": 6.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nq2aw"]
+shader = ExtResource("32_uoai7")
+shader_parameter/outline_color = Color(0.97, 0.87, 0.22, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7p3j"]
 atlas = ExtResource("77_h7i34")
@@ -2368,6 +2466,7 @@ offset_right = 768.0
 offset_bottom = 432.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_2pa20")
 script = ExtResource("1_1a1nr")
 
 [node name="Canvas" type="Control" parent="."]
@@ -2592,6 +2691,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup1/BandShuffle"]
 visible = false
+material = SubResource("ShaderMaterial_46b5e")
 sprite_frames = SubResource("SpriteFrames_r5re3")
 frame_progress = 0.74645
 centered = false
@@ -2606,6 +2706,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup1/Multiplier"]
 visible = false
+material = SubResource("ShaderMaterial_fyr0c")
 sprite_frames = SubResource("SpriteFrames_02f5h")
 frame = 3
 frame_progress = 0.856355
@@ -2621,6 +2722,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup1/ColorCycle"]
 visible = false
+material = SubResource("ShaderMaterial_um7d1")
 sprite_frames = SubResource("SpriteFrames_4xhb3")
 frame = 10
 frame_progress = 0.642467
@@ -2636,6 +2738,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup1/PolkaDots"]
 visible = false
+material = SubResource("ShaderMaterial_llyq1")
 sprite_frames = SubResource("SpriteFrames_a4ww4")
 frame = 7
 frame_progress = 0.11002
@@ -2651,6 +2754,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup1/SpinShuffle"]
 visible = false
+material = SubResource("ShaderMaterial_bx15e")
 sprite_frames = SubResource("SpriteFrames_ttpgd")
 frame = 3
 frame_progress = 0.431192
@@ -2666,6 +2770,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup1/Pixelate"]
 visible = false
+material = SubResource("ShaderMaterial_re4l7")
 sprite_frames = SubResource("SpriteFrames_wk6dh")
 frame = 5
 frame_progress = 0.0820045
@@ -2681,6 +2786,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup1/Kaleidoscope"]
 visible = false
+material = SubResource("ShaderMaterial_tlke1")
 sprite_frames = SubResource("SpriteFrames_lpptr")
 frame = 9
 frame_progress = 0.637455
@@ -2696,6 +2802,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup1/Distort"]
 visible = false
+material = SubResource("ShaderMaterial_t711h")
 sprite_frames = SubResource("SpriteFrames_jcghn")
 frame = 2
 frame_progress = 0.342007
@@ -2717,6 +2824,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup2/Waves"]
 visible = false
+material = SubResource("ShaderMaterial_4ekyf")
 sprite_frames = SubResource("SpriteFrames_2s31e")
 frame = 1
 frame_progress = 0.527542
@@ -2732,6 +2840,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup2/Rainbow"]
 visible = false
+material = SubResource("ShaderMaterial_n8yne")
 sprite_frames = SubResource("SpriteFrames_yddwq")
 frame = 1
 frame_progress = 0.360043
@@ -2747,6 +2856,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup2/Magnet"]
 visible = false
+material = SubResource("ShaderMaterial_gsiy1")
 sprite_frames = SubResource("SpriteFrames_4fi05")
 frame = 3
 frame_progress = 0.137366
@@ -2762,6 +2872,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup2/HourGlass"]
 visible = false
+material = SubResource("ShaderMaterial_b6s0h")
 sprite_frames = SubResource("SpriteFrames_vj2wn")
 frame = 11
 frame_progress = 0.0471254
@@ -2777,6 +2888,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup2/Ghost"]
 visible = false
+material = SubResource("ShaderMaterial_mxxs5")
 sprite_frames = SubResource("SpriteFrames_uwjbf")
 frame_progress = 0.134538
 centered = false
@@ -2791,6 +2903,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup2/DiscoFloor"]
 visible = false
+material = SubResource("ShaderMaterial_68su7")
 sprite_frames = SubResource("SpriteFrames_jsscq")
 frame = 6
 frame_progress = 0.841356
@@ -2806,6 +2919,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup2/Whirlpool"]
 visible = false
+material = SubResource("ShaderMaterial_087fc")
 sprite_frames = SubResource("SpriteFrames_f8i2a")
 frame = 9
 frame_progress = 0.282775
@@ -2821,6 +2935,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup2/Pattern"]
 visible = false
+material = SubResource("ShaderMaterial_jdgsk")
 sprite_frames = SubResource("SpriteFrames_lpmgx")
 frame = 5
 frame_progress = 0.294994
@@ -2842,6 +2957,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup3/Weave"]
 visible = false
+material = SubResource("ShaderMaterial_n3mbw")
 sprite_frames = SubResource("SpriteFrames_1bonr")
 frame = 3
 frame_progress = 0.936317
@@ -2857,6 +2973,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup3/Drain"]
 visible = false
+material = SubResource("ShaderMaterial_oc5ay")
 sprite_frames = SubResource("SpriteFrames_u1b2a")
 frame = 2
 frame_progress = 0.630387
@@ -2872,6 +2989,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup3/Reflect"]
 visible = false
+material = SubResource("ShaderMaterial_nsg3c")
 sprite_frames = SubResource("SpriteFrames_q5var")
 frame = 1
 frame_progress = 0.184331
@@ -2887,6 +3005,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup3/Bend"]
 visible = false
+material = SubResource("ShaderMaterial_lbqvg")
 sprite_frames = SubResource("SpriteFrames_cwleb")
 frame = 3
 frame_progress = 0.233539
@@ -2902,6 +3021,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup3/Checkerboard"]
 visible = false
+material = SubResource("ShaderMaterial_oimqe")
 sprite_frames = SubResource("SpriteFrames_tn575")
 frame = 1
 frame_progress = 0.511509
@@ -2917,6 +3037,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup3/Smudge"]
 visible = false
+material = SubResource("ShaderMaterial_rq8mn")
 sprite_frames = SubResource("SpriteFrames_3ewrj")
 frame = 6
 frame_progress = 0.381017
@@ -2932,6 +3053,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup3/Swirl"]
 visible = false
+material = SubResource("ShaderMaterial_owil0")
 sprite_frames = SubResource("SpriteFrames_4yy0w")
 frame_progress = 0.677948
 centered = false
@@ -2946,6 +3068,7 @@ script = ExtResource("30_vabsa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ToolsMenu/ButtonGroup3/Dissolve"]
 visible = false
+material = SubResource("ShaderMaterial_nq2aw")
 sprite_frames = SubResource("SpriteFrames_0iwvp")
 frame_progress = 0.850846
 centered = false
