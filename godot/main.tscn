@@ -82,6 +82,7 @@
 [ext_resource type="Script" path="res://ToolNavButton.gd" id="78_o30w1"]
 [ext_resource type="FontFile" uid="uid://b7t1nt32dqy5o" path="res://fonts/Handjet-Bold.ttf" id="80_j4se0"]
 [ext_resource type="Texture2D" uid="uid://cufrb5g7ft1l3" path="res://art/icons/arrow.png" id="81_adb6o"]
+[ext_resource type="Texture2D" uid="uid://drat30q5lrfaw" path="res://art/icons/arrow_focus.png" id="81_djit7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ip8i"]
 shader = ExtResource("3_cm2yd")
@@ -2459,8 +2460,6 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_btxov"]
-
 [node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -3077,23 +3076,29 @@ sprite_frames = SubResource("SpriteFrames_0iwvp")
 frame_progress = 0.850846
 centered = false
 
-[node name="ToolNavButton" type="Button" parent="ToolsMenu"]
+[node name="ToolNavButton" type="TextureButton" parent="ToolsMenu"]
 layout_mode = 0
 offset_top = 932.0
 offset_right = 116.0
 offset_bottom = 1020.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0.152941, 0.152941, 0.152941, 1)
-theme_override_colors/font_focus_color = Color(0.152941, 0.152941, 0.152941, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("80_j4se0")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_btxov")
-text = "1"
-icon = ExtResource("81_adb6o")
-icon_alignment = 1
-expand_icon = true
+texture_normal = ExtResource("81_adb6o")
+texture_hover = ExtResource("81_djit7")
+texture_focused = ExtResource("81_djit7")
+ignore_texture_size = true
+stretch_mode = 0
 script = ExtResource("78_o30w1")
+
+[node name="Label" type="Label" parent="ToolsMenu/ToolNavButton"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 24.0
+offset_right = 82.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("80_j4se0")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SaveFileDialog" type="FileDialog" parent="."]
 access = 2

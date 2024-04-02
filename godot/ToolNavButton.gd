@@ -1,8 +1,9 @@
-extends Button
+extends TextureButton
 
 var button_groups = []
 var button_group_count = 0
 var active_group_i = 0
+var is_active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,11 +19,18 @@ func _pressed():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if (is_hovered() || has_focus()) && !is_active:
+		is_active = true
+		$Label.remove_theme_color_override("font_color")
+		$Label.add_theme_color_override("font_color", Color(1, 1, 1))
+	elif is_active:
+		is_active = false
+		$Label.remove_theme_color_override("font_color")
+		$Label.add_theme_color_override("font_color", Color(0, 0, 0))
 	
 func show_active_group():
 	var group_number = active_group_i + 1
-	text = "{group_number}".format({"group_number": group_number})
+	$Label.text = "{group_number}".format({"group_number": group_number})
 	for i in range(button_group_count):
 		if i == active_group_i:
 			button_groups[i].show()

@@ -2,6 +2,7 @@ extends Panel
 
 signal tool_selected(tool, from_user)
 
+var button_groups = []
 var active_button_i = -1
 var tool_buttons = []
 var nav_buttons = []
@@ -9,7 +10,7 @@ var button_margin = 6.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	button_groups = get_children().filter(func(n): return n.get_class() == "VBoxContainer")
 
 func _on_press_tool_button(tool_name):
 	tool_selected.emit(tool_name, true)
@@ -29,9 +30,9 @@ func _process(delta):
 	pass
 	
 func activate_tool_button(tool_name):
-	for group in get_children():
+	for group in button_groups:
 		for button in group.get_children():
-			button.set_active(button.name == tool_name)
+				button.set_active(button.name == tool_name)
 
 func init_tool_button(button):
 	var on_press = func():
@@ -39,7 +40,7 @@ func init_tool_button(button):
 	button.pressed.connect(on_press)
 
 func init_tool_buttons():
-	for group in get_children():
+	for group in button_groups:
 		for button in group.get_children():
 			init_tool_button(button)
 		
