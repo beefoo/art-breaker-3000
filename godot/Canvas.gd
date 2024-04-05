@@ -9,6 +9,7 @@ var base_rect
 var original_texture
 var pointer
 var pointer_start
+var prev_texture
 
 var aspect_ratio = 1.0
 var busy = false
@@ -45,9 +46,13 @@ func _input(event):
 	elif event.is_action_released("ui_accept") and has_focus():
 		_on_touch_end(null)
 	
-	# Custom events
+	# Reset canvas
 	if event.is_action_pressed("ui_reset"):
 		reset_canvas()
+	
+	# Undo
+	elif event.is_action_pressed("ui_undo"):
+		undo()
 		
 func _on_touch_end(event):
 	busy = true
@@ -70,6 +75,9 @@ func _on_touch_move(event):
 	
 func _on_touch_start(event):
 	time = 0.0
+	
+	if active_texture:
+		prev_texture = active_texture.duplicate()
 	
 	pointer_start = Vector2(0.5, 0.5)
 	if event:
@@ -215,4 +223,12 @@ func set_shader_params_start():
 		shader_values["aspect_ratio"] = aspect_ratio;
 		
 	active_mixer.set_params(shader_values)
-	
+
+
+func undo():
+	if active_texture == null || prev_texture == null:
+		return
+	var temp_texture = active_texture.duplicate()
+	active_texture = prev_texture
+	prev_texture = temp_texture
+	_on_update_texture(false)

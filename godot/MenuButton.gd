@@ -2,7 +2,8 @@ extends Button
 
 var action_map = {
 	"Reset": "ui_reset",
-	"Save": "ui_save"
+	"Save": "ui_save",
+	"Undo": "ui_undo"
 }
 
 # Called when the node enters the scene tree for the first time.
