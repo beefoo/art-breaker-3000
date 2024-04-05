@@ -1,4 +1,4 @@
-[gd_scene load_steps=449 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=450 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -46,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://ntylbgqeccqf" path="res://art/tools/SpinShuffle.png" id="35_arlda"]
 [ext_resource type="Texture2D" uid="uid://dc4up5dwikbnk" path="res://art/icons/info.png" id="35_dn43n"]
 [ext_resource type="Texture2D" uid="uid://da1hcatscd8ee" path="res://art/spritesheets/ColorCycle.png" id="35_ee1ad"]
+[ext_resource type="Texture2D" uid="uid://b0xrijvx6kgg0" path="res://art/icons/exit.png" id="36_opy64"]
 [ext_resource type="Texture2D" uid="uid://ckeaod351pnd1" path="res://art/tools/Pixelate.png" id="36_vcdkc"]
 [ext_resource type="Texture2D" uid="uid://dgrryfowrwht5" path="res://art/spritesheets/PolkaDots.png" id="37_1df0w"]
 [ext_resource type="Texture2D" uid="uid://dtaoxkp1hx5va" path="res://art/tools/Kaleidoscope.png" id="37_htska"]
@@ -2782,6 +2783,20 @@ tooltip_text = "View Image Details"
 theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
 theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
 icon = ExtResource("35_dn43n")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("30_cw20u")
+
+[node name="Exit" type="Button" parent="MainMenu"]
+custom_minimum_size = Vector2(72, 56)
+layout_mode = 2
+offset_left = 1848.0
+offset_right = 1920.0
+offset_bottom = 56.0
+tooltip_text = "Exit"
+theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+icon = ExtResource("36_opy64")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
