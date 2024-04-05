@@ -1,4 +1,4 @@
-[gd_scene load_steps=439 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=449 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -29,52 +29,59 @@
 [ext_resource type="Shader" path="res://shaders/Smudge.gdshader" id="25_ktcmp"]
 [ext_resource type="Shader" path="res://shaders/Swirl.gdshader" id="26_jewvf"]
 [ext_resource type="Shader" path="res://shaders/Dissolve.gdshader" id="27_s8c5i"]
-[ext_resource type="Texture2D" uid="uid://cnc26ms7xeop0" path="res://art/icons/BandShuffle.png" id="29_02nn4"]
+[ext_resource type="Texture2D" uid="uid://cnc26ms7xeop0" path="res://art/tools/BandShuffle.png" id="29_02nn4"]
+[ext_resource type="Texture2D" uid="uid://k8uyc1r8e8ac" path="res://art/icons/new.png" id="29_wqtnw"]
+[ext_resource type="Script" path="res://MenuButton.gd" id="30_cw20u"]
 [ext_resource type="Script" path="res://ToolButton.gd" id="30_vabsa"]
 [ext_resource type="Texture2D" uid="uid://uu08pl7i1tkl" path="res://art/spritesheets/BandShuffle.png" id="31_7iaca"]
-[ext_resource type="Texture2D" uid="uid://bdigdaqadqb0g" path="res://art/icons/Multiplier.png" id="32_q8xsi"]
+[ext_resource type="Texture2D" uid="uid://4hgrrccpwn7j" path="res://art/icons/random.png" id="31_r67j6"]
+[ext_resource type="Texture2D" uid="uid://g3tjgmmyyxk3" path="res://art/icons/save.png" id="32_4xoio"]
+[ext_resource type="Texture2D" uid="uid://bdigdaqadqb0g" path="res://art/tools/Multiplier.png" id="32_q8xsi"]
 [ext_resource type="Shader" path="res://shaders/AnimatedSpriteBorder.gdshader" id="32_uoai7"]
-[ext_resource type="Texture2D" uid="uid://4pmw1gs18jul" path="res://art/icons/ColorCycle.png" id="33_0ceq5"]
+[ext_resource type="Texture2D" uid="uid://4pmw1gs18jul" path="res://art/tools/ColorCycle.png" id="33_0ceq5"]
+[ext_resource type="Texture2D" uid="uid://dfon1wh8topl1" path="res://art/icons/undo.png" id="33_6c4rh"]
 [ext_resource type="Texture2D" uid="uid://cqq4lv2tkdv2y" path="res://art/spritesheets/Multiplier.png" id="33_dpgri"]
-[ext_resource type="Texture2D" uid="uid://daydb48gc1qnf" path="res://art/icons/PolkaDots.png" id="34_6d2by"]
-[ext_resource type="Texture2D" uid="uid://ntylbgqeccqf" path="res://art/icons/SpinShuffle.png" id="35_arlda"]
+[ext_resource type="Texture2D" uid="uid://daydb48gc1qnf" path="res://art/tools/PolkaDots.png" id="34_6d2by"]
+[ext_resource type="Texture2D" uid="uid://bil2bhj13ug2u" path="res://art/icons/reset.png" id="34_xdfcj"]
+[ext_resource type="Texture2D" uid="uid://ntylbgqeccqf" path="res://art/tools/SpinShuffle.png" id="35_arlda"]
+[ext_resource type="Texture2D" uid="uid://dc4up5dwikbnk" path="res://art/icons/info.png" id="35_dn43n"]
 [ext_resource type="Texture2D" uid="uid://da1hcatscd8ee" path="res://art/spritesheets/ColorCycle.png" id="35_ee1ad"]
-[ext_resource type="Texture2D" uid="uid://ckeaod351pnd1" path="res://art/icons/Pixelate.png" id="36_vcdkc"]
+[ext_resource type="Texture2D" uid="uid://ckeaod351pnd1" path="res://art/tools/Pixelate.png" id="36_vcdkc"]
 [ext_resource type="Texture2D" uid="uid://dgrryfowrwht5" path="res://art/spritesheets/PolkaDots.png" id="37_1df0w"]
-[ext_resource type="Texture2D" uid="uid://dtaoxkp1hx5va" path="res://art/icons/Kaleidoscope.png" id="37_htska"]
-[ext_resource type="Texture2D" uid="uid://cpsixh7w7k6ab" path="res://art/icons/Distort.png" id="38_57wie"]
+[ext_resource type="Texture2D" uid="uid://dtaoxkp1hx5va" path="res://art/tools/Kaleidoscope.png" id="37_htska"]
+[ext_resource type="Texture2D" uid="uid://cpsixh7w7k6ab" path="res://art/tools/Distort.png" id="38_57wie"]
 [ext_resource type="Texture2D" uid="uid://lgtodoaycj47" path="res://art/spritesheets/SpinShuffle.png" id="39_r6bd8"]
 [ext_resource type="Texture2D" uid="uid://1srw31v3ss6o" path="res://art/spritesheets/Pixelate.png" id="41_en4gu"]
 [ext_resource type="Texture2D" uid="uid://ioh5sbsd8ws7" path="res://art/spritesheets/Kaleidoscope.png" id="43_6p15c"]
 [ext_resource type="Texture2D" uid="uid://quv1mfdhebf1" path="res://art/spritesheets/Distort.png" id="45_nwhch"]
-[ext_resource type="Texture2D" uid="uid://bc62qb0aohis3" path="res://art/icons/Waves.png" id="46_mbuex"]
+[ext_resource type="Texture2D" uid="uid://bc62qb0aohis3" path="res://art/tools/Waves.png" id="46_mbuex"]
 [ext_resource type="Texture2D" uid="uid://l3i647sp7l48" path="res://art/spritesheets/Waves.png" id="47_tmnht"]
-[ext_resource type="Texture2D" uid="uid://kir8qxrq8dfn" path="res://art/icons/Rainbow.png" id="48_4q7d7"]
+[ext_resource type="Texture2D" uid="uid://kir8qxrq8dfn" path="res://art/tools/Rainbow.png" id="48_4q7d7"]
 [ext_resource type="Texture2D" uid="uid://cuyt4l7lp46c5" path="res://art/spritesheets/Rainbow.png" id="49_iysvw"]
-[ext_resource type="Texture2D" uid="uid://ykrbw56xr8do" path="res://art/icons/Magnet.png" id="50_jqxcn"]
+[ext_resource type="Texture2D" uid="uid://ykrbw56xr8do" path="res://art/tools/Magnet.png" id="50_jqxcn"]
 [ext_resource type="Texture2D" uid="uid://dultd6lcsmuhm" path="res://art/spritesheets/Magnet.png" id="51_qk77t"]
-[ext_resource type="Texture2D" uid="uid://ba34nvqjqh5jw" path="res://art/icons/HourGlass.png" id="52_3t6bj"]
+[ext_resource type="Texture2D" uid="uid://ba34nvqjqh5jw" path="res://art/tools/HourGlass.png" id="52_3t6bj"]
 [ext_resource type="Texture2D" uid="uid://daqy1qna1oah5" path="res://art/spritesheets/HourGlass.png" id="53_m0kw3"]
-[ext_resource type="Texture2D" uid="uid://cmslcmafnd0pd" path="res://art/icons/Ghost.png" id="53_w7fwx"]
-[ext_resource type="Texture2D" uid="uid://snxuruyio146" path="res://art/icons/DiscoFloor.png" id="54_kgnm4"]
+[ext_resource type="Texture2D" uid="uid://cmslcmafnd0pd" path="res://art/tools/Ghost.png" id="53_w7fwx"]
+[ext_resource type="Texture2D" uid="uid://snxuruyio146" path="res://art/tools/DiscoFloor.png" id="54_kgnm4"]
 [ext_resource type="Texture2D" uid="uid://tgi4jhfsu1of" path="res://art/spritesheets/Ghost.png" id="55_o2ux3"]
-[ext_resource type="Texture2D" uid="uid://q8f20lpxbunb" path="res://art/icons/Whirlpool.png" id="55_oc3mv"]
-[ext_resource type="Texture2D" uid="uid://cs217ysibu55h" path="res://art/icons/Pattern.png" id="56_ackvf"]
+[ext_resource type="Texture2D" uid="uid://q8f20lpxbunb" path="res://art/tools/Whirlpool.png" id="55_oc3mv"]
+[ext_resource type="Texture2D" uid="uid://cs217ysibu55h" path="res://art/tools/Pattern.png" id="56_ackvf"]
 [ext_resource type="Texture2D" uid="uid://dtknuqkhge2jd" path="res://art/spritesheets/DiscoFloor.png" id="57_p1mgf"]
 [ext_resource type="Texture2D" uid="uid://detljbbaox2yx" path="res://art/spritesheets/Whirlpool.png" id="59_tittg"]
 [ext_resource type="Texture2D" uid="uid://mi8sxoh5nbrw" path="res://art/spritesheets/Pattern.png" id="61_6xi0i"]
-[ext_resource type="Texture2D" uid="uid://d0q84f1h7tomg" path="res://art/icons/Weave.png" id="62_7t2nb"]
-[ext_resource type="Texture2D" uid="uid://d4jni6x5rcfig" path="res://art/icons/Drain.png" id="63_73gd4"]
+[ext_resource type="Texture2D" uid="uid://d0q84f1h7tomg" path="res://art/tools/Weave.png" id="62_7t2nb"]
+[ext_resource type="Texture2D" uid="uid://d4jni6x5rcfig" path="res://art/tools/Drain.png" id="63_73gd4"]
 [ext_resource type="Texture2D" uid="uid://bd7a40tt3lphj" path="res://art/spritesheets/Weave.png" id="63_nk3ii"]
-[ext_resource type="Texture2D" uid="uid://opoc8pdt5jyb" path="res://art/icons/Reflect.png" id="64_wf670"]
+[ext_resource type="Texture2D" uid="uid://opoc8pdt5jyb" path="res://art/tools/Reflect.png" id="64_wf670"]
 [ext_resource type="Texture2D" uid="uid://cvlk3idp2gq0k" path="res://art/spritesheets/Drain.png" id="65_8dnfn"]
-[ext_resource type="Texture2D" uid="uid://fe7tqj764vnr" path="res://art/icons/Bend.png" id="65_ngjau"]
-[ext_resource type="Texture2D" uid="uid://b5p4pix30sv60" path="res://art/icons/Checkerboard.png" id="66_x3dm7"]
+[ext_resource type="Texture2D" uid="uid://fe7tqj764vnr" path="res://art/tools/Bend.png" id="65_ngjau"]
+[ext_resource type="Texture2D" uid="uid://b5p4pix30sv60" path="res://art/tools/Checkerboard.png" id="66_x3dm7"]
 [ext_resource type="Texture2D" uid="uid://bj0rewnctu8el" path="res://art/spritesheets/Reflect.png" id="67_qu0se"]
-[ext_resource type="Texture2D" uid="uid://ccmcm5eqbeunv" path="res://art/icons/Smudge.png" id="67_ukdo0"]
-[ext_resource type="Texture2D" uid="uid://cmm0lu5wadu1f" path="res://art/icons/Swirl.png" id="68_w68v6"]
+[ext_resource type="Texture2D" uid="uid://ccmcm5eqbeunv" path="res://art/tools/Smudge.png" id="67_ukdo0"]
+[ext_resource type="Texture2D" uid="uid://cmm0lu5wadu1f" path="res://art/tools/Swirl.png" id="68_w68v6"]
 [ext_resource type="Texture2D" uid="uid://cxk4olj7xff84" path="res://art/spritesheets/Bend.png" id="69_am5si"]
-[ext_resource type="Texture2D" uid="uid://bfjwbo02vfhau" path="res://art/icons/Dissolve.png" id="69_hfslr"]
+[ext_resource type="Texture2D" uid="uid://bfjwbo02vfhau" path="res://art/tools/Dissolve.png" id="69_hfslr"]
 [ext_resource type="Texture2D" uid="uid://6ovx4h1vacd7" path="res://art/spritesheets/Checkerboard.png" id="71_wfll1"]
 [ext_resource type="Texture2D" uid="uid://dir7hm76paava" path="res://art/spritesheets/Smudge.png" id="73_whjpo"]
 [ext_resource type="Texture2D" uid="uid://b4jpgvr7ohmwa" path="res://art/spritesheets/Swirl.png" id="75_31e3w"]
@@ -200,6 +207,25 @@ shader_parameter/time = 0.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gmans"]
 shader = ExtResource("27_s8c5i")
 shader_parameter/time = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyoie"]
+bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a84n4"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.968627, 0.870588, 0.219608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cmj7"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.631373, 0.890196, 0.411765, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_46b5e"]
 shader = ExtResource("32_uoai7")
@@ -2685,6 +2711,80 @@ script = ExtResource("4_t4eif")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qyoie")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu"]
+layout_mode = 0
+offset_left = 116.0
+offset_right = 1920.0
+offset_bottom = 56.0
+alignment = 1
+
+[node name="New" type="Button" parent="MainMenu/HBoxContainer"]
+custom_minimum_size = Vector2(72, 56)
+layout_mode = 2
+tooltip_text = "New image"
+theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+icon = ExtResource("29_wqtnw")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("30_cw20u")
+
+[node name="Random" type="Button" parent="MainMenu/HBoxContainer"]
+custom_minimum_size = Vector2(72, 56)
+layout_mode = 2
+tooltip_text = "Random image"
+theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+icon = ExtResource("31_r67j6")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("30_cw20u")
+
+[node name="Save" type="Button" parent="MainMenu/HBoxContainer"]
+custom_minimum_size = Vector2(72, 56)
+layout_mode = 2
+tooltip_text = "Save image"
+theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+icon = ExtResource("32_4xoio")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("30_cw20u")
+
+[node name="Undo" type="Button" parent="MainMenu/HBoxContainer"]
+custom_minimum_size = Vector2(72, 56)
+layout_mode = 2
+tooltip_text = "Undo"
+theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+icon = ExtResource("33_6c4rh")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("30_cw20u")
+
+[node name="Reset" type="Button" parent="MainMenu/HBoxContainer"]
+custom_minimum_size = Vector2(72, 56)
+layout_mode = 2
+tooltip_text = "Reset image"
+theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+icon = ExtResource("34_xdfcj")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("30_cw20u")
+
+[node name="Info" type="Button" parent="MainMenu/HBoxContainer"]
+custom_minimum_size = Vector2(72, 56)
+layout_mode = 2
+tooltip_text = "View Image Details"
+theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+icon = ExtResource("35_dn43n")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("30_cw20u")
 
 [node name="ToolsMenu" type="Panel" parent="."]
 layout_mode = 0
