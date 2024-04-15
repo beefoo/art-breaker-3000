@@ -1,0 +1,6 @@
+*.pyc
+tmp/*
+!tmp/.keep
+downloads/*
+!downloads/.keep
+api_keys.json
