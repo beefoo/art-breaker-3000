@@ -3,6 +3,26 @@ import os
 
 import requests
 
+def download(url, filename, verbose=True):
+    try:
+        r = requests.get(url, stream=True, timeout=60)
+        with open(filename, "wb") as f:
+            for chunk in r.iter_content(chunk_size=1024):
+                if chunk:  # filter out keep-alive new chunks
+                    f.write(chunk)
+        if verbose:
+            print(f"Downloaded {url}")
+        return True
+    except requests.exceptions.MissingSchema:
+        print(f"Schema error when trying to get image {url}")
+        return False
+    except requests.HTTPError:
+        print(f"HTTP error when trying to get {url}")
+        return False
+    except requests.Timeout:
+        print(f"Timeout when trying to get {url}")
+        return False
+
 def get_api_data(source_id, item_id, cache_dir=None, verbose=False):
     """Retrieve normalized API data from a data source"""
     resp = {}
