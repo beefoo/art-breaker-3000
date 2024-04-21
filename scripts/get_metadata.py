@@ -4,7 +4,7 @@ import time
 import pandas as pd
 from tqdm import tqdm
 
-from helper import get_api_data
+from helper import get_api_data, make_directories
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -18,6 +18,7 @@ def main(args):
     print(f"Read {df.shape[0]:,} rows from {args.DATA_FILE}")
 
     fields_to_check = ["Title", "Creator", "Date", "ImageURL"]
+    make_directories(args.CACHE_DIR)
     for i, row in tqdm(df.iterrows()):
         needs_update = False
         for field in fields_to_check:

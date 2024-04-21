@@ -1,6 +1,8 @@
 *.pyc
 tmp/*
 !tmp/.keep
-downloads/*
-!downloads/.keep
+images/downloads/*
+!images/downloads/.keep
+images/selections/*
+!images/selections/.keep
 api_keys.json

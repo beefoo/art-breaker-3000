@@ -30,12 +30,14 @@ var tool_config = {
 }
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready():	
+	# Load tools
 	var tools_menu = $ToolsMenu
 	tools_menu.init_tool_buttons()
 	tools_menu.tool_selected.connect(_on_tool_select)
 	_on_tool_select(tool_config["tools"][0]["name"], false)
 	
+	# Load listeners
 	$SaveFileDialog.connect("file_selected", _on_file_selected)
 
 # Called during every input event.

@@ -20,7 +20,7 @@ var time = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	base_rect = get_rect()
-	select_image("mona_lisa_8-colors_1080.png")
+	select_image("sample_mona_lisa.png")
 
 # Called during every input event.
 func _input(event):

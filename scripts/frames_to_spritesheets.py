@@ -6,6 +6,8 @@ import re
 from PIL import Image
 from tqdm import tqdm
 
+from helper import make_directories
+
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--in", dest="INPUT_FILES", default="frames/*.png", help="Path to input image files")
@@ -33,6 +35,7 @@ def main(args):
         groups[group_name].append(fn)
 
     # Make a sprite sheet for each group
+    make_directories(args.OUTPUT_DIR)
     for group_name, frames in tqdm(groups.items()):
         frames = sorted(frames)
         count = len(frames)

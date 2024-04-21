@@ -4,7 +4,7 @@ import os
 import pandas as pd
 from tqdm import tqdm
 
-from helper import download
+from helper import download, make_directories
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -23,6 +23,7 @@ def main(args):
         print(duplicates)
         print('-----------------------')
 
+    make_directories(args.OUTPUT_DIR)
     for i, row in tqdm(df.iterrows()):
         image_url = row["ImageURL"]
         filename = f"{args.OUTPUT_DIR}{row['Id']}.jpg"

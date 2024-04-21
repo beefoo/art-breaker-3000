@@ -148,6 +148,23 @@ def get_nested_value(root, nodes, default_value=""):
 
     return value
 
+def make_directories(filenames):
+    """Function for creating directories if they do not exist."""
+    if not isinstance(filenames, list):
+        filenames = [filenames]
+    for filename in filenames:
+        dirname = os.path.dirname(filename)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
+
+def pluck(obj, fields):
+    """Pluck a set of fields from an object"""
+    plucked = {}
+    for f in fields:
+        if f in obj:
+            plucked[f] = obj[f]
+    return plucked
+
 def read_json(filename):
     """Read a JSON file"""
     data = {}
@@ -156,7 +173,10 @@ def read_json(filename):
     return data
 
 
-def write_json(filename, data):
+def write_json(filename, data, indent=0):
     """Write data to JSON file"""
     with open(filename, 'w', encoding='utf-8') as f:
-        json.dump(data, f)
+        if indent > 0:
+            json.dump(data, f, indent=indent)
+        else:
+            json.dump(data, f)
