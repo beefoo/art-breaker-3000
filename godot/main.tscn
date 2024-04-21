@@ -1,4 +1,4 @@
-[gd_scene load_steps=455 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=461 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -30,6 +30,7 @@
 [ext_resource type="Shader" path="res://shaders/Swirl.gdshader" id="26_jewvf"]
 [ext_resource type="Shader" path="res://shaders/Dissolve.gdshader" id="27_s8c5i"]
 [ext_resource type="Texture2D" uid="uid://cnc26ms7xeop0" path="res://art/tools/BandShuffle.png" id="29_02nn4"]
+[ext_resource type="Theme" uid="uid://cyeaxliunhshn" path="res://Menu.tres" id="29_ktvei"]
 [ext_resource type="Texture2D" uid="uid://k8uyc1r8e8ac" path="res://art/icons/new.png" id="29_wqtnw"]
 [ext_resource type="Script" path="res://MenuButton.gd" id="30_cw20u"]
 [ext_resource type="Script" path="res://ToolButton.gd" id="30_vabsa"]
@@ -214,22 +215,6 @@ shader_parameter/time = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyoie"]
 bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a84n4"]
-bg_color = Color(0.156863, 0.156863, 0.156863, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.968627, 0.870588, 0.219608, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cmj7"]
-bg_color = Color(0.156863, 0.156863, 0.156863, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.631373, 0.890196, 0.411765, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_46b5e"]
 shader = ExtResource("32_uoai7")
@@ -2503,6 +2488,55 @@ shader_parameter/aspect = 1.0
 shader_parameter/from_tex_aspect = 1.0
 shader_parameter/to_tex_aspect = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ydty7"]
+shader = ExtResource("92_u3jwe")
+shader_parameter/transition = 0.0
+shader_parameter/aspect = 1.0
+shader_parameter/from_tex_aspect = 1.0
+shader_parameter/to_tex_aspect = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajwn0"]
+shader = ExtResource("92_u3jwe")
+shader_parameter/transition = 0.0
+shader_parameter/aspect = 1.0
+shader_parameter/from_tex_aspect = 1.0
+shader_parameter/to_tex_aspect = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qauyr"]
+shader = ExtResource("92_u3jwe")
+shader_parameter/transition = 0.0
+shader_parameter/aspect = 1.0
+shader_parameter/from_tex_aspect = 1.0
+shader_parameter/to_tex_aspect = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mrek4"]
+shader = ExtResource("92_u3jwe")
+shader_parameter/transition = 0.0
+shader_parameter/aspect = 1.0
+shader_parameter/from_tex_aspect = 1.0
+shader_parameter/to_tex_aspect = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4rtpm"]
+shader = ExtResource("92_u3jwe")
+shader_parameter/transition = 0.0
+shader_parameter/aspect = 1.0
+shader_parameter/from_tex_aspect = 1.0
+shader_parameter/to_tex_aspect = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_btc55"]
+shader = ExtResource("92_u3jwe")
+shader_parameter/transition = 0.0
+shader_parameter/aspect = 1.0
+shader_parameter/from_tex_aspect = 1.0
+shader_parameter/to_tex_aspect = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvhwm"]
+shader = ExtResource("92_u3jwe")
+shader_parameter/transition = 0.0
+shader_parameter/aspect = 1.0
+shader_parameter/from_tex_aspect = 1.0
+shader_parameter/to_tex_aspect = 1.0
+
 [node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -2738,8 +2772,7 @@ alignment = 1
 custom_minimum_size = Vector2(72, 56)
 layout_mode = 2
 tooltip_text = "New image"
-theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
-theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+theme = ExtResource("29_ktvei")
 icon = ExtResource("29_wqtnw")
 icon_alignment = 1
 expand_icon = true
@@ -2749,8 +2782,7 @@ script = ExtResource("30_cw20u")
 custom_minimum_size = Vector2(72, 56)
 layout_mode = 2
 tooltip_text = "Random image"
-theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
-theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+theme = ExtResource("29_ktvei")
 icon = ExtResource("31_r67j6")
 icon_alignment = 1
 expand_icon = true
@@ -2760,8 +2792,7 @@ script = ExtResource("30_cw20u")
 custom_minimum_size = Vector2(72, 56)
 layout_mode = 2
 tooltip_text = "Save image"
-theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
-theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+theme = ExtResource("29_ktvei")
 icon = ExtResource("32_4xoio")
 icon_alignment = 1
 expand_icon = true
@@ -2771,8 +2802,7 @@ script = ExtResource("30_cw20u")
 custom_minimum_size = Vector2(72, 56)
 layout_mode = 2
 tooltip_text = "Undo"
-theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
-theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+theme = ExtResource("29_ktvei")
 icon = ExtResource("33_6c4rh")
 icon_alignment = 1
 expand_icon = true
@@ -2782,8 +2812,7 @@ script = ExtResource("30_cw20u")
 custom_minimum_size = Vector2(72, 56)
 layout_mode = 2
 tooltip_text = "Reset image"
-theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
-theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+theme = ExtResource("29_ktvei")
 icon = ExtResource("34_xdfcj")
 icon_alignment = 1
 expand_icon = true
@@ -2793,8 +2822,7 @@ script = ExtResource("30_cw20u")
 custom_minimum_size = Vector2(72, 56)
 layout_mode = 2
 tooltip_text = "View Image Details"
-theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
-theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+theme = ExtResource("29_ktvei")
 icon = ExtResource("35_dn43n")
 icon_alignment = 1
 expand_icon = true
@@ -2807,8 +2835,7 @@ offset_left = 1848.0
 offset_right = 1920.0
 offset_bottom = 56.0
 tooltip_text = "Exit"
-theme_override_styles/hover = SubResource("StyleBoxFlat_a84n4")
-theme_override_styles/focus = SubResource("StyleBoxFlat_6cmj7")
+theme = ExtResource("29_ktvei")
 icon = ExtResource("36_opy64")
 icon_alignment = 1
 expand_icon = true
@@ -3268,11 +3295,76 @@ layout_mode = 0
 offset_left = 320.0
 offset_top = 200.0
 offset_right = 1600.0
-offset_bottom = 520.0
+offset_bottom = 840.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
 columns = 4
 
 [node name="SelectImageButton1" type="Button" parent="ImageSelector/ImageButtons"]
 material = SubResource("ShaderMaterial_7oark")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("94_dw4an")
+
+[node name="SelectImageButton2" type="Button" parent="ImageSelector/ImageButtons"]
+material = SubResource("ShaderMaterial_ydty7")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("94_dw4an")
+
+[node name="SelectImageButton3" type="Button" parent="ImageSelector/ImageButtons"]
+material = SubResource("ShaderMaterial_ajwn0")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("94_dw4an")
+
+[node name="SelectImageButton4" type="Button" parent="ImageSelector/ImageButtons"]
+material = SubResource("ShaderMaterial_qauyr")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("94_dw4an")
+
+[node name="SelectImageButton5" type="Button" parent="ImageSelector/ImageButtons"]
+material = SubResource("ShaderMaterial_mrek4")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("94_dw4an")
+
+[node name="SelectImageButton6" type="Button" parent="ImageSelector/ImageButtons"]
+material = SubResource("ShaderMaterial_4rtpm")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("94_dw4an")
+
+[node name="SelectImageButton7" type="Button" parent="ImageSelector/ImageButtons"]
+material = SubResource("ShaderMaterial_btc55")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("94_dw4an")
+
+[node name="SelectImageButton8" type="Button" parent="ImageSelector/ImageButtons"]
+material = SubResource("ShaderMaterial_fvhwm")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
