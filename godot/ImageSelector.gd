@@ -1,5 +1,7 @@
 extends Panel
 
+signal image_selected(texture, data)
+
 var button_count = 0
 var collection_data = []
 var collection_data_file = "data/collection.json"
@@ -14,10 +16,24 @@ func _ready():
 	show_random_set()
 	# Load listeners
 	$ActionButtons/RandomizeButton.pressed.connect(show_random_set)
+	for i in range(button_count):
+		var button_index = i + 1
+		var button = get_node("ImageButtons/SelectImageButton%s" % button_index)
+		button.image_selected.connect(_on_image_selected)
+
+func _on_image_selected(texture, data):
+	image_selected.emit(texture, data)
+	animate_out()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func animate_in():
+	show()
+	
+func animate_out():
+	hide()
 
 # Load collection data from file
 func load_collection_data(data_file):
@@ -25,6 +41,11 @@ func load_collection_data(data_file):
 	collection_data = JSON.parse_string(json_string)
 	collection_size = collection_data.size()
 	print("Loaded %s collection items" % collection_size)
+	
+func select_random_image():
+	var random_item = collection_data.pick_random()
+	var texture = load("res://art/images/%s.png" % random_item["Id"])
+	image_selected.emit(texture, random_item)
 
 # Assign a button an item (image, text, etc)
 func set_button_data(button_index, item_data):

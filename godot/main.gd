@@ -34,11 +34,13 @@ func _ready():
 	# Load tools
 	var tools_menu = $ToolsMenu
 	tools_menu.init_tool_buttons()
-	tools_menu.tool_selected.connect(_on_tool_select)
-	_on_tool_select(tool_config["tools"][0]["name"], false)
+	tools_menu.tool_selected.connect(_on_tool_selected)
+	_on_tool_selected(tool_config["tools"][0]["name"], false)
 	
 	# Load listeners
 	$SaveFileDialog.connect("file_selected", _on_file_selected)
+	
+	$ImageSelector.image_selected.connect(_on_image_selected)
 
 # Called during every input event.
 func _input(event):
@@ -47,10 +49,19 @@ func _input(event):
 	if event.is_action_pressed("ui_save"):
 		open_save_dialog()
 		
+	elif event.is_action_pressed("ui_new"):
+		$ImageSelector.animate_in()
+		
+	elif event.is_action_pressed("ui_random"):
+		select_random_image()
+		
 func _on_file_selected(path):
 	$Canvas.save_image(path)
+	
+func _on_image_selected(texture, data):
+	$Canvas.select_image(texture)
 
-func _on_tool_select(tool_name, from_user):
+func _on_tool_selected(tool_name, from_user):
 	$ToolsMenu.activate_tool_button(tool_name)
 	var tool_found = tool_config["tools"].filter(func(t): return t["name"] == tool_name)
 	if tool_found.size() < 1:
@@ -75,3 +86,6 @@ func open_save_dialog():
 	# Otherwise, use the Godot file dialog
 	if error != OK:
 		$SaveFileDialog.popup_centered()
+		
+func select_random_image():
+	$ImageSelector.select_random_image()

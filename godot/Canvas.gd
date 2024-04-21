@@ -20,7 +20,7 @@ var time = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	base_rect = get_rect()
-	select_image("sample_mona_lisa.png")
+	# select_image(load("res://art/images/sample_mona_lisa.png"))
 
 # Called during every input event.
 func _input(event):
@@ -170,8 +170,8 @@ func save_image(image_path):
 	var active_image = active_texture.get_image()
 	active_image.save_png(image_path)
 	
-func select_image(image_path):
-	active_texture = load("res://art/images/%s" % image_path)
+func select_image(image_texture):
+	active_texture = image_texture
 	_on_update_texture(true)
 
 # Select a mixer by name

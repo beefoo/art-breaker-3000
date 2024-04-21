@@ -1,6 +1,8 @@
 extends Button
 
 var action_map = {
+	"New": "ui_new",
+	"Random": "ui_random",
 	"Reset": "ui_reset",
 	"Save": "ui_save",
 	"Undo": "ui_undo"

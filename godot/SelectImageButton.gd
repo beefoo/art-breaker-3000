@@ -1,17 +1,26 @@
 extends Button
 
+signal image_selected(texture, data)
+
 const TRANSITION_DURATION = 1000
 
+var item_data
 var from_texture
 var to_texture
 var transition_start
 var transition_end
+
 var is_transitioning = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	material.set_shader_parameter("aspect", size.aspect())
 
+func _pressed():
+	if to_texture == null or item_data == null:
+		return
+	
+	image_selected.emit(to_texture.duplicate(), item_data)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,6 +42,8 @@ func _process(delta):
 
 
 func set_item_data(data):
+	item_data = data
+	
 	# Update tooltip
 	tooltip_text = "\"%s\" by %s (%s)" % [data["Title"], data["Creator"], data["Date"]]
 	
