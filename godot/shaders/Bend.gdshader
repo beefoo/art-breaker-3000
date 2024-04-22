@@ -16,9 +16,15 @@ float has_started(float t) {
 	return min(ceil(t), 1.0);
 }
 
+float when_gt(float x, float y) {
+  return max(sign(x - y), 0.0);
+}
+
 // adapted from: https://godotshaders.com/shader/distortion/
 void fragment() {
-	vec2 scaled_uv = (UV - vec2(0.0, 0.5)) / vec2(1.0, aspect_ratio) + vec2(0, 0.5);
+	vec2 scaled_uv_horz = (UV - vec2(0, 0.5)) / vec2(1.0, aspect_ratio) + vec2(0, 0.5);
+	vec2 scaled_uv_vert = (UV - vec2(0.5, 0)) / vec2(1.0 / aspect_ratio, 1.0) + vec2(0.5, 0);
+	vec2 scaled_uv = mix(scaled_uv_vert, scaled_uv_horz, when_gt(aspect_ratio, 1.0));
 	vec2 dist_center2 = scaled_uv - pointer;
 	float dist_center = length(dist_center2);
 	float mask =  (1.0 - smoothstep(RADIUS - FEATHER, RADIUS, dist_center)) * smoothstep(RADIUS - WIDTH - FEATHER, RADIUS - WIDTH , dist_center);

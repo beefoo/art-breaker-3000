@@ -189,10 +189,7 @@ func select_mixer(tool, from_user):
 	active_mixer = get_node(mixer_data["name"])
 	active_mixer_data = mixer_data
 	active_mixer.activate()
-	active_mixer.set_params({
-		"tex": active_texture,
-		"time": time
-	})
+	set_shader_params_start()
 	
 	# Grab focus if triggered by user
 	if from_user:

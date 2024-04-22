@@ -1,11 +1,12 @@
 shader_type canvas_item;
 
+uniform float aspect_ratio;
 uniform vec2 pointer_start;
 uniform sampler2D tex;
 uniform float time = 0.0;
 
 const float BASE_SPEED = 1.5; // increase to be faster
-const float BANDS = 4.0; // number of bands
+const float BANDS = 8.0; // number of bands
 const float ACCELARATION = 1.05; // 1.0 linear time; < 1.0 will slow down; > 1.0 will speed up
 
 vec2 rotate(vec2 uv, vec2 pivot, float angle) {
@@ -17,9 +18,17 @@ vec2 rotate(vec2 uv, vec2 pivot, float angle) {
 	return uv;
 }
 
+float when_gt(float x, float y) {
+  return max(sign(x - y), 0.0);
+}
+
 void fragment() {
+	vec2 scaled_uv_horz = (UV - vec2(0, 0.5)) / vec2(1.0, aspect_ratio) + vec2(0, 0.5);
+	vec2 scaled_uv_vert = (UV - vec2(0.5, 0)) / vec2(1.0 / aspect_ratio, 1.0) + vec2(0.5, 0);
+	vec2 scaled_uv = mix(scaled_uv_vert, scaled_uv_horz, when_gt(aspect_ratio, 1.0));
+	
 	float band_size = 1.0 / BANDS;
-	float dist = length(UV - pointer_start);
+	float dist = length(scaled_uv - pointer_start);
 	// determine which band this is
 	float band = floor(dist / band_size);
 	// alternate directions based on odd/even bands

@@ -4,7 +4,7 @@ uniform sampler2D tex;
 uniform float time = 0.0;
 uniform float aspect_ratio = 1.0;
 
-const float ROWS = 5.0;
+const float COLS = 5.0;
 const float RADIUS_MULTIPLIER = 0.25; // increase for larger dots
 const float SCALE_SPEED = 16.0; // increase for faster dot pulsing
 
@@ -25,11 +25,11 @@ void fragment() {
 	// dots will be inverted colors
 	vec4 color = texture(tex, UV);
 	vec4 inv = vec4(1.0-color.r, 1.0-color.g, 1.0-color.b, 1.0);
-	// determine number of columns based on rows and spect ratio
-	float cols = round(ROWS * aspect_ratio);
+	// determine number of rows based on cols and aspect ratio
+	float rows = COLS / aspect_ratio;
 	// base radius is based on cell dimensions
-	float row_h = 1.0 / ROWS;
-	float col_w = 1.0 / cols;
+	float col_w = 1.0 / COLS;
+	float row_h = 1.0 / rows;
 	float base_radius = min(row_h * RADIUS_MULTIPLIER, col_w * RADIUS_MULTIPLIER);
 	// make radius grow and shrink over time; between values 1.0 and 2.0
 	float scale_radius = (sin(time * SCALE_SPEED) + 1.0) / 2.0 + 1.0;

@@ -118,6 +118,7 @@ shader_parameter/aspect_ratio = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_15swl"]
 shader = ExtResource("8_826ax")
+shader_parameter/aspect_ratio = 1.0
 shader_parameter/pointer_start = null
 shader_parameter/time = 0.0
 
@@ -142,6 +143,7 @@ shader_parameter/time = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o0c0n"]
 shader = ExtResource("13_u0tw2")
+shader_parameter/aspect_ratio = 1.0
 shader_parameter/pointer = null
 shader_parameter/time = 0.0
 
