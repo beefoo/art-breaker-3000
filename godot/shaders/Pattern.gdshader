@@ -1,11 +1,12 @@
 shader_type canvas_item;
 
+uniform float aspect_ratio = 1.0;
 uniform vec2 pointer = vec2(0.0);
 uniform sampler2D tex;
 uniform float time = 0.0;
 
 const float SEGMENTS = 4.0;
-const float ROWS = 4.0;
+const float ROWS_OR_COLS = 4.0;
 const float SAMPLE_SIZE = 0.20;
 
 // 0.0 if time==0.0; 1.0 if time > 0.0
@@ -13,9 +14,17 @@ float has_started(float t) {
 	return min(ceil(t), 1.0);
 }
 
+float when_gt(float x, float y) {
+  return max(sign(x - y), 0.0);
+}
+
 // Adapted from: https://danielilett.com/2020-02-19-tut3-8-crazy-kaleidoscopes/
 void fragment() {
 	float started = has_started(time);
+	
+	float is_horizontal = when_gt(aspect_ratio, 1.0);
+	float cols = mix(ROWS_OR_COLS, round(ROWS_OR_COLS * aspect_ratio), is_horizontal);
+	float rows = mix(round(ROWS_OR_COLS / aspect_ratio), ROWS_OR_COLS, is_horizontal);
 	
 	// get bounds of sample area around pointer
 	float top = clamp(pointer.y - SAMPLE_SIZE * 0.5, 0.0, 1.0 - SAMPLE_SIZE);
@@ -24,8 +33,8 @@ void fragment() {
 	float right = left + SAMPLE_SIZE;
 	
 	// get the UV of the sample
-	float row_h = 1.0 / ROWS;
-	float col_w = 1.0 / ROWS;
+	float row_h = 1.0 / rows;
+	float col_w = 1.0 / cols;
 	float x = mix(left, right, mod(UV.x, col_w) / col_w);
 	float y = mix(top, bottom, mod(UV.y, row_h) / row_h);
 	vec2 sample_uv = vec2(x, y);

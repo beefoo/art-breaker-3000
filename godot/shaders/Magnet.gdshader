@@ -5,11 +5,15 @@ uniform vec2 pointer = vec2(0.0);
 uniform sampler2D tex;
 uniform float time = 0.0;
 
-const float ROWS = 24.0;
+const float ROWS_OR_COLS = 24.0;
 
 // 0.0 if time==0.0; 1.0 if time > 0.0
 float has_started(float t) {
 	return min(ceil(t), 1.0);
+}
+
+float when_gt(float x, float y) {
+  return max(sign(x - y), 0.0);
 }
 
 vec2 rotate(vec2 uv, vec2 pivot, float angle) {
@@ -25,9 +29,11 @@ void fragment() {
 	// if we haven't started, image should be shown without dots (i.e. radius = 0)
 	float started = has_started(time);
 	// determine number of columns based on rows and spect ratio
-	float cols = round(ROWS * aspect_ratio);
+	float is_horizontal = when_gt(aspect_ratio, 1.0);
+	float cols = mix(ROWS_OR_COLS, round(ROWS_OR_COLS * aspect_ratio), is_horizontal);
+	float rows = mix(round(ROWS_OR_COLS / aspect_ratio), ROWS_OR_COLS, is_horizontal);
 	// determine row and column
-	float row_h = 1.0 / ROWS;
+	float row_h = 1.0 / rows;
 	float col_w = 1.0 / cols;
 	float col = floor(UV.x / col_w);
 	float row = floor(UV.y / row_h);

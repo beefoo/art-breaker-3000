@@ -170,11 +170,13 @@ shader_parameter/aspect_ratio = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t78gd"]
 shader = ExtResource("18_4lyre")
+shader_parameter/aspect_ratio = null
 shader_parameter/pointer_start = null
 shader_parameter/time = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_17f8v"]
 shader = ExtResource("19_p7tp3")
+shader_parameter/aspect_ratio = 1.0
 shader_parameter/pointer = Vector2(0, 0)
 shader_parameter/time = 0.0
 
