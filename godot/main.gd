@@ -50,7 +50,7 @@ func _input(event):
 		open_save_dialog()
 		
 	elif event.is_action_pressed("ui_new"):
-		$ImageSelector.animate_in()
+		open_new_dialog()
 		
 	elif event.is_action_pressed("ui_random"):
 		select_random_image()
@@ -60,6 +60,7 @@ func _on_file_selected(path):
 	
 func _on_image_selected(texture, data):
 	$Canvas.select_image(texture)
+	$Canvas.activate()
 
 func _on_tool_selected(tool_name, from_user):
 	$ToolsMenu.activate_tool_button(tool_name)
@@ -73,6 +74,10 @@ func _on_tool_selected(tool_name, from_user):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func open_new_dialog():
+	$ImageSelector.animate_in()
+	$Canvas.deactivate()
 	
 func open_save_dialog():
 	var timestamp = Time.get_datetime_string_from_system().replace("T", "-").replace(":", "")

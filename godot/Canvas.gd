@@ -14,6 +14,7 @@ var prev_texture
 var aspect_ratio = 1.0
 var busy = false
 var first_touch = true
+var is_active = false
 var pressing = false
 var time = 0.0
 
@@ -24,6 +25,9 @@ func _ready():
 
 # Called during every input event.
 func _input(event):
+	if !is_active:
+		return
+		
 	# Keep track of start and stop touch/press
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT or event is InputEventScreenTouch:
 		var is_inside_canvas = get_rect().has_point(event.position)
@@ -37,7 +41,6 @@ func _input(event):
 	# Touch drag
 	elif event is InputEventScreenDrag or pressing and event is InputEventMouseMotion:
 		_on_touch_move(event)
-		pass
 		
 	# Keyboard/controller enter key is pressed down
 	if event.is_action_pressed("ui_accept") and has_focus():
@@ -74,6 +77,7 @@ func _on_touch_move(event):
 		pointer = get_normalized_position(event.position)
 	
 func _on_touch_start(event):
+	print("Touch start")
 	time = 0.0
 	
 	if active_texture:
@@ -138,6 +142,12 @@ func _process(delta):
 		
 	if active_mixer != null and active_mixer_data != null:
 		set_shader_params_process()
+		
+func activate():
+	is_active = true
+	
+func deactivate():
+	is_active = false
 
 func normalize_value(value, min_value, max_value):
 	var n = 0.0
