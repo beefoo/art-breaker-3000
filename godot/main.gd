@@ -29,6 +29,8 @@ var tool_config = {
 	]
 }
 
+var image_selected = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	# Load tools
@@ -46,7 +48,10 @@ func _ready():
 func _input(event):
 	
 	# Custom events
-	if event.is_action_pressed("ui_info"):
+	if event.is_action_pressed("ui_cancel"):
+		_on_cancel()
+		
+	elif event.is_action_pressed("ui_info"):
 		open_info_dialog()
 		
 	elif event.is_action_pressed("ui_new"):
@@ -57,6 +62,16 @@ func _input(event):
 		
 	elif event.is_action_pressed("ui_save"):
 		open_save_dialog()
+		
+func _on_cancel():
+	if $ImageSelector.visible && image_selected:
+		$ImageSelector.close()
+		
+	elif $ItemDetail.visible:
+		$ItemDetail.close()
+		
+	else:
+		get_tree().quit()
 
 func _on_dialog_close():
 	$Canvas.activate()
@@ -65,6 +80,7 @@ func _on_file_selected(path):
 	$Canvas.save_image(path)
 	
 func _on_image_selected(texture, data):
+	image_selected = true
 	$Canvas.select_image(texture)
 	$Canvas.activate()
 	$ItemDetail.set_item(texture, data)
