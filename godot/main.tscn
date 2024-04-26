@@ -1,4 +1,4 @@
-[gd_scene load_steps=464 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=458 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -31,23 +31,16 @@
 [ext_resource type="Shader" path="res://shaders/Dissolve.gdshader" id="27_s8c5i"]
 [ext_resource type="Texture2D" uid="uid://cnc26ms7xeop0" path="res://art/tools/BandShuffle.png" id="29_02nn4"]
 [ext_resource type="Theme" uid="uid://cyeaxliunhshn" path="res://Menu.tres" id="29_ktvei"]
-[ext_resource type="Texture2D" uid="uid://k8uyc1r8e8ac" path="res://art/icons/new.png" id="29_wqtnw"]
 [ext_resource type="Script" path="res://MenuButton.gd" id="30_cw20u"]
 [ext_resource type="Script" path="res://ToolButton.gd" id="30_vabsa"]
 [ext_resource type="Texture2D" uid="uid://uu08pl7i1tkl" path="res://art/spritesheets/BandShuffle.png" id="31_7iaca"]
-[ext_resource type="Texture2D" uid="uid://4hgrrccpwn7j" path="res://art/icons/random.png" id="31_r67j6"]
-[ext_resource type="Texture2D" uid="uid://g3tjgmmyyxk3" path="res://art/icons/save.png" id="32_4xoio"]
 [ext_resource type="Texture2D" uid="uid://bdigdaqadqb0g" path="res://art/tools/Multiplier.png" id="32_q8xsi"]
 [ext_resource type="Shader" path="res://shaders/AnimatedSpriteBorder.gdshader" id="32_uoai7"]
 [ext_resource type="Texture2D" uid="uid://4pmw1gs18jul" path="res://art/tools/ColorCycle.png" id="33_0ceq5"]
-[ext_resource type="Texture2D" uid="uid://dfon1wh8topl1" path="res://art/icons/undo.png" id="33_6c4rh"]
 [ext_resource type="Texture2D" uid="uid://cqq4lv2tkdv2y" path="res://art/spritesheets/Multiplier.png" id="33_dpgri"]
 [ext_resource type="Texture2D" uid="uid://daydb48gc1qnf" path="res://art/tools/PolkaDots.png" id="34_6d2by"]
-[ext_resource type="Texture2D" uid="uid://bil2bhj13ug2u" path="res://art/icons/reset.png" id="34_xdfcj"]
 [ext_resource type="Texture2D" uid="uid://ntylbgqeccqf" path="res://art/tools/SpinShuffle.png" id="35_arlda"]
-[ext_resource type="Texture2D" uid="uid://dc4up5dwikbnk" path="res://art/icons/info.png" id="35_dn43n"]
 [ext_resource type="Texture2D" uid="uid://da1hcatscd8ee" path="res://art/spritesheets/ColorCycle.png" id="35_ee1ad"]
-[ext_resource type="Texture2D" uid="uid://b0xrijvx6kgg0" path="res://art/icons/exit.png" id="36_opy64"]
 [ext_resource type="Texture2D" uid="uid://ckeaod351pnd1" path="res://art/tools/Pixelate.png" id="36_vcdkc"]
 [ext_resource type="Texture2D" uid="uid://dgrryfowrwht5" path="res://art/spritesheets/PolkaDots.png" id="37_1df0w"]
 [ext_resource type="Texture2D" uid="uid://dtaoxkp1hx5va" path="res://art/tools/Kaleidoscope.png" id="37_htska"]
@@ -92,6 +85,7 @@
 [ext_resource type="FontFile" uid="uid://b7t1nt32dqy5o" path="res://fonts/Handjet-Bold.ttf" id="80_j4se0"]
 [ext_resource type="Texture2D" uid="uid://cufrb5g7ft1l3" path="res://art/icons/arrow.png" id="81_adb6o"]
 [ext_resource type="Texture2D" uid="uid://drat30q5lrfaw" path="res://art/icons/arrow_focus.png" id="81_djit7"]
+[ext_resource type="Theme" uid="uid://b7tuuoljj7kcx" path="res://Modal.tres" id="89_kj3un"]
 [ext_resource type="Script" path="res://ImageSelector.gd" id="92_1m082"]
 [ext_resource type="Shader" path="res://shaders/SelectImageButton.gdshader" id="92_u3jwe"]
 [ext_resource type="Script" path="res://SelectImageButton.gd" id="94_dw4an"]
@@ -2776,54 +2770,54 @@ layout_mode = 0
 offset_left = 116.0
 offset_right = 1920.0
 offset_bottom = 56.0
-alignment = 1
+alignment = 2
 
 [node name="New" type="Button" parent="MainMenu/HBoxContainer"]
-custom_minimum_size = Vector2(72, 56)
+custom_minimum_size = Vector2(75, 56)
 layout_mode = 2
 tooltip_text = "New image"
 theme = ExtResource("29_ktvei")
-icon = ExtResource("29_wqtnw")
+text = "New"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
 
 [node name="Random" type="Button" parent="MainMenu/HBoxContainer"]
-custom_minimum_size = Vector2(72, 56)
+custom_minimum_size = Vector2(115, 56)
 layout_mode = 2
 tooltip_text = "Random image"
 theme = ExtResource("29_ktvei")
-icon = ExtResource("31_r67j6")
+text = "Random"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
 
 [node name="Save" type="Button" parent="MainMenu/HBoxContainer"]
-custom_minimum_size = Vector2(72, 56)
+custom_minimum_size = Vector2(84, 56)
 layout_mode = 2
 tooltip_text = "Save image"
 theme = ExtResource("29_ktvei")
-icon = ExtResource("32_4xoio")
+text = "Save"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
 
 [node name="Undo" type="Button" parent="MainMenu/HBoxContainer"]
-custom_minimum_size = Vector2(72, 56)
+custom_minimum_size = Vector2(84, 56)
 layout_mode = 2
 tooltip_text = "Undo"
 theme = ExtResource("29_ktvei")
-icon = ExtResource("33_6c4rh")
+text = "Undo"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
 
 [node name="Reset" type="Button" parent="MainMenu/HBoxContainer"]
-custom_minimum_size = Vector2(72, 56)
+custom_minimum_size = Vector2(94, 56)
 layout_mode = 2
 tooltip_text = "Reset image"
 theme = ExtResource("29_ktvei")
-icon = ExtResource("34_xdfcj")
+text = "Reset"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
@@ -2833,20 +2827,17 @@ custom_minimum_size = Vector2(72, 56)
 layout_mode = 2
 tooltip_text = "View Image Details"
 theme = ExtResource("29_ktvei")
-icon = ExtResource("35_dn43n")
+text = "Info"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
 
-[node name="Exit" type="Button" parent="MainMenu"]
+[node name="Exit" type="Button" parent="MainMenu/HBoxContainer"]
 custom_minimum_size = Vector2(72, 56)
 layout_mode = 2
-offset_left = 1848.0
-offset_right = 1920.0
-offset_bottom = 56.0
 tooltip_text = "Exit"
 theme = ExtResource("29_ktvei")
-icon = ExtResource("36_opy64")
+text = "Exit"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
@@ -3391,13 +3382,15 @@ theme_override_constants/separation = 30
 alignment = 1
 
 [node name="UploadButton" type="Button" parent="ImageSelector/ActionButtons"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme = ExtResource("1_2pa20")
+theme = ExtResource("89_kj3un")
 text = "Upload image"
 
 [node name="RandomizeButton" type="Button" parent="ImageSelector/ActionButtons"]
+custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
-theme = ExtResource("1_2pa20")
+theme = ExtResource("89_kj3un")
 text = "Randomize images"
 
 [node name="ItemDetail" type="Panel" parent="."]
@@ -3440,7 +3433,9 @@ text = "[font_size=80]Under the Wave off Kanagawa (Kanagawa oki nami ura)[/font_
 fit_content = true
 
 [node name="CloseButton" type="Button" parent="ItemDetail/TextContainer"]
+custom_minimum_size = Vector2(220, 80)
 layout_mode = 2
 size_flags_horizontal = 0
-theme = ExtResource("1_2pa20")
+theme = ExtResource("89_kj3un")
+theme_override_font_sizes/font_size = 60
 text = "Close"

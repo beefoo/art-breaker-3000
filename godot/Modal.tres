@@ -1,0 +1,24 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b7tuuoljj7kcx"]
+
+[ext_resource type="FontFile" uid="uid://d0uoseqamqkdy" path="res://fonts/Handjet-Medium.ttf" id="1_55aix"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvc6y"]
+bg_color = Color(0.878431, 0.878431, 0.878431, 1)
+border_color = Color(0.631373, 0.890196, 0.411765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_labmw"]
+bg_color = Color(0.878431, 0.878431, 0.878431, 1)
+border_color = Color(0.968627, 0.870588, 0.219608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_siet0"]
+bg_color = Color(0.341176, 0.180392, 0.027451, 1)
+
+[resource]
+default_font = ExtResource("1_55aix")
+default_font_size = 36
+Button/colors/font_focus_color = Color(0.211765, 0.0941176, 0.027451, 1)
+Button/colors/font_hover_color = Color(0.211765, 0.0941176, 0.027451, 1)
+Button/colors/font_hover_pressed_color = Color(0.211765, 0.0941176, 0.027451, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_xvc6y")
+Button/styles/hover = SubResource("StyleBoxFlat_labmw")
+Button/styles/normal = SubResource("StyleBoxFlat_siet0")
