@@ -1,4 +1,4 @@
-[gd_scene load_steps=461 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=464 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -95,6 +95,8 @@
 [ext_resource type="Script" path="res://ImageSelector.gd" id="92_1m082"]
 [ext_resource type="Shader" path="res://shaders/SelectImageButton.gdshader" id="92_u3jwe"]
 [ext_resource type="Script" path="res://SelectImageButton.gd" id="94_dw4an"]
+[ext_resource type="Texture2D" uid="uid://cke86173cg5w8" path="res://art/images/artic_24645.png" id="96_hpfex"]
+[ext_resource type="Script" path="res://ItemDetail.gd" id="96_pugxd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0prh"]
 bg_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
@@ -2541,6 +2543,9 @@ shader_parameter/aspect = 1.0
 shader_parameter/from_tex_aspect = 1.0
 shader_parameter/to_tex_aspect = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7lfk"]
+bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
 [node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -3394,3 +3399,48 @@ text = "Upload image"
 layout_mode = 2
 theme = ExtResource("1_2pa20")
 text = "Randomize images"
+
+[node name="ItemDetail" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r7lfk")
+script = ExtResource("96_pugxd")
+
+[node name="ImageContainer" type="AspectRatioContainer" parent="ItemDetail"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 120.0
+offset_right = 930.0
+offset_bottom = 1000.0
+
+[node name="TextureRect" type="TextureRect" parent="ItemDetail/ImageContainer"]
+layout_mode = 2
+texture = ExtResource("96_hpfex")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TextContainer" type="VBoxContainer" parent="ItemDetail"]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 100.0
+offset_right = 1840.0
+offset_bottom = 980.0
+theme_override_constants/separation = 62
+alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="ItemDetail/TextContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=80]Under the Wave off Kanagawa (Kanagawa oki nami ura)[/font_size]
+
+[font_size=60][color=#dddddd]Katsushika Hokusai, 1862[/color][/font_size]
+[url=https://www.artic.edu/artworks/24645/under-the-wave-off-kanagawa-kanagawa-oki-nami-ura-also-known-as-the-great-wave-from-the-series-thirty-six-views-of-mount-fuji-fugaku-sanj%E7%AC%9Brokkei][font_size=60][color=#f7de38]The Art Institute of Chicago[/color][/font_size][/url]"
+fit_content = true
+
+[node name="CloseButton" type="Button" parent="ItemDetail/TextContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_2pa20")
+text = "Close"

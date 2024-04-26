@@ -39,15 +39,15 @@ func _ready():
 	
 	# Load listeners
 	$SaveFileDialog.connect("file_selected", _on_file_selected)
-	
 	$ImageSelector.image_selected.connect(_on_image_selected)
+	$ItemDetail.connect("closed", _on_dialog_close)
 
 # Called during every input event.
 func _input(event):
 	
 	# Custom events
-	if event.is_action_pressed("ui_save"):
-		open_save_dialog()
+	if event.is_action_pressed("ui_info"):
+		open_info_dialog()
 		
 	elif event.is_action_pressed("ui_new"):
 		open_new_dialog()
@@ -55,12 +55,19 @@ func _input(event):
 	elif event.is_action_pressed("ui_random"):
 		select_random_image()
 		
+	elif event.is_action_pressed("ui_save"):
+		open_save_dialog()
+
+func _on_dialog_close():
+	$Canvas.activate()
+
 func _on_file_selected(path):
 	$Canvas.save_image(path)
 	
 func _on_image_selected(texture, data):
 	$Canvas.select_image(texture)
 	$Canvas.activate()
+	$ItemDetail.set_item(texture, data)
 
 func _on_tool_selected(tool_name, from_user):
 	$ToolsMenu.activate_tool_button(tool_name)
@@ -75,8 +82,12 @@ func _on_tool_selected(tool_name, from_user):
 func _process(delta):
 	pass
 	
+func open_info_dialog():
+	$ItemDetail.open()
+	$Canvas.deactivate()
+	
 func open_new_dialog():
-	$ImageSelector.animate_in()
+	$ImageSelector.open()
 	$Canvas.deactivate()
 	
 func open_save_dialog():
