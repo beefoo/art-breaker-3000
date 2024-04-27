@@ -119,9 +119,10 @@ func auto_load():
 	
 	image_selected = true
 	$Canvas.select_image(texture)
+	$Canvas.set_original_image(item_texture)
 	$Canvas.activate()
 	$ItemDetail.set_item(item_texture, data)
-	$ImageSelector.hide()
+	$ImageSelector.close()
 
 func auto_save_data(data):
 	var json_string = JSON.stringify(data)

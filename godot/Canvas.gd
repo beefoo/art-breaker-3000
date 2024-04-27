@@ -209,6 +209,9 @@ func select_mixer(tool, from_user):
 	if from_user:
 		grab_focus()
 
+func set_original_image(texture):
+	original_texture = texture.duplicate()
+
 # Set shader parameters at every frame
 func set_shader_params_process():
 	var shader_params = active_mixer_data["shader_params"]
