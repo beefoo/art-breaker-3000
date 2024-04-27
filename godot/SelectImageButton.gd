@@ -2,8 +2,9 @@ extends Button
 
 signal image_selected(texture, data)
 
-const TRANSITION_DURATION = 1000
+const TRANSITION_DURATION = 500
 
+var seed = 0
 var item_data
 var from_texture
 var to_texture
@@ -40,6 +41,9 @@ func _process(delta):
 	n = (sin((n + 1.5) * PI) + 1.0) / 2.0 # ease in/out
 	material.set_shader_parameter("transition", n)
 
+func set_seed(value):
+	seed = value
+	material.set_shader_parameter("seed", seed)
 
 func set_item_data(data):
 	item_data = data

@@ -6,6 +6,7 @@ uniform float transition = 0.0;
 uniform float aspect = 1.0;
 uniform float from_tex_aspect = 1.0;
 uniform float to_tex_aspect = 1.0;
+uniform float seed = 1.0;
 
 const float X_ANCHOR = 0.5;
 const float Y_ANCHOR = 0.2;
@@ -29,7 +30,6 @@ void fragment() {
 	
 	// check if tex is more horizontal or vertical than container
 	vec2 uv_from = mix(uv_from_vert, uv_from_horz, when_gt(from_tex_aspect, aspect));
-	vec4 color_from = texture(from_tex, uv_from);
 	
 	// to tex is more horizontal than container
 	vec2 uv_to_horz = UV;
@@ -45,7 +45,12 @@ void fragment() {
 	
 	// check if tex is more horizontal or vertical than container
 	vec2 uv_to = mix(uv_to_vert, uv_to_horz, when_gt(to_tex_aspect, aspect));
+	
+	// select colors
+	vec4 color_from = texture(from_tex, uv_from);
 	vec4 color_to = texture(to_tex, uv_to);
 	
-	COLOR = mix(color_from, color_to, transition);
+	float randomized = min(pow(transition, (1.0 + seed)), 1.0);
+	float t = step(1.0 - UV.x, randomized);
+	COLOR = mix(color_from, color_to, t);
 }

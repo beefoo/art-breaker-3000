@@ -19,6 +19,7 @@ func _ready():
 	for i in range(button_count):
 		var button_index = i + 1
 		var button = get_node("ImageButtons/SelectImageButton%s" % button_index)
+		button.set_seed(float(i + 1) / float(button_count))
 		button.image_selected.connect(_on_image_selected)
 
 func _on_image_selected(texture, data):
