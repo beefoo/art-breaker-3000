@@ -1,4 +1,4 @@
-[gd_scene load_steps=458 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=459 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -34,6 +34,7 @@
 [ext_resource type="Script" path="res://MenuButton.gd" id="30_cw20u"]
 [ext_resource type="Script" path="res://ToolButton.gd" id="30_vabsa"]
 [ext_resource type="Texture2D" uid="uid://uu08pl7i1tkl" path="res://art/spritesheets/BandShuffle.png" id="31_7iaca"]
+[ext_resource type="Script" path="res://ToolButtonGroup.gd" id="32_mevua"]
 [ext_resource type="Texture2D" uid="uid://bdigdaqadqb0g" path="res://art/tools/Multiplier.png" id="32_q8xsi"]
 [ext_resource type="Shader" path="res://shaders/AnimatedSpriteBorder.gdshader" id="32_uoai7"]
 [ext_resource type="Texture2D" uid="uid://4pmw1gs18jul" path="res://art/tools/ColorCycle.png" id="33_0ceq5"]
@@ -2861,6 +2862,7 @@ script = ExtResource("6_4rrwa")
 layout_mode = 0
 offset_right = 116.0
 offset_bottom = 928.0
+script = ExtResource("32_mevua")
 
 [node name="BandShuffle" type="Button" parent="ToolsMenu/ButtonGroup1"]
 layout_mode = 2
@@ -2994,6 +2996,7 @@ visible = false
 layout_mode = 0
 offset_right = 116.0
 offset_bottom = 928.0
+script = ExtResource("32_mevua")
 
 [node name="Waves" type="Button" parent="ToolsMenu/ButtonGroup2"]
 layout_mode = 2
@@ -3127,6 +3130,7 @@ visible = false
 layout_mode = 0
 offset_right = 116.0
 offset_bottom = 928.0
+script = ExtResource("32_mevua")
 
 [node name="Weave" type="Button" parent="ToolsMenu/ButtonGroup3"]
 layout_mode = 2
@@ -3283,6 +3287,7 @@ access = 2
 filters = PackedStringArray("*.png")
 
 [node name="ImageSelector" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0

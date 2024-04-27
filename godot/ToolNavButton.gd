@@ -25,6 +25,6 @@ func show_active_group():
 	$Label.text = "{group_number}".format({"group_number": group_number})
 	for i in range(button_group_count):
 		if i == active_group_i:
-			button_groups[i].show()
+			button_groups[i].animate_in()
 		else:
-			button_groups[i].hide()
+			button_groups[i].animate_out()
