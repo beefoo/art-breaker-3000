@@ -15,7 +15,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _pressed():
-	if !action_map.has(name):
+	if not action_map.has(name):
 		return
 		
 	var action_name = action_map[name]

@@ -29,6 +29,8 @@ var tool_config = {
 	]
 }
 
+var auto_save_image_path = "user://autosave.png"
+var auto_save_data_path = "user://autosave.json"
 var image_selected = false
 
 # Called when the node enters the scene tree for the first time.
@@ -40,9 +42,12 @@ func _ready():
 	_on_tool_selected(tool_config["tools"][0]["name"], false)
 	
 	# Load listeners
-	$SaveFileDialog.connect("file_selected", _on_file_selected)
+	$SaveFileDialog.file_selected.connect(_on_file_selected)
 	$ImageSelector.image_selected.connect(_on_image_selected)
-	$ItemDetail.connect("closed", _on_dialog_close)
+	$ItemDetail.closed.connect(_on_dialog_close)
+	$Canvas.texture_updated.connect(_on_texture_updated)
+	
+	auto_load()
 
 # Called during every input event.
 func _input(event):
@@ -84,6 +89,10 @@ func _on_image_selected(texture, data):
 	$Canvas.select_image(texture)
 	$Canvas.activate()
 	$ItemDetail.set_item(texture, data)
+	auto_save_data(data)
+
+func _on_texture_updated():
+	auto_save_image()
 
 func _on_tool_selected(tool_name, from_user):
 	$ToolsMenu.activate_tool_button(tool_name)
@@ -98,6 +107,30 @@ func _on_tool_selected(tool_name, from_user):
 func _process(delta):
 	pass
 	
+func auto_load():
+	if not FileAccess.file_exists(auto_save_image_path) or not FileAccess.file_exists(auto_save_data_path):
+		return
+	
+	var image = Image.load_from_file(auto_save_image_path)
+	var texture = ImageTexture.create_from_image(image)
+	var json_string = FileAccess.get_file_as_string(auto_save_data_path)
+	var data = JSON.parse_string(json_string)
+	var item_texture = load("res://art/images/%s.png" % data["Id"])
+	
+	image_selected = true
+	$Canvas.select_image(texture)
+	$Canvas.activate()
+	$ItemDetail.set_item(item_texture, data)
+	$ImageSelector.hide()
+
+func auto_save_data(data):
+	var json_string = JSON.stringify(data)
+	var file = FileAccess.open(auto_save_data_path, FileAccess.WRITE)
+	file.store_string(json_string)
+
+func auto_save_image():
+	$Canvas.save_image(auto_save_image_path)
+
 func open_info_dialog():
 	$ItemDetail.open()
 	$Canvas.deactivate()

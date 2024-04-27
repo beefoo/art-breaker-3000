@@ -1,5 +1,4 @@
-extends Panel
-class_name Modal
+class_name Modal extends Panel
 
 signal closed()
 
@@ -15,7 +14,7 @@ var animating_out = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !is_animating:
+	if not is_animating:
 		return
 		
 	var t = Time.get_ticks_msec()
@@ -27,7 +26,7 @@ func _process(delta):
 		is_animating = false
 		return
 		
-	if !visible:
+	if not visible:
 		show()
 	
 	# Transition between images

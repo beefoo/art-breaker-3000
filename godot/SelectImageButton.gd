@@ -24,7 +24,7 @@ func _pressed():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !is_transitioning:
+	if not is_transitioning:
 		return
 	
 	var t = Time.get_ticks_msec()

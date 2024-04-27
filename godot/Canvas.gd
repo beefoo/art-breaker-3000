@@ -2,6 +2,8 @@
 
 extends Control
 
+signal texture_updated()
+
 var active_mixer
 var active_mixer_data
 var active_texture
@@ -25,7 +27,7 @@ func _ready():
 
 # Called during every input event.
 func _input(event):
-	if !is_active:
+	if not is_active:
 		return
 		
 	# Keep track of start and stop touch/press
@@ -131,6 +133,8 @@ func _on_update_texture(is_new_image_source):
 	if active_mixer != null and active_mixer_data != null:
 		active_mixer.update_size()
 		set_shader_params_start()
+		
+	texture_updated.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

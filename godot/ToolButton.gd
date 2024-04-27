@@ -30,7 +30,7 @@ func _process(delta):
 		hide_animation()
 
 func hide_animation():
-	if !sprite.visible:
+	if not sprite.visible:
 		return
 	sprite.hide()
 	sprite.stop()
