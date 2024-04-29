@@ -20,7 +20,9 @@ func _process(delta):
 	var t = Time.get_ticks_msec()
 	
 	# Finished transitioning
-	if t >= animation_end:
+	if t > animation_end:
+		set_scale(Vector2(1.0, 1.0))
+		set_position(Vector2(0.0, 0.0))
 		if animating_out:
 			hide()
 		is_animating = false

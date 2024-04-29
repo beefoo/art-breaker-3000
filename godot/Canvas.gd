@@ -4,9 +4,14 @@ extends Control
 
 signal texture_updated()
 
+var ANIMATION_DURATION = 1000
+
 var active_mixer
 var active_mixer_data
 var active_texture
+var animation_start
+var animation_end
+var animation_scale_start
 var base_rect
 var original_texture
 var pointer
@@ -17,11 +22,13 @@ var aspect_ratio = 1.0
 var busy = false
 var first_touch = true
 var is_active = false
+var is_animating = false
 var pressing = false
 var time = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_pivot_offset(size / 2.0)
 	base_rect = get_rect()
 	# select_image(load("res://art/images/sample_mona_lisa.png"))
 
@@ -58,8 +65,11 @@ func _input(event):
 	# Undo
 	elif event.is_action_pressed("ui_undo"):
 		undo()
+	
 		
 func _on_touch_end(event):
+	var vt = get_viewport_transform()
+	vt.origin = Vector2.ZERO
 	busy = true
 	pressing = false
 	# Wait for current frame to finish drawing
@@ -67,7 +77,7 @@ func _on_touch_end(event):
 	# Get the full viewport image
 	var viewport_img = get_viewport().get_texture().get_image()
 	# Crop to this canvas and convert back to a texture
-	var canvas_region = get_rect()
+	var canvas_region = get_rect() * vt
 	var canvas_image = viewport_img.get_region(canvas_region)
 	active_texture = ImageTexture.create_from_image(canvas_image)
 	# Set this as the new texture for the mixer's shader
@@ -79,7 +89,7 @@ func _on_touch_move(event):
 		pointer = get_normalized_position(event.position)
 	
 func _on_touch_start(event):
-	print("Touch start")
+	#print("Touch start")
 	time = 0.0
 	
 	if active_texture:
@@ -106,6 +116,7 @@ func _on_update_texture(is_new_image_source):
 	# Resize canvas if new image source
 	if is_new_image_source:
 		# Resize canvas to fit texture
+		var old_size = get_size()
 		var tex_size = active_texture.get_size()
 		var new_size = Vector2.ZERO
 		var new_position = Vector2.ZERO
@@ -126,8 +137,14 @@ func _on_update_texture(is_new_image_source):
 		aspect_ratio = tex_size.aspect()
 		set_position(new_position)
 		set_size(new_size)
+		#print(new_position)
+		#print(new_size)
 		# Make a copy of the texture for resetting
 		original_texture = active_texture.duplicate()
+		# Animate between sizes
+		set_pivot_offset(new_size / 2.0)
+		animation_scale_start = old_size / new_size
+		animate()
 	
 	# Set this as the new texture
 	if active_mixer != null and active_mixer_data != null:
@@ -138,6 +155,8 @@ func _on_update_texture(is_new_image_source):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	animate_step()
+	
 	if busy:
 		return
 
@@ -150,8 +169,45 @@ func _process(delta):
 func activate():
 	is_active = true
 	
+func animate():
+	animation_start = Time.get_ticks_msec()
+	animation_end = animation_start + ANIMATION_DURATION
+	is_animating = true
+	
+func animate_step():
+	if not is_animating:
+		return
+	
+	var t = Time.get_ticks_msec()
+	
+	# Finished animating
+	if t >= animation_end:
+		set_scale(Vector2(1.0, 1.0))
+		is_animating = false
+		return
+	
+	# Animate
+	var n = float(t - animation_start) / float(animation_end - animation_start)
+	n = ease_elastic(n)
+	
+	var new_scale = animation_scale_start.lerp(Vector2(1.0, 1.0), n)
+	set_scale(new_scale)
+	
 func deactivate():
 	is_active = false
+	
+func ease_elastic(n):
+	if n == 0.0:
+		return 0.0
+	if n == 1.0:
+		return 1.0
+	
+	var c5 = (2.0 * PI) / 4.5
+	var h = 20.0
+	if n < 0.5:
+		return -(pow(2.0, h * n - 10.0) * sin((h * n - 11.125) * c5)) / 2.0
+		
+	return (pow(2.0, -h * n + 10.0) * sin((h * n - 11.125) * c5)) / 2.0 + 1.0
 
 func normalize_value(value, min_value, max_value):
 	var n = 0.0

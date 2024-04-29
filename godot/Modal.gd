@@ -20,7 +20,8 @@ func _process(delta):
 	var t = Time.get_ticks_msec()
 	
 	# Finished transitioning
-	if t >= animation_end:
+	if t > animation_end:
+		set_position (Vector2(0.0, position_end))
 		if animating_out:
 			hide()
 		is_animating = false
@@ -73,19 +74,6 @@ func ease_bounce(n):
 	else:
 		var n2 = n - 2.65 / d1
 		return n1 * n2 * n2 + 0.984375
-
-func ease_elastic(n):
-	if n == 0.0:
-		return 0.0
-	if n == 1.0:
-		return 1.0
-	
-	var c5 = (2.0 * PI) / 4.5
-	var h = 20.0
-	if n < 0.5:
-		return -(pow(2.0, h * n - 10.0) * sin((h * n - 11.125) * c5)) / 2.0
-		
-	return (pow(2.0, -h * n + 10.0) * sin((h * n - 11.125) * c5)) / 2.0 + 1.0
 	
 func open():
 	animate_in()

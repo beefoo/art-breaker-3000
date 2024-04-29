@@ -34,7 +34,7 @@ var auto_save_data_path = "user://autosave.json"
 var image_selected = false
 
 # Called when the node enters the scene tree for the first time.
-func _ready():	
+func _ready():
 	# Load tools
 	var tools_menu = $ToolsMenu
 	tools_menu.init_tool_buttons()
@@ -46,6 +46,7 @@ func _ready():
 	$ImageSelector.image_selected.connect(_on_image_selected)
 	$ItemDetail.closed.connect(_on_dialog_close)
 	$Canvas.texture_updated.connect(_on_texture_updated)
+	get_viewport().size_changed.connect(_on_resize)
 	
 	auto_load()
 
@@ -90,6 +91,9 @@ func _on_image_selected(texture, data):
 	$Canvas.activate()
 	$ItemDetail.set_item(texture, data)
 	auto_save_data(data)
+
+func _on_resize():
+	pass
 
 func _on_texture_updated():
 	auto_save_image()
