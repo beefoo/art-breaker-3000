@@ -2571,11 +2571,12 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f0prh")
 
 [node name="Canvas" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 140.0
-offset_top = 56.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_mode = 2
 mouse_filter = 2
 script = ExtResource("2_nl6l0")
@@ -3295,29 +3296,39 @@ access = 2
 filters = PackedStringArray("*.png")
 
 [node name="ImageSelector" type="Panel" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i8f66")
 script = ExtResource("92_1m082")
 
 [node name="Title" type="Label" parent="ImageSelector"]
-layout_mode = 0
-offset_left = -1.0
-offset_top = 80.0
-offset_right = 1919.0
-offset_bottom = 163.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 90.0
+offset_bottom = 83.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 73
 text = "Select an image"
 horizontal_alignment = 1
 
 [node name="ImageButtons" type="GridContainer" parent="ImageSelector"]
-layout_mode = 0
-offset_left = 320.0
-offset_top = 200.0
-offset_right = 1600.0
-offset_bottom = 840.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -320.0
+offset_right = 640.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 4
@@ -3395,10 +3406,15 @@ expand_icon = true
 script = ExtResource("94_dw4an")
 
 [node name="ActionButtons" type="HBoxContainer" parent="ImageSelector"]
-layout_mode = 0
-offset_top = 900.0
-offset_right = 1920.0
-offset_bottom = 960.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -175.0
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_constants/separation = 30
 alignment = 1
 
@@ -3416,35 +3432,47 @@ text = "Randomize images"
 
 [node name="ItemDetail" type="Panel" parent="."]
 visible = false
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r7lfk")
 script = ExtResource("96_pugxd")
 
-[node name="ImageContainer" type="AspectRatioContainer" parent="ItemDetail"]
-layout_mode = 0
-offset_left = 90.0
-offset_top = 120.0
-offset_right = 930.0
-offset_bottom = 1000.0
+[node name="HBox" type="HBoxContainer" parent="ItemDetail"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -875.0
+offset_top = -440.0
+offset_right = 875.0
+offset_bottom = 440.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 70
 
-[node name="TextureRect" type="TextureRect" parent="ItemDetail/ImageContainer"]
+[node name="ImageContainer" type="AspectRatioContainer" parent="ItemDetail/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ItemDetail/HBox/ImageContainer"]
 layout_mode = 2
 texture = ExtResource("96_hpfex")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="TextContainer" type="VBoxContainer" parent="ItemDetail"]
-layout_mode = 0
-offset_left = 1000.0
-offset_top = 100.0
-offset_right = 1840.0
-offset_bottom = 980.0
+[node name="TextContainer" type="VBoxContainer" parent="ItemDetail/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 62
 alignment = 1
 
-[node name="Text" type="RichTextLabel" parent="ItemDetail/TextContainer"]
+[node name="Text" type="RichTextLabel" parent="ItemDetail/HBox/TextContainer"]
 layout_mode = 2
 bbcode_enabled = true
 text = "[font_size=80]Under the Wave off Kanagawa (Kanagawa oki nami ura)[/font_size]
@@ -3453,7 +3481,7 @@ text = "[font_size=80]Under the Wave off Kanagawa (Kanagawa oki nami ura)[/font_
 [url=https://www.artic.edu/artworks/24645/under-the-wave-off-kanagawa-kanagawa-oki-nami-ura-also-known-as-the-great-wave-from-the-series-thirty-six-views-of-mount-fuji-fugaku-sanj%E7%AC%9Brokkei][font_size=60][color=#f7de38]The Art Institute of Chicago[/color][/font_size][/url]"
 fit_content = true
 
-[node name="CloseButton" type="Button" parent="ItemDetail/TextContainer"]
+[node name="CloseButton" type="Button" parent="ItemDetail/HBox/TextContainer"]
 custom_minimum_size = Vector2(220, 80)
 layout_mode = 2
 size_flags_horizontal = 0
