@@ -12,7 +12,6 @@ var active_texture
 var animation_start
 var animation_end
 var animation_scale_start
-var base_rect
 var original_texture
 var pointer
 var pointer_start
@@ -29,7 +28,6 @@ var time = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_pivot_offset(size / 2.0)
-	base_rect = get_rect()
 	# select_image(load("res://art/images/sample_mona_lisa.png"))
 
 # Called during every input event.
@@ -116,6 +114,7 @@ func _on_update_texture(is_new_image_source):
 	# Resize canvas if new image source
 	if is_new_image_source:
 		# Resize canvas to fit texture
+		var base_rect = get_rect()
 		var old_size = get_size()
 		var tex_size = active_texture.get_size()
 		var new_size = Vector2.ZERO

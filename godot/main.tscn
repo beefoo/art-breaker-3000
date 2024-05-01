@@ -2572,9 +2572,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_f0prh")
 
 [node name="Canvas" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
@@ -2861,10 +2862,12 @@ expand_icon = true
 script = ExtResource("30_cw20u")
 
 [node name="ToolsMenu" type="Panel" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
 offset_top = 56.0
 offset_right = 116.0
-offset_bottom = 1080.0
+grow_vertical = 2
 script = ExtResource("6_4rrwa")
 
 [node name="ButtonGroup1" type="VBoxContainer" parent="ToolsMenu"]
@@ -3296,6 +3299,7 @@ access = 2
 filters = PackedStringArray("*.png")
 
 [node name="ImageSelector" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
