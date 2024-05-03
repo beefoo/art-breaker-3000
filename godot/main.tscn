@@ -2570,26 +2570,30 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f0prh")
 
-[node name="Canvas" type="Control" parent="."]
+[node name="CanvasContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 128.0
 offset_top = 56.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Canvas" type="Control" parent="CanvasContainer"]
+layout_mode = 2
 focus_mode = 2
 mouse_filter = 2
 script = ExtResource("2_nl6l0")
 
-[node name="BandShuffle" type="Control" parent="Canvas"]
+[node name="BandShuffle" type="Control" parent="CanvasContainer/Canvas"]
 material = SubResource("ShaderMaterial_1ip8i")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Multiplier" type="Control" parent="Canvas"]
+[node name="Multiplier" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_0ffmc")
 anchors_preset = 0
@@ -2597,7 +2601,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="ColorCycle" type="Control" parent="Canvas"]
+[node name="ColorCycle" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_cl0id")
 anchors_preset = 0
@@ -2605,7 +2609,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="PolkaDots" type="Control" parent="Canvas"]
+[node name="PolkaDots" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_3b1s2")
 anchors_preset = 0
@@ -2613,7 +2617,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="SpinShuffle" type="Control" parent="Canvas"]
+[node name="SpinShuffle" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_15swl")
 anchors_preset = 0
@@ -2621,7 +2625,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Pixelate" type="Control" parent="Canvas"]
+[node name="Pixelate" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_lbca7")
 anchors_preset = 0
@@ -2629,7 +2633,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Kaleidoscope" type="Control" parent="Canvas"]
+[node name="Kaleidoscope" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_lqloj")
 anchors_preset = 0
@@ -2637,7 +2641,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Distort" type="Control" parent="Canvas"]
+[node name="Distort" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_o1ylq")
 anchors_preset = 0
@@ -2645,7 +2649,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Waves" type="Control" parent="Canvas"]
+[node name="Waves" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_q14f0")
 anchors_preset = 0
@@ -2653,7 +2657,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Rainbow" type="Control" parent="Canvas"]
+[node name="Rainbow" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_o0c0n")
 anchors_preset = 0
@@ -2661,7 +2665,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Magnet" type="Control" parent="Canvas"]
+[node name="Magnet" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_gp88u")
 anchors_preset = 0
@@ -2669,7 +2673,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="HourGlass" type="Control" parent="Canvas"]
+[node name="HourGlass" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_y00wd")
 anchors_preset = 0
@@ -2677,7 +2681,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Ghost" type="Control" parent="Canvas"]
+[node name="Ghost" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_5pc3o")
 anchors_preset = 0
@@ -2685,7 +2689,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="DiscoFloor" type="Control" parent="Canvas"]
+[node name="DiscoFloor" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_2np54")
 anchors_preset = 0
@@ -2693,7 +2697,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Whirlpool" type="Control" parent="Canvas"]
+[node name="Whirlpool" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_t78gd")
 anchors_preset = 0
@@ -2701,7 +2705,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Pattern" type="Control" parent="Canvas"]
+[node name="Pattern" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_17f8v")
 anchors_preset = 0
@@ -2709,7 +2713,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Weave" type="Control" parent="Canvas"]
+[node name="Weave" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_ey7av")
 anchors_preset = 0
@@ -2717,7 +2721,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Drain" type="Control" parent="Canvas"]
+[node name="Drain" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_r1rar")
 anchors_preset = 0
@@ -2725,7 +2729,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Reflect" type="Control" parent="Canvas"]
+[node name="Reflect" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_r004f")
 anchors_preset = 0
@@ -2733,7 +2737,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Bend" type="Control" parent="Canvas"]
+[node name="Bend" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_cju5b")
 anchors_preset = 0
@@ -2741,7 +2745,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Checkerboard" type="Control" parent="Canvas"]
+[node name="Checkerboard" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_fe3ex")
 anchors_preset = 0
@@ -2749,7 +2753,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Smudge" type="Control" parent="Canvas"]
+[node name="Smudge" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_1jn1v")
 anchors_preset = 0
@@ -2757,7 +2761,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Swirl" type="Control" parent="Canvas"]
+[node name="Swirl" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_ai2eq")
 anchors_preset = 0
@@ -2765,7 +2769,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
-[node name="Dissolve" type="Control" parent="Canvas"]
+[node name="Dissolve" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_gmans")
 anchors_preset = 0
@@ -3299,7 +3303,6 @@ access = 2
 filters = PackedStringArray("*.png")
 
 [node name="ImageSelector" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

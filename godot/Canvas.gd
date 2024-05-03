@@ -37,7 +37,7 @@ func _input(event):
 		
 	# Keep track of start and stop touch/press
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT or event is InputEventScreenTouch:
-		var is_inside_canvas = get_rect().has_point(event.position)
+		var is_inside_canvas = get_absolute_rect().has_point(event.position)
 			
 		if event.pressed:
 			if is_inside_canvas:
@@ -63,7 +63,9 @@ func _input(event):
 	# Undo
 	elif event.is_action_pressed("ui_undo"):
 		undo()
-	
+
+func _on_resize():
+	resize_and_center()
 		
 func _on_touch_end(event):
 	var vt = get_viewport_transform()
@@ -75,7 +77,7 @@ func _on_touch_end(event):
 	# Get the full viewport image
 	var viewport_img = get_viewport().get_texture().get_image()
 	# Crop to this canvas and convert back to a texture
-	var canvas_region = get_rect() * vt
+	var canvas_region = get_absolute_rect() * vt
 	var canvas_image = viewport_img.get_region(canvas_region)
 	active_texture = ImageTexture.create_from_image(canvas_image)
 	# Set this as the new texture for the mixer's shader
@@ -114,34 +116,15 @@ func _on_update_texture(is_new_image_source):
 	# Resize canvas if new image source
 	if is_new_image_source:
 		# Resize canvas to fit texture
-		var base_rect = get_rect()
 		var old_size = get_size()
+		var new_rect = resize_and_center()
+		var new_size = new_rect.size
 		var tex_size = active_texture.get_size()
-		var new_size = Vector2.ZERO
-		var new_position = Vector2.ZERO
-		# Image is more narrow than canvas
-		if tex_size.aspect() < base_rect.size.aspect():
-			var scale_tex = 1.0 * base_rect.size.y / tex_size.y
-			var new_width = roundi(tex_size.x * scale_tex)
-			var new_x = roundi((base_rect.size.x - new_width) * 0.5) + base_rect.position.x
-			new_size = Vector2(new_width, base_rect.size.y)
-			new_position = Vector2(new_x, base_rect.position.y)
-		# Image is more wide than canvas
-		else:
-			var scale_tex = 1.0 * base_rect.size.x / tex_size.x
-			var new_height = roundi(tex_size.y * scale_tex)
-			var new_y = roundi((base_rect.size.y - new_height) * 0.5) + base_rect.position.y
-			new_size = Vector2(base_rect.size.x, new_height)
-			new_position = Vector2(base_rect.position.x, new_y)
+		var base_rect = get_parent().get_rect()
 		aspect_ratio = tex_size.aspect()
-		set_position(new_position)
-		set_size(new_size)
-		#print(new_position)
-		#print(new_size)
 		# Make a copy of the texture for resetting
 		original_texture = active_texture.duplicate()
 		# Animate between sizes
-		set_pivot_offset(new_size / 2.0)
 		animation_scale_start = old_size / new_size
 		animate()
 	
@@ -216,21 +199,56 @@ func normalize_value(value, min_value, max_value):
 		
 	return n
 	
+func get_absolute_rect():
+	var parent_position = get_parent().get_position()
+	var rect = get_rect()
+	rect.position += parent_position
+	rect.position = rect.position.round()
+	rect.size = rect.size.round()
+	return rect
+	
 func get_normalized_position(position):
-	var canvas_rect = get_rect()
+	var canvas_rect = get_absolute_rect()
 	var n_position = Vector2(
 		normalize_value(position.x, canvas_rect.position.x, canvas_rect.position.x + canvas_rect.size.x),
 		normalize_value(position.y, canvas_rect.position.y, canvas_rect.position.y + canvas_rect.size.y)
 	)
 	n_position = n_position.clamp(Vector2.ZERO, Vector2.ONE)
 	return n_position
-	
+
 func reset_canvas():	
 	if original_texture == null:
 		return
 		
 	active_texture = original_texture
 	_on_update_texture(false)
+	
+func resize_and_center():
+	if active_texture == null:
+		return
+		
+	var base_rect = get_parent().get_rect()
+	var tex_size = active_texture.get_size()
+	var new_size = Vector2.ZERO
+	var new_position = Vector2.ZERO
+	# Image is more narrow than canvas
+	if tex_size.aspect() < base_rect.size.aspect():
+		var scale_tex = 1.0 * base_rect.size.y / tex_size.y
+		var new_width = roundi(tex_size.x * scale_tex)
+		new_size = Vector2(new_width, base_rect.size.y)
+		var new_x = roundi((base_rect.size.x - new_width) * 0.5)
+		new_position.x = new_x
+	# Image is more wide than canvas
+	else:
+		var scale_tex = 1.0 * base_rect.size.x / tex_size.x
+		var new_height = roundi(tex_size.y * scale_tex)
+		new_size = Vector2(base_rect.size.x, new_height)
+		var new_y = roundi((base_rect.size.y - new_height) * 0.5)
+		new_position.y = new_y
+	set_pivot_offset(new_size / 2.0)
+	set_position(new_position)
+	set_size(new_size)
+	return Rect2(new_position, new_size)
 	
 func save_image(image_path):
 	if active_texture == null:

@@ -16,5 +16,6 @@ default_font_size = 36
 Button/colors/font_focus_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 Button/colors/font_hover_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 Button/colors/font_hover_pressed_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+Button/colors/font_pressed_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 Button/styles/focus = SubResource("StyleBoxFlat_xvc6y")
 Button/styles/hover = SubResource("StyleBoxFlat_labmw")

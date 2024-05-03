@@ -31,6 +31,7 @@ var tool_config = {
 
 var auto_save_image_path = "user://autosave.png"
 var auto_save_data_path = "user://autosave.json"
+var first_process = true
 var image_selected = false
 
 # Called when the node enters the scene tree for the first time.
@@ -45,10 +46,8 @@ func _ready():
 	$SaveFileDialog.file_selected.connect(_on_file_selected)
 	$ImageSelector.image_selected.connect(_on_image_selected)
 	$ItemDetail.closed.connect(_on_dialog_close)
-	$Canvas.texture_updated.connect(_on_texture_updated)
+	$CanvasContainer/Canvas.texture_updated.connect(_on_texture_updated)
 	get_viewport().size_changed.connect(_on_resize)
-	
-	auto_load()
 
 # Called during every input event.
 func _input(event):
@@ -80,20 +79,20 @@ func _on_cancel():
 		get_tree().quit()
 
 func _on_dialog_close():
-	$Canvas.activate()
+	$CanvasContainer/Canvas.activate()
 
 func _on_file_selected(path):
-	$Canvas.save_image(path)
+	$CanvasContainer/Canvas.save_image(path)
 	
 func _on_image_selected(texture, data):
 	image_selected = true
-	$Canvas.select_image(texture)
-	$Canvas.activate()
+	$CanvasContainer/Canvas.select_image(texture)
+	$CanvasContainer/Canvas.activate()
 	$ItemDetail.set_item(texture, data)
 	auto_save_data(data)
 
 func _on_resize():
-	pass
+	$CanvasContainer/Canvas._on_resize()
 
 func _on_texture_updated():
 	auto_save_image()
@@ -105,11 +104,13 @@ func _on_tool_selected(tool_name, from_user):
 		print("Tool name not found: %s" % tool_name)
 		return
 	var tool = tool_found[0]
-	$Canvas.select_mixer(tool, from_user)
+	$CanvasContainer/Canvas.select_mixer(tool, from_user)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if first_process:
+		first_process = false
+		auto_load()
 	
 func auto_load():
 	if not FileAccess.file_exists(auto_save_image_path) or not FileAccess.file_exists(auto_save_data_path):
@@ -122,9 +123,9 @@ func auto_load():
 	var item_texture = load("res://art/images/%s.png" % data["Id"])
 	
 	image_selected = true
-	$Canvas.select_image(texture)
-	$Canvas.set_original_image(item_texture)
-	$Canvas.activate()
+	$CanvasContainer/Canvas.select_image(texture)
+	$CanvasContainer/Canvas.set_original_image(item_texture)
+	$CanvasContainer/Canvas.activate()
 	$ItemDetail.set_item(item_texture, data)
 	$ImageSelector.close()
 
@@ -134,15 +135,15 @@ func auto_save_data(data):
 	file.store_string(json_string)
 
 func auto_save_image():
-	$Canvas.save_image(auto_save_image_path)
+	$CanvasContainer/Canvas.save_image(auto_save_image_path)
 
 func open_info_dialog():
 	$ItemDetail.open()
-	$Canvas.deactivate()
+	$CanvasContainer/Canvas.deactivate()
 	
 func open_new_dialog():
 	$ImageSelector.open()
-	$Canvas.deactivate()
+	$CanvasContainer/Canvas.deactivate()
 	
 func open_save_dialog():
 	var timestamp = Time.get_datetime_string_from_system().replace("T", "-").replace(":", "")
