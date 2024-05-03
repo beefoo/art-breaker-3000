@@ -78,6 +78,8 @@ func _on_touch_end(event):
 	var viewport_img = get_viewport().get_texture().get_image()
 	# Crop to this canvas and convert back to a texture
 	var canvas_region = get_absolute_rect() * vt
+	canvas_region.position = canvas_region.position.round()
+	canvas_region.size = canvas_region.size.round()
 	var canvas_image = viewport_img.get_region(canvas_region)
 	active_texture = ImageTexture.create_from_image(canvas_image)
 	# Set this as the new texture for the mixer's shader
@@ -203,8 +205,6 @@ func get_absolute_rect():
 	var parent_position = get_parent().get_position()
 	var rect = get_rect()
 	rect.position += parent_position
-	rect.position = rect.position.round()
-	rect.size = rect.size.round()
 	return rect
 	
 func get_normalized_position(position):
