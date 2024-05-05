@@ -43,7 +43,8 @@ func _ready():
 	_on_tool_selected(tool_config["tools"][0]["name"], false)
 	
 	# Load listeners
-	$SaveFileDialog.file_selected.connect(_on_file_selected)
+	$SaveFileDialog.file_selected.connect(_on_save_file_selected)
+	
 	$ImageSelector.image_selected.connect(_on_image_selected)
 	$ItemDetail.closed.connect(_on_dialog_close)
 	$CanvasContainer/Canvas.texture_updated.connect(_on_texture_updated)
@@ -80,9 +81,6 @@ func _on_cancel():
 
 func _on_dialog_close():
 	$CanvasContainer/Canvas.activate()
-
-func _on_file_selected(path):
-	$CanvasContainer/Canvas.save_image(path)
 	
 func _on_image_selected(texture, data):
 	image_selected = true
@@ -93,6 +91,9 @@ func _on_image_selected(texture, data):
 
 func _on_resize():
 	$CanvasContainer/Canvas._on_resize()
+
+func _on_save_file_selected(path):
+	$CanvasContainer/Canvas.save_image(path)
 
 func _on_texture_updated():
 	auto_save_image()
@@ -120,7 +121,15 @@ func auto_load():
 	var texture = ImageTexture.create_from_image(image)
 	var json_string = FileAccess.get_file_as_string(auto_save_data_path)
 	var data = JSON.parse_string(json_string)
-	var item_texture = load("res://art/images/%s.png" % data["Id"])
+	
+	var item_texture
+	# This is a user-imported image
+	if data.has("Path"):
+		image = Image.load_from_file(data["Path"])
+		item_texture = ImageTexture.create_from_image(image)
+	# Otherwise one of the collection images
+	else:
+		item_texture = load("res://art/images/%s.png" % data["Id"])
 	
 	image_selected = true
 	$CanvasContainer/Canvas.select_image(texture)
@@ -151,7 +160,7 @@ func open_save_dialog():
 	# Try to use native file selector first
 	var on_file_selected = func(status, selected_paths, selected_filter_index):
 		if selected_paths.size() > 0:
-			_on_file_selected(selected_paths[0])
+			_on_save_file_selected(selected_paths[0])
 	var error = DisplayServer.file_dialog_show("Save image", "", "art_breaker_%s.png" % timestamp, false, DisplayServer.FILE_DIALOG_MODE_SAVE_FILE, PackedStringArray(["*.png"]), on_file_selected)
 	
 	# Otherwise, use the Godot file dialog

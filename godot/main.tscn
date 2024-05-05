@@ -3298,10 +3298,6 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SaveFileDialog" type="FileDialog" parent="."]
-access = 2
-filters = PackedStringArray("*.png")
-
 [node name="ImageSelector" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -3425,17 +3421,25 @@ grow_vertical = 0
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="UploadButton" type="Button" parent="ImageSelector/ActionButtons"]
+[node name="ImportButton" type="Button" parent="ImageSelector/ActionButtons"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme = ExtResource("89_kj3un")
-text = "Upload image"
+text = "Import image"
 
 [node name="RandomizeButton" type="Button" parent="ImageSelector/ActionButtons"]
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 theme = ExtResource("89_kj3un")
 text = "Randomize images"
+
+[node name="ImportFileDialog" type="FileDialog" parent="ImageSelector"]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.png, *.jpg, *.jpeg ; Supported Images")
+use_native_dialog = true
 
 [node name="ItemDetail" type="Panel" parent="."]
 visible = false
@@ -3495,3 +3499,8 @@ size_flags_horizontal = 0
 theme = ExtResource("89_kj3un")
 theme_override_font_sizes/font_size = 60
 text = "Close"
+
+[node name="SaveFileDialog" type="FileDialog" parent="."]
+access = 2
+filters = PackedStringArray("*.png")
+use_native_dialog = true

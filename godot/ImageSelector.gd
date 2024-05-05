@@ -21,10 +21,21 @@ func _ready():
 		var button = get_node("ImageButtons/SelectImageButton%s" % button_index)
 		button.set_seed(float(i + 1) / float(button_count))
 		button.image_selected.connect(_on_image_selected)
+	$ActionButtons/ImportButton.pressed.connect(open_import_dialog)
+	$ImportFileDialog.file_selected.connect(_on_import_image_selected)
 
 func _on_image_selected(texture, data):
 	image_selected.emit(texture, data)
 	close()
+	
+func _on_import_image_selected(path):
+	var data = {
+		"Title": "Custom imported image",
+		"Path": path
+	}
+	var image = Image.load_from_file(path)
+	var texture = ImageTexture.create_from_image(image)
+	_on_image_selected(texture, data)
 
 # Load collection data from file
 func load_collection_data(data_file):
@@ -32,6 +43,9 @@ func load_collection_data(data_file):
 	collection_data = JSON.parse_string(json_string)
 	collection_size = collection_data.size()
 	print("Loaded %s collection items" % collection_size)
+	
+func open_import_dialog():
+	$ImportFileDialog.popup_centered()
 	
 func select_random_image():
 	var random_item = collection_data.pick_random()
