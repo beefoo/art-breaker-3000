@@ -2828,7 +2828,7 @@ script = ExtResource("30_cw20u")
 [node name="Undo" type="Button" parent="MainMenu/HBoxContainer"]
 custom_minimum_size = Vector2(84, 56)
 layout_mode = 2
-tooltip_text = "Undo"
+tooltip_text = "Undo last action"
 theme = ExtResource("29_ktvei")
 text = "Undo"
 icon_alignment = 1
@@ -3420,6 +3420,13 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 30
 alignment = 1
+
+[node name="CancelButton" type="Button" parent="ImageSelector/ActionButtons"]
+visible = false
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = ExtResource("89_kj3un")
+text = "Cancel"
 
 [node name="ImportButton" type="Button" parent="ImageSelector/ActionButtons"]
 custom_minimum_size = Vector2(200, 0)

@@ -23,6 +23,7 @@ func _ready():
 		button.image_selected.connect(_on_image_selected)
 	$ActionButtons/ImportButton.pressed.connect(open_import_dialog)
 	$ImportFileDialog.file_selected.connect(_on_import_image_selected)
+	$ActionButtons/CancelButton.pressed.connect(close)
 
 func _on_image_selected(texture, data):
 	image_selected.emit(texture, data)
@@ -36,6 +37,9 @@ func _on_import_image_selected(path):
 	var image = Image.load_from_file(path)
 	var texture = ImageTexture.create_from_image(image)
 	_on_image_selected(texture, data)
+	
+func _on_open():
+	$ActionButtons/CancelButton.show()
 
 # Load collection data from file
 func load_collection_data(data_file):

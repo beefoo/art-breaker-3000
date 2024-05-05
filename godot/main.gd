@@ -155,17 +155,18 @@ func open_new_dialog():
 	$CanvasContainer/Canvas.deactivate()
 	
 func open_save_dialog():
-	var timestamp = Time.get_datetime_string_from_system().replace("T", "-").replace(":", "")
-	
-	# Try to use native file selector first
-	var on_file_selected = func(status, selected_paths, selected_filter_index):
-		if selected_paths.size() > 0:
-			_on_save_file_selected(selected_paths[0])
-	var error = DisplayServer.file_dialog_show("Save image", "", "art_breaker_%s.png" % timestamp, false, DisplayServer.FILE_DIALOG_MODE_SAVE_FILE, PackedStringArray(["*.png"]), on_file_selected)
-	
-	# Otherwise, use the Godot file dialog
-	if error != OK:
-		$SaveFileDialog.popup_centered()
+	#var timestamp = Time.get_datetime_string_from_system().replace("T", "-").replace(":", "")
+	#
+	## Try to use native file selector first
+	#var on_file_selected = func(status, selected_paths, selected_filter_index):
+		#if selected_paths.size() > 0:
+			#_on_save_file_selected(selected_paths[0])
+	#var error = DisplayServer.file_dialog_show("Save image", "", "art_breaker_%s.png" % timestamp, false, DisplayServer.FILE_DIALOG_MODE_SAVE_FILE, PackedStringArray(["*.png"]), on_file_selected)
+	#
+	## Otherwise, use the Godot file dialog
+	#if error != OK:
+		#$SaveFileDialog.popup_centered()
+	$SaveFileDialog.popup_centered()
 		
 func select_random_image():
 	$ImageSelector.select_random_image()

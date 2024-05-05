@@ -12,6 +12,9 @@ var position_end
 var is_animating = false
 var animating_out = false
 
+func _on_open():
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if not is_animating:
@@ -76,4 +79,5 @@ func ease_bounce(n):
 		return n1 * n2 * n2 + 0.984375
 	
 func open():
+	_on_open()
 	animate_in()
