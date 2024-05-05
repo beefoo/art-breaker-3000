@@ -1,7 +1,7 @@
 extends Button
 
 var action_map = {
-	"Exit": "ui_cancel",
+	"Exit": "ui_quit",
 	"Info": "ui_info",
 	"New": "ui_new",
 	"Random": "ui_random",
@@ -20,11 +20,6 @@ func _pressed():
 		
 	var action_name = action_map[name]
 	trigger_action(action_name)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func trigger_action(action_name):
 	var custom_event = InputEventAction.new()

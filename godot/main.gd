@@ -63,6 +63,9 @@ func _input(event):
 	elif event.is_action_pressed("ui_new"):
 		open_new_dialog()
 		
+	elif event.is_action_pressed("ui_quit"):
+		quit()
+		
 	elif event.is_action_pressed("ui_random"):
 		select_random_image()
 		
@@ -75,9 +78,6 @@ func _on_cancel():
 		
 	elif $ItemDetail.visible:
 		$ItemDetail.close()
-		
-	else:
-		get_tree().quit()
 
 func _on_dialog_close():
 	$CanvasContainer/Canvas.activate()
@@ -167,6 +167,9 @@ func open_save_dialog():
 	#if error != OK:
 		#$SaveFileDialog.popup_centered()
 	$SaveFileDialog.popup_centered()
+	
+func quit():
+	get_tree().quit()
 		
 func select_random_image():
 	$ImageSelector.select_random_image()
