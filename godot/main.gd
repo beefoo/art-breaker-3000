@@ -47,6 +47,7 @@ func _ready():
 	
 	$ImageSelector.image_selected.connect(_on_image_selected)
 	$ItemDetail.closed.connect(_on_dialog_close)
+	$ImageSelector.closed.connect(_on_dialog_close)
 	$CanvasContainer/Canvas.texture_updated.connect(_on_texture_updated)
 	get_viewport().size_changed.connect(_on_resize)
 
@@ -81,11 +82,11 @@ func _on_cancel():
 
 func _on_dialog_close():
 	$CanvasContainer/Canvas.activate()
+	$ToolsMenu.focus_on_first_control()
 	
 func _on_image_selected(texture, data):
 	image_selected = true
 	$CanvasContainer/Canvas.select_image(texture)
-	$CanvasContainer/Canvas.activate()
 	$ItemDetail.set_item(texture, data)
 	auto_save_data(data)
 
@@ -115,6 +116,7 @@ func _process(delta):
 	
 func auto_load():
 	if not FileAccess.file_exists(auto_save_image_path) or not FileAccess.file_exists(auto_save_data_path):
+		$ImageSelector.focus_on_first_control()
 		return
 	
 	var image = Image.load_from_file(auto_save_image_path)
@@ -137,6 +139,7 @@ func auto_load():
 	$CanvasContainer/Canvas.activate()
 	$ItemDetail.set_item(item_texture, data)
 	$ImageSelector.close()
+	$ToolsMenu.focus_on_first_control()
 
 func auto_save_data(data):
 	var json_string = JSON.stringify(data)

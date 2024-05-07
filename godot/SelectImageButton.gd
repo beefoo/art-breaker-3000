@@ -25,6 +25,13 @@ func _pressed():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	# Show or hide border
+	if is_hovered() || has_focus():
+		material.set_shader_parameter("border", 0.03)
+	else:
+		material.set_shader_parameter("border", 0)
+	
 	if not is_transitioning:
 		return
 	

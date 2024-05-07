@@ -7,9 +7,11 @@ uniform float aspect = 1.0;
 uniform float from_tex_aspect = 1.0;
 uniform float to_tex_aspect = 1.0;
 uniform float seed = 1.0;
+uniform float border = 0.0;
 
 const float X_ANCHOR = 0.5;
 const float Y_ANCHOR = 0.2;
+const vec4 BORDER_COLOR = vec4(0.97, 0.87, 0.22, 1.0);
 
 float when_gt(float x, float y) {
   return max(sign(x - y), 0.0);
@@ -50,7 +52,18 @@ void fragment() {
 	vec4 color_from = texture(from_tex, uv_from);
 	vec4 color_to = texture(to_tex, uv_to);
 	
+	// randomize time
 	float randomized = min(pow(transition, (1.0 + seed)), 1.0);
 	float t = step(1.0 - UV.x, randomized);
-	COLOR = mix(color_from, color_to, t);
+	vec4 image_color = mix(color_from, color_to, t);
+	
+	// determine border
+	float bx0 = border;
+	float bx1 = 1.0 - border;
+	float by0 = border;
+	float by1 = 1.0 - border;
+	
+	// check if in bounds
+	float in_bounds = UV.y >= by0 && UV.y <= by1 && UV.x >= bx0 && UV.x <= bx1 ? 1.0 : 0.0;
+	COLOR = mix(BORDER_COLOR, image_color, in_bounds);
 }

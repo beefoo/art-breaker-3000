@@ -40,6 +40,10 @@ func _on_import_image_selected(path):
 	
 func _on_open():
 	$ActionButtons/CancelButton.show()
+	focus_on_first_control()
+
+func focus_on_first_control():
+	$ActionButtons/RandomizeButton.grab_focus()
 
 # Load collection data from file
 func load_collection_data(data_file):

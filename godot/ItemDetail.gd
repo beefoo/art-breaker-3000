@@ -7,6 +7,12 @@ func _ready():
 
 func _on_link_clicked(url):
 	OS.shell_open(url)
+	
+func _on_open():
+	focus_on_first_control()
+	
+func focus_on_first_control():
+	$HBox/TextContainer/CloseButton.grab_focus()
 
 func set_item(texture, data):
 	var title_template = ""

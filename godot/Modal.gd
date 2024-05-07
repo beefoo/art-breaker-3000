@@ -12,6 +12,9 @@ var position_end
 var is_animating = false
 var animating_out = false
 
+func _on_close():
+	pass
+
 func _on_open():
 	pass
 
@@ -27,6 +30,9 @@ func _process(delta):
 		set_position (Vector2(0.0, position_end))
 		if animating_out:
 			hide()
+			_on_close()
+		else:
+			_on_open()
 		is_animating = false
 		return
 		
@@ -79,5 +85,4 @@ func ease_bounce(n):
 		return n1 * n2 * n2 + 0.984375
 	
 func open():
-	_on_open()
 	animate_in()

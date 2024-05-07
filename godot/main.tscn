@@ -2489,6 +2489,7 @@ shader_parameter/aspect = 1.0
 shader_parameter/from_tex_aspect = 1.0
 shader_parameter/to_tex_aspect = 1.0
 shader_parameter/seed = 1.0
+shader_parameter/border = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ydty7"]
 shader = ExtResource("92_u3jwe")
@@ -2497,6 +2498,7 @@ shader_parameter/aspect = 1.0
 shader_parameter/from_tex_aspect = 1.0
 shader_parameter/to_tex_aspect = 1.0
 shader_parameter/seed = 1.0
+shader_parameter/border = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ajwn0"]
 shader = ExtResource("92_u3jwe")
@@ -2505,6 +2507,7 @@ shader_parameter/aspect = 1.0
 shader_parameter/from_tex_aspect = 1.0
 shader_parameter/to_tex_aspect = 1.0
 shader_parameter/seed = 1.0
+shader_parameter/border = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qauyr"]
 shader = ExtResource("92_u3jwe")
@@ -2513,6 +2516,7 @@ shader_parameter/aspect = 1.0
 shader_parameter/from_tex_aspect = 1.0
 shader_parameter/to_tex_aspect = 1.0
 shader_parameter/seed = 1.0
+shader_parameter/border = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mrek4"]
 shader = ExtResource("92_u3jwe")
@@ -2521,6 +2525,7 @@ shader_parameter/aspect = 1.0
 shader_parameter/from_tex_aspect = 1.0
 shader_parameter/to_tex_aspect = 1.0
 shader_parameter/seed = 1.0
+shader_parameter/border = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4rtpm"]
 shader = ExtResource("92_u3jwe")
@@ -2529,6 +2534,7 @@ shader_parameter/aspect = 1.0
 shader_parameter/from_tex_aspect = 1.0
 shader_parameter/to_tex_aspect = 1.0
 shader_parameter/seed = 1.0
+shader_parameter/border = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_btc55"]
 shader = ExtResource("92_u3jwe")
@@ -2537,6 +2543,7 @@ shader_parameter/aspect = 1.0
 shader_parameter/from_tex_aspect = 1.0
 shader_parameter/to_tex_aspect = 1.0
 shader_parameter/seed = 1.0
+shader_parameter/border = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fvhwm"]
 shader = ExtResource("92_u3jwe")
@@ -2545,6 +2552,7 @@ shader_parameter/aspect = 1.0
 shader_parameter/from_tex_aspect = 1.0
 shader_parameter/to_tex_aspect = 1.0
 shader_parameter/seed = 1.0
+shader_parameter/border = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7lfk"]
 bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
