@@ -3,6 +3,7 @@ class_name Modal extends Panel
 signal closed()
 
 var ANIMATION_DURATION = 1000
+var DELAY_AUDIO = 0.25
 
 var animation_start
 var animation_end
@@ -11,6 +12,8 @@ var position_end
 
 var is_animating = false
 var animating_out = false
+
+@onready var audio_player = $AudioStreamPlayer
 
 func _on_close():
 	pass
@@ -66,6 +69,7 @@ func animate_out():
 	
 func close():
 	animate_out()
+	play_sound()
 	closed.emit()
 
 func ease_bounce(n):
@@ -86,3 +90,8 @@ func ease_bounce(n):
 	
 func open():
 	animate_in()
+	play_sound()
+	
+func play_sound():
+	await get_tree().create_timer(DELAY_AUDIO).timeout
+	audio_player.play(0.0)

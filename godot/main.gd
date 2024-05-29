@@ -34,21 +34,26 @@ var auto_save_data_path = "user://autosave.json"
 var first_process = true
 var image_selected = false
 
+@onready var canvas = $CanvasContainer/Canvas
+@onready var image_selector = $ImageSelector
+@onready var item_detail = $ItemDetail
+@onready var save_file_dialog = $SaveFileDialog
+@onready var tools_menu = $ToolsMenu
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Load tools
-	var tools_menu = $ToolsMenu
 	tools_menu.init_tool_buttons()
 	tools_menu.tool_selected.connect(_on_tool_selected)
 	_on_tool_selected(tool_config["tools"][0]["name"], false)
 	
 	# Load listeners
-	$SaveFileDialog.file_selected.connect(_on_save_file_selected)
+	save_file_dialog.file_selected.connect(_on_save_file_selected)
 	
-	$ImageSelector.image_selected.connect(_on_image_selected)
-	$ItemDetail.closed.connect(_on_dialog_close)
-	$ImageSelector.closed.connect(_on_dialog_close)
-	$CanvasContainer/Canvas.texture_updated.connect(_on_texture_updated)
+	image_selector.image_selected.connect(_on_image_selected)
+	item_detail.closed.connect(_on_dialog_close)
+	image_selector.closed.connect(_on_dialog_close)
+	canvas.texture_updated.connect(_on_texture_updated)
 	get_viewport().size_changed.connect(_on_resize)
 
 # Called during every input event.
@@ -74,39 +79,39 @@ func _input(event):
 		open_save_dialog()
 		
 func _on_cancel():
-	if $ImageSelector.visible && image_selected:
-		$ImageSelector.close()
+	if image_selector.visible && image_selected:
+		image_selector.close()
 		
-	elif $ItemDetail.visible:
-		$ItemDetail.close()
+	elif item_detail.visible:
+		item_detail.close()
 
 func _on_dialog_close():
-	$CanvasContainer/Canvas.activate()
-	$ToolsMenu.focus_on_first_control()
+	canvas.activate()
+	tools_menu.focus_on_first_control()
 	
 func _on_image_selected(texture, data):
 	image_selected = true
-	$CanvasContainer/Canvas.select_image(texture)
-	$ItemDetail.set_item(texture, data)
+	canvas.select_image(texture)
+	item_detail.set_item(texture, data)
 	auto_save_data(data)
 
 func _on_resize():
-	$CanvasContainer/Canvas._on_resize()
+	canvas._on_resize()
 
 func _on_save_file_selected(path):
-	$CanvasContainer/Canvas.save_image(path)
+	canvas.save_image(path)
 
 func _on_texture_updated():
 	auto_save_image()
 
 func _on_tool_selected(tool_name, from_user):
-	$ToolsMenu.activate_tool_button(tool_name)
+	tools_menu.activate_tool_button(tool_name)
 	var tool_found = tool_config["tools"].filter(func(t): return t["name"] == tool_name)
 	if tool_found.size() < 1:
 		print("Tool name not found: %s" % tool_name)
 		return
 	var tool = tool_found[0]
-	$CanvasContainer/Canvas.select_mixer(tool, from_user)
+	canvas.select_mixer(tool, from_user)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -116,7 +121,7 @@ func _process(delta):
 	
 func auto_load():
 	if not FileAccess.file_exists(auto_save_image_path) or not FileAccess.file_exists(auto_save_data_path):
-		$ImageSelector.focus_on_first_control()
+		image_selector.focus_on_first_control()
 		return
 	
 	var image = Image.load_from_file(auto_save_image_path)
@@ -134,12 +139,12 @@ func auto_load():
 		item_texture = load("res://art/images/%s.png" % data["Id"])
 	
 	image_selected = true
-	$CanvasContainer/Canvas.select_image(texture)
-	$CanvasContainer/Canvas.set_original_image(item_texture)
-	$CanvasContainer/Canvas.activate()
-	$ItemDetail.set_item(item_texture, data)
-	$ImageSelector.close()
-	$ToolsMenu.focus_on_first_control()
+	canvas.select_image(texture)
+	canvas.set_original_image(item_texture)
+	canvas.activate()
+	item_detail.set_item(item_texture, data)
+	image_selector.close()
+	tools_menu.focus_on_first_control()
 
 func auto_save_data(data):
 	var json_string = JSON.stringify(data)
@@ -147,15 +152,15 @@ func auto_save_data(data):
 	file.store_string(json_string)
 
 func auto_save_image():
-	$CanvasContainer/Canvas.save_image(auto_save_image_path)
+	canvas.save_image(auto_save_image_path)
 
 func open_info_dialog():
-	$ItemDetail.open()
-	$CanvasContainer/Canvas.deactivate()
+	item_detail.open()
+	canvas.deactivate()
 	
 func open_new_dialog():
-	$ImageSelector.open()
-	$CanvasContainer/Canvas.deactivate()
+	image_selector.open()
+	canvas.deactivate()
 	
 func open_save_dialog():
 	#var timestamp = Time.get_datetime_string_from_system().replace("T", "-").replace(":", "")
@@ -169,10 +174,10 @@ func open_save_dialog():
 	## Otherwise, use the Godot file dialog
 	#if error != OK:
 		#$SaveFileDialog.popup_centered()
-	$SaveFileDialog.popup_centered()
+	save_file_dialog.popup_centered()
 	
 func quit():
 	get_tree().quit()
 		
 func select_random_image():
-	$ImageSelector.select_random_image()
+	image_selector.select_random_image()
