@@ -2,7 +2,7 @@ extends Control
 
 var tool_config = {
 	"tools": [
-		{"name": "BandShuffle", "shader_params": []},
+		{"name": "BandShuffle", "shader_params": [], "audio_options": {"mode": "accelerate", "acceleration": 1.5, "base_speed": 0.5, "min_pitch_scale": 0.0, "max_pitch_scale": 5.0}},
 		{"name": "Multiplier", "shader_params": []},
 		{"name": "ColorCycle", "shader_params": []},
 		{"name": "PolkaDots", "shader_params": ["aspect_ratio"]},

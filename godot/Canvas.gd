@@ -9,6 +9,7 @@ var ANIMATION_DURATION = 1000
 var active_mixer
 var active_mixer_data
 var active_texture
+var active_audio_player
 var animation_start
 var animation_end
 var animation_scale_start
@@ -68,6 +69,8 @@ func _on_resize():
 	resize_and_center()
 		
 func _on_touch_end(event):
+	if active_mixer != null:
+		active_mixer.audio_end()
 	var vt = get_viewport_transform()
 	vt.origin = Vector2.ZERO
 	busy = true
@@ -106,6 +109,7 @@ func _on_touch_start(event):
 		active_mixer.set_params({
 			"time": time
 		})
+		active_mixer.audio_start()
 
 	if first_touch:
 		first_touch = false
@@ -149,6 +153,7 @@ func _process(delta):
 		
 	if active_mixer != null and active_mixer_data != null:
 		set_shader_params_process()
+		set_audio_params()
 		
 func activate():
 	is_active = true
@@ -277,10 +282,27 @@ func select_mixer(tool, from_user):
 	active_mixer_data = mixer_data
 	active_mixer.activate()
 	set_shader_params_start()
+	set_audio_options()
 	
 	# Grab focus if triggered by user
 	if from_user:
 		grab_focus()
+
+func set_audio_options():
+	if active_mixer_data == null or active_mixer == null:
+		return
+		
+	if not active_mixer_data.has("audio_options"):
+		return
+		
+	active_mixer.set_audio_options(active_mixer_data["audio_options"])
+	
+func set_audio_params():
+	active_mixer.audio_progress({
+		"time": time,
+		"pointer_start": pointer_start,
+		"pointer": pointer
+	})
 
 func set_original_image(texture):
 	original_texture = texture.duplicate()

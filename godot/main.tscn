@@ -1,4 +1,4 @@
-[gd_scene load_steps=461 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=463 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://ToolsMenu.gd" id="6_4rrwa"]
 [ext_resource type="Shader" path="res://shaders/ColorCycle.gdshader" id="6_ds0cs"]
 [ext_resource type="Shader" path="res://shaders/PolkaDots.gdshader" id="7_5bg65"]
+[ext_resource type="Script" path="res://AudioStreamPlayer.gd" id="7_wns1r"]
 [ext_resource type="Shader" path="res://shaders/SpinShuffle.gdshader" id="8_826ax"]
 [ext_resource type="Shader" path="res://shaders/Pixelate.gdshader" id="9_hpvgh"]
 [ext_resource type="Shader" path="res://shaders/Kaleidoscope.gdshader" id="10_qxjt1"]
@@ -92,6 +93,7 @@
 [ext_resource type="Shader" path="res://shaders/SelectImageButton.gdshader" id="92_u3jwe"]
 [ext_resource type="Script" path="res://SelectImageButton.gd" id="94_dw4an"]
 [ext_resource type="AudioStream" uid="uid://dmitm0gdqb7t5" path="res://art/audio/bounce_a_komiku_school_00-00-742.wav" id="94_l8yrl"]
+[ext_resource type="AudioStream" uid="uid://y7h7uwc201p2" path="res://art/audio/loop_four_note_komiku_soundtrack_00-44-470.wav" id="95_qopq6"]
 [ext_resource type="Texture2D" uid="uid://cke86173cg5w8" path="res://art/images/artic_24645.png" id="96_hpfex"]
 [ext_resource type="Script" path="res://ItemDetail.gd" id="96_pugxd"]
 
@@ -2602,6 +2604,10 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/BandShuffle"]
+stream = ExtResource("95_qopq6")
+script = ExtResource("7_wns1r")
 
 [node name="Multiplier" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
