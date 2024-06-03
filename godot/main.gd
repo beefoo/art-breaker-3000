@@ -9,7 +9,7 @@ var tool_config = {
 		{"name": "SpinShuffle", "shader_params": ["aspect_ratio", "pointer_start"]},
 		{"name": "Pixelate", "shader_params": []},
 		{"name": "Kaleidoscope", "shader_params": ["pointer"]},
-		{"name": "Distort", "shader_params": ["pointer_start", "pointer"]},
+		{"name": "Distort", "shader_params": ["pointer_start", "pointer"], "audio_options": {"mode": "pointer", "min_pitch_scale": 0.5, "max_pitch_scale": 4.0}},
 		{"name": "Waves", "shader_params": []},
 		{"name": "Rainbow", "shader_params": ["aspect_ratio", "pointer"]},
 		{"name": "Magnet", "shader_params": ["aspect_ratio", "pointer"]},
