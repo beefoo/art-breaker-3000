@@ -2,7 +2,7 @@ extends Control
 
 var tool_config = {
 	"tools": [
-		{"name": "BandShuffle", "shader_params": [], "audio_options": {"mode": "accelerate", "acceleration": 1.5, "base_speed": 0.5, "min_pitch_scale": 0.0, "max_pitch_scale": 5.0}},
+		{"name": "BandShuffle", "shader_params": [], "audio_options": {"mode": "accelerate", "acceleration": 1.5, "base_speed": 0.5, "min_pitch_scale": 0.1, "max_pitch_scale": 5.0}},
 		{"name": "Multiplier", "shader_params": []},
 		{"name": "ColorCycle", "shader_params": []},
 		{"name": "PolkaDots", "shader_params": ["aspect_ratio"]},
@@ -114,7 +114,7 @@ func _on_tool_selected(tool_name, from_user):
 	canvas.select_mixer(tool, from_user)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if first_process:
 		first_process = false
 		auto_load()

@@ -22,10 +22,6 @@ func _on_press_nav_button(group_index):
 		next_group = 0
 	nav_buttons[next_group].animate_in()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
 func activate_tool_button(tool_name):
 	for group in button_groups:
 		for button in group.get_children():

@@ -19,10 +19,6 @@ func _ready():
 func _draw():
 	draw_rect(Rect2(Vector2.ZERO, size), Color(0.0, 0.0, 0.0, 0.0))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 # Show and enable processing
 func activate():
 	is_active = true

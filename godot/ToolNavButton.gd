@@ -15,10 +15,6 @@ func _pressed():
 	if active_group_i >= button_group_count:
 		active_group_i = 0
 	show_active_group()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func show_active_group():
 	var group_number = active_group_i + 1

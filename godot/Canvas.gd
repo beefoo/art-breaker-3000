@@ -68,7 +68,7 @@ func _input(event):
 func _on_resize():
 	resize_and_center()
 		
-func _on_touch_end(event):
+func _on_touch_end(_event):
 	if active_mixer != null:
 		active_mixer.audio_end()
 	var vt = get_viewport_transform()
@@ -126,7 +126,6 @@ func _on_update_texture(is_new_image_source):
 		var new_rect = resize_and_center()
 		var new_size = new_rect.size
 		var tex_size = active_texture.get_size()
-		var base_rect = get_parent().get_rect()
 		aspect_ratio = tex_size.aspect()
 		# Make a copy of the texture for resetting
 		original_texture = active_texture.duplicate()
@@ -212,11 +211,11 @@ func get_absolute_rect():
 	rect.position += parent_position
 	return rect
 	
-func get_normalized_position(position):
+func get_normalized_position(pos):
 	var canvas_rect = get_absolute_rect()
 	var n_position = Vector2(
-		normalize_value(position.x, canvas_rect.position.x, canvas_rect.position.x + canvas_rect.size.x),
-		normalize_value(position.y, canvas_rect.position.y, canvas_rect.position.y + canvas_rect.size.y)
+		normalize_value(pos.x, canvas_rect.position.x, canvas_rect.position.x + canvas_rect.size.x),
+		normalize_value(pos.y, canvas_rect.position.y, canvas_rect.position.y + canvas_rect.size.y)
 	)
 	n_position = n_position.clamp(Vector2.ZERO, Vector2.ONE)
 	return n_position

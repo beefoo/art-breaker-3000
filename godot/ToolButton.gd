@@ -21,7 +21,7 @@ func _ready():
 	sprite.set_scale(new_sprite_scale)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	
 	# Show or hide animation
 	if is_hovered() || has_focus() || is_active:

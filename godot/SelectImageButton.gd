@@ -4,7 +4,7 @@ signal image_selected(texture, data)
 
 const TRANSITION_DURATION = 500
 
-var seed = 0
+var random_seed = 0
 var item_data
 var from_texture
 var to_texture
@@ -24,7 +24,7 @@ func _pressed():
 	image_selected.emit(to_texture.duplicate(), item_data)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	
 	# Show or hide border
 	if is_hovered() || has_focus():
@@ -49,8 +49,8 @@ func _process(delta):
 	material.set_shader_parameter("transition", n)
 
 func set_seed(value):
-	seed = value
-	material.set_shader_parameter("seed", seed)
+	random_seed = value
+	material.set_shader_parameter("seed", random_seed)
 
 func set_item_data(data):
 	item_data = data
