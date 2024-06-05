@@ -1,4 +1,4 @@
-[gd_scene load_steps=464 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=466 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -12,7 +12,9 @@
 [ext_resource type="Script" path="res://AudioStreamPlayer.gd" id="7_wns1r"]
 [ext_resource type="Shader" path="res://shaders/SpinShuffle.gdshader" id="8_826ax"]
 [ext_resource type="Shader" path="res://shaders/Pixelate.gdshader" id="9_hpvgh"]
+[ext_resource type="AudioStream" uid="uid://5482mh4l6hyl" path="res://art/audio/loop_two_note_komiku_sountrack_02-03-178.wav" id="9_uar4p"]
 [ext_resource type="Shader" path="res://shaders/Kaleidoscope.gdshader" id="10_qxjt1"]
+[ext_resource type="AudioStream" uid="uid://cv18d365ap0nx" path="res://art/audio/loop_eight_note_komiku_sountrack_02-14-117.wav" id="11_ibryt"]
 [ext_resource type="Shader" path="res://shaders/Distort.gdshader" id="11_ldfmq"]
 [ext_resource type="Shader" path="res://shaders/Waves.gdshader" id="12_1sxth"]
 [ext_resource type="Shader" path="res://shaders/Rainbow.gdshader" id="13_u0tw2"]
@@ -2619,6 +2621,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Multiplier"]
+stream = ExtResource("9_uar4p")
+pitch_scale = 1.5
+bus = &"Reverb"
+script = ExtResource("7_wns1r")
+
 [node name="ColorCycle" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_cl0id")
@@ -2626,6 +2634,11 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/ColorCycle"]
+stream = ExtResource("11_ibryt")
+bus = &"Pitch"
+script = ExtResource("7_wns1r")
 
 [node name="PolkaDots" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2642,6 +2655,10 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/SpinShuffle"]
+stream = ExtResource("95_qopq6")
+pitch_scale = 0.9
 
 [node name="Pixelate" type="Control" parent="CanvasContainer/Canvas"]
 visible = false

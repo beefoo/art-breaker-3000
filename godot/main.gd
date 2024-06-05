@@ -2,9 +2,9 @@ extends Control
 
 var tool_config = {
 	"tools": [
-		{"name": "BandShuffle", "shader_params": [], "audio_options": {"mode": "accelerate", "acceleration": 1.5, "base_speed": 0.5, "min_pitch_scale": 0.1, "max_pitch_scale": 5.0}},
+		{"name": "BandShuffle", "shader_params": [], "audio_options": {"mode": "ease_in", "duration": 6.0, "min_pitch_scale": 0.1, "max_pitch_scale": 4.0}},
 		{"name": "Multiplier", "shader_params": []},
-		{"name": "ColorCycle", "shader_params": []},
+		{"name": "ColorCycle", "shader_params": [], "audio_options": {"mode": "wave", "duration": 0.5, "min_pitch_scale": 0.75, "max_pitch_scale": 1.25}},
 		{"name": "PolkaDots", "shader_params": ["aspect_ratio"]},
 		{"name": "SpinShuffle", "shader_params": ["aspect_ratio", "pointer_start"]},
 		{"name": "Pixelate", "shader_params": []},
