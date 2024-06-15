@@ -1,38 +1,10 @@
 extends Control
 
-var tool_config = {
-	"tools": [
-		{"name": "BandShuffle", "shader_params": []},
-		{"name": "Multiplier", "shader_params": []},
-		{"name": "ColorCycle", "shader_params": []},
-		{"name": "PolkaDots", "shader_params": ["aspect_ratio"]},
-		{"name": "SpinShuffle", "shader_params": ["aspect_ratio", "pointer_start"]},
-		{"name": "Pixelate", "shader_params": []},
-		{"name": "Kaleidoscope", "shader_params": ["pointer"]},
-		{"name": "Distort", "shader_params": ["pointer_start", "pointer"]},
-		{"name": "Waves", "shader_params": []},
-		{"name": "Rainbow", "shader_params": ["aspect_ratio", "pointer"]},
-		{"name": "Magnet", "shader_params": ["aspect_ratio", "pointer"]},
-		{"name": "HourGlass", "shader_params": []},
-		{"name": "Ghost", "shader_params": ["pointer_start", "pointer"]},
-		{"name": "DiscoFloor", "shader_params": ["aspect_ratio"]},
-		{"name": "Whirlpool", "shader_params": ["aspect_ratio"]},
-		{"name": "Pattern", "shader_params": ["aspect_ratio", "pointer"]},
-		{"name": "Weave", "shader_params": []},
-		{"name": "Drain", "shader_params": []},
-		{"name": "Reflect", "shader_params": []},
-		{"name": "Bend", "shader_params": ["aspect_ratio", "pointer"]},
-		{"name": "Checkerboard", "shader_params": ["aspect_ratio"]},
-		{"name": "Smudge", "shader_params": ["pointer_start", "pointer"]},
-		{"name": "Swirl", "shader_params": []},
-		{"name": "Dissolve", "shader_params": []},
-	]
-}
-
 var auto_save_image_path = "user://autosave.png"
 var auto_save_data_path = "user://autosave.json"
 var first_process = true
 var image_selected = false
+var tools = []
 
 @onready var canvas = $CanvasContainer/Canvas
 @onready var image_selector = $ImageSelector
@@ -43,9 +15,10 @@ var image_selected = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Load tools
+	tools = canvas.get_children()
 	tools_menu.init_tool_buttons()
 	tools_menu.tool_selected.connect(_on_tool_selected)
-	_on_tool_selected(tool_config["tools"][0]["name"], false)
+	_on_tool_selected(tools[0].get_name(), false)
 	
 	# Load listeners
 	save_file_dialog.file_selected.connect(_on_save_file_selected)
@@ -106,7 +79,7 @@ func _on_texture_updated():
 
 func _on_tool_selected(tool_name, from_user):
 	tools_menu.activate_tool_button(tool_name)
-	var tool_found = tool_config["tools"].filter(func(t): return t["name"] == tool_name)
+	var tool_found = tools.filter(func(t): return t.get_name() == tool_name)
 	if tool_found.size() < 1:
 		print("Tool name not found: %s" % tool_name)
 		return

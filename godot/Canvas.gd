@@ -7,7 +7,6 @@ signal texture_updated()
 var ANIMATION_DURATION = 1000
 
 var active_mixer
-var active_mixer_data
 var active_texture
 var active_audio_player
 var animation_start
@@ -134,7 +133,7 @@ func _on_update_texture(is_new_image_source):
 		animate()
 	
 	# Set this as the new texture
-	if active_mixer != null and active_mixer_data != null:
+	if active_mixer != null:
 		active_mixer.update_size()
 		set_shader_params_start()
 		
@@ -150,7 +149,7 @@ func _process(delta):
 	if pressing:
 		time += delta;
 		
-	if active_mixer != null and active_mixer_data != null:
+	if active_mixer != null:
 		set_shader_params_process()
 		set_audio_params()
 		
@@ -267,9 +266,8 @@ func select_image(image_texture):
 
 # Select a mixer by name
 func select_mixer(tool, from_user):
-	var mixer_data = tool.duplicate()
 	# Check if already selected
-	if active_mixer_data && active_mixer_data["name"] == mixer_data["name"]:
+	if active_mixer != null && active_mixer.get_name() == tool.get_name():
 		return
 	
 	# Deactivate existing mixer
@@ -277,8 +275,7 @@ func select_mixer(tool, from_user):
 		active_mixer.deactivate()
 		
 	time = 0.0
-	active_mixer = get_node(mixer_data["name"])
-	active_mixer_data = mixer_data
+	active_mixer = tool
 	active_mixer.activate()
 	set_shader_params_start()
 	
@@ -298,26 +295,30 @@ func set_original_image(texture):
 
 # Set shader parameters at every frame
 func set_shader_params_process():
-	var shader_params = active_mixer_data["shader_params"]
+	if active_mixer == null:
+		return
+		
 	var shader_values = {}
 	
 	shader_values["time"] = time;
-	if (shader_params.has("pointer_start")):
+	if (active_mixer.shader_pointer_start):
 		shader_values["pointer_start"] = pointer_start;
-	if (shader_params.has("pointer")):
+	if (active_mixer.shader_pointer):
 		shader_values["pointer"] = pointer;
 	
 	active_mixer.set_params(shader_values)
 
 # Set shader parameters when texture updates or mixer is selected
 func set_shader_params_start():
-	var shader_params = active_mixer_data["shader_params"]
+	if active_mixer == null:
+		return
+		
 	var shader_values = {
 		"tex": active_texture,
 		"time": time
 	}
 	
-	if (shader_params.has("aspect_ratio")):
+	if (active_mixer.shader_aspect_ratio):
 		shader_values["aspect_ratio"] = aspect_ratio;
 		
 	active_mixer.set_params(shader_values)

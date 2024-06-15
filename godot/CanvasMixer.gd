@@ -7,6 +7,11 @@ var audio_effects = {}
 var has_audio = false
 var is_active = true
 
+# Custom options to send into shaders shaders
+@export var shader_aspect_ratio = false # the image's aspect ratio
+@export var shader_pointer = false # the user's current pointer position
+@export var shader_pointer_start = false # the user's starting pointer position
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# If not visible, assume disabled

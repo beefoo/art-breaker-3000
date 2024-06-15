@@ -2655,6 +2655,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+shader_aspect_ratio = true
 
 [node name="SpinShuffle" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2663,10 +2664,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+shader_aspect_ratio = true
+shader_pointer_start = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/SpinShuffle"]
 stream = ExtResource("95_qopq6")
 pitch_scale = 0.9
+script = ExtResource("7_wns1r")
 
 [node name="Pixelate" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2683,6 +2687,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+shader_pointer = true
 
 [node name="Distort" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2691,6 +2696,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+shader_pointer = true
+shader_pointer_start = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Distort"]
 stream = ExtResource("15_6sxus")
@@ -2715,6 +2722,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+shader_aspect_ratio = true
+shader_pointer = true
 
 [node name="Magnet" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2723,6 +2732,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+shader_aspect_ratio = true
+shader_pointer = true
 
 [node name="HourGlass" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2739,6 +2750,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+shader_pointer = true
+shader_pointer_start = true
 
 [node name="DiscoFloor" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2747,6 +2760,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+shader_aspect_ratio = true
 
 [node name="Whirlpool" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2755,6 +2769,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+shader_aspect_ratio = true
 
 [node name="Pattern" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2763,6 +2778,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+shader_aspect_ratio = true
+shader_pointer = true
 
 [node name="Weave" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2795,6 +2812,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+shader_aspect_ratio = true
+shader_pointer = true
 
 [node name="Checkerboard" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2803,6 +2822,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+shader_aspect_ratio = true
 
 [node name="Smudge" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2811,6 +2831,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+shader_pointer = true
+shader_pointer_start = true
 
 [node name="Swirl" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
