@@ -20,8 +20,8 @@ func _ready():
 		
 	audio_player = get_node_or_null("AudioStreamPlayer")
 	has_audio = audio_player != null
-	var pitch_effect_index = AudioServer.get_bus_index("Pitch")
-	audio_effects["Pitch"] = AudioServer.get_bus_effect(pitch_effect_index, 0)
+	
+	load_audio_effect("Pitch")
 
 func _draw():
 	draw_rect(Rect2(Vector2.ZERO, size), Color(0.0, 0.0, 0.0, 0.0))
@@ -45,7 +45,8 @@ func audio_progress(params):
 
 	if audio_player.effect_mode == null:
 		return
-
+	
+	var effect_prop = audio_player.effect_property
 	var effect_dur = audio_player.effect_dur
 	var effect_min = audio_player.effect_min
 	var effect_max = audio_player.effect_max
@@ -54,7 +55,7 @@ func audio_progress(params):
 	if audio_player.effect_mode == "ease_in":
 		var t = smoothstep(0.0, effect_dur, params["time"])
 		var new_scale = lerp(effect_min, effect_max, t)
-		audio_player.set_pitch_scale(new_scale)
+		set_audio_effect_value(effect_prop, new_scale)
 
 	# Change audio pitch based on distance from original pointer
 	elif audio_player.effect_mode == "pointer":
@@ -64,28 +65,26 @@ func audio_progress(params):
 			return
 		var d = clamp(pointer_start.distance_to(pointer), 0.0, 1.0)
 		var new_scale = lerp(effect_min, effect_max, d)
-		audio_effects["Pitch"].set_pitch_scale(new_scale)
+		set_audio_effect_value(effect_prop, new_scale)
 
 	# Modulate between min/max pitch
 	elif audio_player.effect_mode == "wave":
 		var t = (sin(params["time"] * (PI / effect_dur)) + 1.0) / 2.0
 		var new_scale = lerp(effect_min, effect_max, t)
-		audio_effects["Pitch"].set_pitch_scale(new_scale)
+		set_audio_effect_value(effect_prop, new_scale)
 		
 	# Change pitch based on velocity of pointer
 	elif audio_player.effect_mode == "velocity":
-		print(params["pointer_velocity"].length())
 		var t = smoothstep(300.0, 3000.0, params["pointer_velocity"].length())
 		var new_scale = lerp(effect_min, effect_max, t)
-		audio_effects["Pitch"].set_pitch_scale(new_scale)
+		set_audio_effect_value(effect_prop, new_scale)
 
 func audio_start():
 	if not has_audio:
 		return
 	
 	if audio_player.effect_min > 0.0:
-		audio_effects["Pitch"].set_pitch_scale(audio_player.effect_min)
-		audio_player.set_pitch_scale(audio_player.effect_min)
+		set_audio_effect_value(audio_player.effect_property, audio_player.effect_min)
 	
 	audio_player.play(0.0)
 
@@ -94,6 +93,16 @@ func deactivate():
 	is_active = false;
 	set_process(false)
 	hide()
+	
+func load_audio_effect(effect_name):
+	var effect_index = AudioServer.get_bus_index(effect_name)
+	audio_effects[effect_name] = AudioServer.get_bus_effect(effect_index, 0)
+	
+func set_audio_effect_value(effect_name, value):
+	if effect_name == "Scale":
+		audio_player.set_pitch_scale(value)
+	elif effect_name == "Pitch":
+		audio_effects["Pitch"].set_pitch_scale(value)
 
 func set_params(params):
 	for property in params:

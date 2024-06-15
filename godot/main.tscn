@@ -2616,6 +2616,7 @@ stream = ExtResource("95_qopq6")
 bus = &"Reverb"
 script = ExtResource("7_wns1r")
 effect_mode = "ease_in"
+effect_property = "Scale"
 effect_dur = 6.0
 effect_min = 0.1
 effect_max = 4.0
