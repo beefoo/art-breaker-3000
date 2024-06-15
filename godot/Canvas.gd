@@ -15,6 +15,7 @@ var animation_scale_start
 var original_texture
 var pointer
 var pointer_start
+var pointer_velocity = Vector2.ZERO
 var prev_texture
 
 var aspect_ratio = 1.0
@@ -74,6 +75,7 @@ func _on_touch_end(_event):
 	vt.origin = Vector2.ZERO
 	busy = true
 	pressing = false
+	pointer_velocity = Vector2.ZERO
 	# Wait for current frame to finish drawing
 	await RenderingServer.frame_post_draw
 	# Get the full viewport image
@@ -91,6 +93,7 @@ func _on_touch_end(_event):
 func _on_touch_move(event):
 	if event:
 		pointer = get_normalized_position(event.position)
+		pointer_velocity = event.velocity
 	
 func _on_touch_start(event):
 	#print("Touch start")
@@ -103,6 +106,7 @@ func _on_touch_start(event):
 	if event:
 		pointer_start = get_normalized_position(event.position)
 	pointer = pointer_start
+	pointer_velocity = Vector2.ZERO
 	
 	if active_mixer != null:
 		active_mixer.set_params({
@@ -287,7 +291,8 @@ func set_audio_params():
 	active_mixer.audio_progress({
 		"time": time,
 		"pointer_start": pointer_start,
-		"pointer": pointer
+		"pointer": pointer,
+		"pointer_velocity": pointer_velocity
 	})
 
 func set_original_image(texture):

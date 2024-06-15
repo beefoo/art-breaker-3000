@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-@export_enum("ease_in", "pointer", "wav") var effect_mode: String
+@export_enum("ease_in", "pointer", "wave", "velocity") var effect_mode: String
 @export var effect_dur = -1.0
 @export var effect_min = -1.0
 @export var effect_max = -1.0

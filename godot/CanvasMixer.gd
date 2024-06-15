@@ -42,21 +42,21 @@ func audio_end():
 func audio_progress(params):
 	if not has_audio:
 		return
-		
+
 	if audio_player.effect_mode == null:
 		return
-		
+
 	var effect_dur = audio_player.effect_dur
 	var effect_min = audio_player.effect_min
 	var effect_max = audio_player.effect_max
-	
-	# speed up or slow down sound over time
+
+	# Speed up or slow down sound over time
 	if audio_player.effect_mode == "ease_in":
 		var t = smoothstep(0.0, effect_dur, params["time"])
 		var new_scale = lerp(effect_min, effect_max, t)
 		audio_player.set_pitch_scale(new_scale)
-	
-	# change audio pitch based on distance from original pointer
+
+	# Change audio pitch based on distance from original pointer
 	elif audio_player.effect_mode == "pointer":
 		var pointer = params["pointer"]
 		var pointer_start = params["pointer_start"]
@@ -65,10 +65,17 @@ func audio_progress(params):
 		var d = clamp(pointer_start.distance_to(pointer), 0.0, 1.0)
 		var new_scale = lerp(effect_min, effect_max, d)
 		audio_effects["Pitch"].set_pitch_scale(new_scale)
-	
+
 	# Modulate between min/max pitch
 	elif audio_player.effect_mode == "wave":
 		var t = (sin(params["time"] * (PI / effect_dur)) + 1.0) / 2.0
+		var new_scale = lerp(effect_min, effect_max, t)
+		audio_effects["Pitch"].set_pitch_scale(new_scale)
+		
+	# Change pitch based on velocity of pointer
+	elif audio_player.effect_mode == "velocity":
+		print(params["pointer_velocity"].length())
+		var t = smoothstep(300.0, 3000.0, params["pointer_velocity"].length())
 		var new_scale = lerp(effect_min, effect_max, t)
 		audio_effects["Pitch"].set_pitch_scale(new_scale)
 

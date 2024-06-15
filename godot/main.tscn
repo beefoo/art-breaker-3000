@@ -1,4 +1,4 @@
-[gd_scene load_steps=466 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=469 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -17,13 +17,16 @@
 [ext_resource type="AudioStream" uid="uid://cv18d365ap0nx" path="res://art/audio/loop_eight_note_komiku_sountrack_02-14-117.wav" id="11_ibryt"]
 [ext_resource type="Shader" path="res://shaders/Distort.gdshader" id="11_ldfmq"]
 [ext_resource type="Shader" path="res://shaders/Waves.gdshader" id="12_1sxth"]
+[ext_resource type="AudioStream" uid="uid://cwo0td6sbj27w" path="res://art/audio/drone_b_komiku_soundtrack_02-30-115.wav" id="13_dpipy"]
 [ext_resource type="Shader" path="res://shaders/Rainbow.gdshader" id="13_u0tw2"]
 [ext_resource type="Shader" path="res://shaders/Magnet.gdshader" id="14_yge1n"]
 [ext_resource type="AudioStream" uid="uid://c2umis7qvfcus" path="res://art/audio/drone_komiku_soundtrack_02-27-470.wav" id="15_6sxus"]
 [ext_resource type="Shader" path="res://shaders/HourGlass.gdshader" id="15_eel5w"]
+[ext_resource type="AudioStream" uid="uid://dmlobsnvfge5j" path="res://art/audio/loop_three_note_komiku_soundtrack_05-05-292.wav" id="16_8caf5"]
 [ext_resource type="Shader" path="res://shaders/Ghost.gdshader" id="16_dejq1"]
 [ext_resource type="Shader" path="res://shaders/DiscoFloor.gdshader" id="17_ln2py"]
 [ext_resource type="Shader" path="res://shaders/Whirlpool.gdshader" id="18_4lyre"]
+[ext_resource type="AudioStream" uid="uid://tcop2svihcri" path="res://art/audio/loop_eight_note_b_komiku_sountrack_03-35-974.wav" id="18_j4w00"]
 [ext_resource type="Shader" path="res://shaders/Pattern.gdshader" id="19_p7tp3"]
 [ext_resource type="Shader" path="res://shaders/Weave.gdshader" id="20_yotuf"]
 [ext_resource type="Shader" path="res://shaders/Drain.gdshader" id="21_v2o2w"]
@@ -2643,7 +2646,7 @@ script = ExtResource("4_t4eif")
 stream = ExtResource("11_ibryt")
 bus = &"Pitch"
 script = ExtResource("7_wns1r")
-effect_mode = "wav"
+effect_mode = "wave"
 effect_dur = 0.5
 effect_min = 0.75
 effect_max = 1.25
@@ -2656,6 +2659,15 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 shader_aspect_ratio = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/PolkaDots"]
+stream = ExtResource("13_dpipy")
+bus = &"Pitch"
+script = ExtResource("7_wns1r")
+effect_mode = "wave"
+effect_dur = 0.25
+effect_min = 1.0
+effect_max = 1.5
 
 [node name="SpinShuffle" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2680,6 +2692,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Pixelate"]
+stream = ExtResource("16_8caf5")
+volume_db = -6.0
+pitch_scale = 2.5
+bus = &"Reverb"
+script = ExtResource("7_wns1r")
+
 [node name="Kaleidoscope" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_lqloj")
@@ -2688,6 +2707,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 shader_pointer = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Kaleidoscope"]
+stream = ExtResource("18_j4w00")
+bus = &"Pitch"
+script = ExtResource("7_wns1r")
+effect_mode = "velocity"
+effect_min = 1.0
+effect_max = 4.0
 
 [node name="Distort" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
