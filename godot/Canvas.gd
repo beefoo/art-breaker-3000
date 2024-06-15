@@ -281,20 +281,10 @@ func select_mixer(tool, from_user):
 	active_mixer_data = mixer_data
 	active_mixer.activate()
 	set_shader_params_start()
-	set_audio_options()
 	
 	# Grab focus if triggered by user
 	if from_user:
 		grab_focus()
-
-func set_audio_options():
-	if active_mixer_data == null or active_mixer == null:
-		return
-		
-	if not active_mixer_data.has("audio_options"):
-		return
-		
-	active_mixer.set_audio_options(active_mixer_data["audio_options"])
 	
 func set_audio_params():
 	active_mixer.audio_progress({

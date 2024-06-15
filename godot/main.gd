@@ -2,14 +2,14 @@ extends Control
 
 var tool_config = {
 	"tools": [
-		{"name": "BandShuffle", "shader_params": [], "audio_options": {"mode": "ease_in", "duration": 6.0, "min_pitch_scale": 0.1, "max_pitch_scale": 4.0}},
+		{"name": "BandShuffle", "shader_params": []},
 		{"name": "Multiplier", "shader_params": []},
-		{"name": "ColorCycle", "shader_params": [], "audio_options": {"mode": "wave", "duration": 0.5, "min_pitch_scale": 0.75, "max_pitch_scale": 1.25}},
+		{"name": "ColorCycle", "shader_params": []},
 		{"name": "PolkaDots", "shader_params": ["aspect_ratio"]},
 		{"name": "SpinShuffle", "shader_params": ["aspect_ratio", "pointer_start"]},
 		{"name": "Pixelate", "shader_params": []},
 		{"name": "Kaleidoscope", "shader_params": ["pointer"]},
-		{"name": "Distort", "shader_params": ["pointer_start", "pointer"], "audio_options": {"mode": "pointer", "min_pitch_scale": 0.5, "max_pitch_scale": 4.0}},
+		{"name": "Distort", "shader_params": ["pointer_start", "pointer"]},
 		{"name": "Waves", "shader_params": []},
 		{"name": "Rainbow", "shader_params": ["aspect_ratio", "pointer"]},
 		{"name": "Magnet", "shader_params": ["aspect_ratio", "pointer"]},

@@ -2612,6 +2612,10 @@ script = ExtResource("4_t4eif")
 stream = ExtResource("95_qopq6")
 bus = &"Reverb"
 script = ExtResource("7_wns1r")
+effect_mode = "ease_in"
+effect_dur = 6.0
+effect_min = 0.1
+effect_max = 4.0
 
 [node name="Multiplier" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2639,6 +2643,10 @@ script = ExtResource("4_t4eif")
 stream = ExtResource("11_ibryt")
 bus = &"Pitch"
 script = ExtResource("7_wns1r")
+effect_mode = "wav"
+effect_dur = 0.5
+effect_min = 0.75
+effect_max = 1.25
 
 [node name="PolkaDots" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2688,6 +2696,9 @@ script = ExtResource("4_t4eif")
 stream = ExtResource("15_6sxus")
 bus = &"Pitch"
 script = ExtResource("7_wns1r")
+effect_mode = "pointer"
+effect_min = 0.5
+effect_max = 4.0
 
 [node name="Waves" type="Control" parent="CanvasContainer/Canvas"]
 visible = false

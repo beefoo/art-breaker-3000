@@ -2,7 +2,6 @@
 
 extends Control
 
-var audio_options = {}
 var audio_player
 var audio_effects = {}
 var has_audio = false
@@ -39,38 +38,42 @@ func audio_progress(params):
 	if not has_audio:
 		return
 		
-	if "mode" not in audio_options:
+	if audio_player.effect_mode == null:
 		return
+		
+	var effect_dur = audio_player.effect_dur
+	var effect_min = audio_player.effect_min
+	var effect_max = audio_player.effect_max
 	
 	# speed up or slow down sound over time
-	if audio_options["mode"] == "ease_in":
-		var t = smoothstep(0.0, audio_options["duration"], params["time"])
-		var new_scale = lerp(audio_options["min_pitch_scale"], audio_options["max_pitch_scale"], t)
+	if audio_player.effect_mode == "ease_in":
+		var t = smoothstep(0.0, effect_dur, params["time"])
+		var new_scale = lerp(effect_min, effect_max, t)
 		audio_player.set_pitch_scale(new_scale)
 	
 	# change audio pitch based on distance from original pointer
-	elif audio_options["mode"] == "pointer":
+	elif audio_player.effect_mode == "pointer":
 		var pointer = params["pointer"]
 		var pointer_start = params["pointer_start"]
 		if pointer == null or pointer_start == null:
 			return
 		var d = clamp(pointer_start.distance_to(pointer), 0.0, 1.0)
-		var new_scale = lerp(audio_options["min_pitch_scale"], audio_options["max_pitch_scale"], d)
+		var new_scale = lerp(effect_min, effect_max, d)
 		audio_effects["Pitch"].set_pitch_scale(new_scale)
 	
 	# Modulate between min/max pitch
-	elif audio_options["mode"] == "wave":
-		var t = (sin(params["time"] * (PI / audio_options["duration"])) + 1.0) / 2.0
-		var new_scale = lerp(audio_options["min_pitch_scale"], audio_options["max_pitch_scale"], t)
+	elif audio_player.effect_mode == "wave":
+		var t = (sin(params["time"] * (PI / effect_dur)) + 1.0) / 2.0
+		var new_scale = lerp(effect_min, effect_max, t)
 		audio_effects["Pitch"].set_pitch_scale(new_scale)
 
 func audio_start():
 	if not has_audio:
 		return
 	
-	if audio_options.has("min_pitch_scale"):
-		audio_effects["Pitch"].set_pitch_scale(audio_options["min_pitch_scale"])
-		audio_player.set_pitch_scale(audio_options["min_pitch_scale"])
+	if audio_player.effect_min > 0.0:
+		audio_effects["Pitch"].set_pitch_scale(audio_player.effect_min)
+		audio_player.set_pitch_scale(audio_player.effect_min)
 	
 	audio_player.play(0.0)
 
@@ -84,9 +87,6 @@ func set_params(params):
 	for property in params:
 		var value = params[property]
 		material.set_shader_parameter(property, value)
-
-func set_audio_options(options):
-	audio_options = options
 		
 func update_size():
 	set_size(get_parent().size)
