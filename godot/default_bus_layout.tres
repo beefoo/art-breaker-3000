@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://vcno2rcgbllq"]
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://vcno2rcgbllq"]
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_48sss"]
 resource_name = "Reverb"
@@ -7,6 +7,17 @@ wet = 0.4
 
 [sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_lxsmx"]
 resource_name = "PitchShift"
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_no1y3"]
+resource_name = "Delay"
+tap1_active = false
+tap2_active = false
+feedback_active = true
+feedback_level_db = -3.0
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_ag2ld"]
+resource_name = "Distortion"
+mode = 2
 
 [resource]
 bus/1/name = &"Reverb"
@@ -25,3 +36,19 @@ bus/2/volume_db = 0.0
 bus/2/send = &"Reverb"
 bus/2/effect/0/effect = SubResource("AudioEffectPitchShift_lxsmx")
 bus/2/effect/0/enabled = true
+bus/3/name = &"Delay"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Reverb"
+bus/3/effect/0/effect = SubResource("AudioEffectDelay_no1y3")
+bus/3/effect/0/enabled = true
+bus/4/name = &"Distortion"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"Reverb"
+bus/4/effect/0/effect = SubResource("AudioEffectDistortion_ag2ld")
+bus/4/effect/0/enabled = true

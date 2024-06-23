@@ -1,4 +1,4 @@
-[gd_scene load_steps=469 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=471 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -38,6 +38,7 @@
 [ext_resource type="Shader" path="res://shaders/Dissolve.gdshader" id="27_s8c5i"]
 [ext_resource type="Texture2D" uid="uid://cnc26ms7xeop0" path="res://art/tools/BandShuffle.png" id="29_02nn4"]
 [ext_resource type="Theme" uid="uid://cyeaxliunhshn" path="res://Menu.tres" id="29_ktvei"]
+[ext_resource type="AudioStream" uid="uid://bb7i0gvb5nj71" path="res://art/audio/loop_four_note_b_komiku_soundtrack_03-17-660.wav" id="30_a2i62"]
 [ext_resource type="Script" path="res://MenuButton.gd" id="30_cw20u"]
 [ext_resource type="Script" path="res://ToolButton.gd" id="30_vabsa"]
 [ext_resource type="Texture2D" uid="uid://uu08pl7i1tkl" path="res://art/spritesheets/BandShuffle.png" id="31_7iaca"]
@@ -49,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://daydb48gc1qnf" path="res://art/tools/PolkaDots.png" id="34_6d2by"]
 [ext_resource type="Texture2D" uid="uid://ntylbgqeccqf" path="res://art/tools/SpinShuffle.png" id="35_arlda"]
 [ext_resource type="Texture2D" uid="uid://da1hcatscd8ee" path="res://art/spritesheets/ColorCycle.png" id="35_ee1ad"]
+[ext_resource type="AudioStream" uid="uid://ibfb0saqjno1" path="res://art/audio/drone_c_komiku_soundtrack_02-32-972.wav" id="36_d0q6s"]
 [ext_resource type="Texture2D" uid="uid://ckeaod351pnd1" path="res://art/tools/Pixelate.png" id="36_vcdkc"]
 [ext_resource type="Texture2D" uid="uid://dgrryfowrwht5" path="res://art/spritesheets/PolkaDots.png" id="37_1df0w"]
 [ext_resource type="Texture2D" uid="uid://dtaoxkp1hx5va" path="res://art/tools/Kaleidoscope.png" id="37_htska"]
@@ -2817,6 +2819,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Weave"]
+stream = ExtResource("30_a2i62")
+bus = &"Delay"
+script = ExtResource("7_wns1r")
+
 [node name="Drain" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_r1rar")
@@ -2861,6 +2868,15 @@ offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 shader_pointer = true
 shader_pointer_start = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Smudge"]
+stream = ExtResource("36_d0q6s")
+bus = &"Distortion"
+script = ExtResource("7_wns1r")
+effect_mode = "pointer"
+effect_property = "Distortion"
+effect_min = 0.8
+effect_max = 1.0
 
 [node name="Swirl" type="Control" parent="CanvasContainer/Canvas"]
 visible = false

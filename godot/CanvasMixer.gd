@@ -22,6 +22,8 @@ func _ready():
 	has_audio = audio_player != null
 	
 	load_audio_effect("Pitch")
+	load_audio_effect("Delay")
+	load_audio_effect("Distortion")
 
 func _draw():
 	draw_rect(Rect2(Vector2.ZERO, size), Color(0.0, 0.0, 0.0, 0.0))
@@ -63,7 +65,7 @@ func audio_progress(params):
 		var pointer_start = params["pointer_start"]
 		if pointer == null or pointer_start == null:
 			return
-		var d = clamp(pointer_start.distance_to(pointer), 0.0, 1.0)
+		var d = clamp(pointer_start.distance_to(pointer) * 2.0, 0.0, 1.0)
 		var new_scale = lerp(effect_min, effect_max, d)
 		set_audio_effect_value(effect_prop, new_scale)
 
@@ -103,6 +105,10 @@ func set_audio_effect_value(effect_name, value):
 		audio_player.set_pitch_scale(value)
 	elif effect_name == "Pitch":
 		audio_effects["Pitch"].set_pitch_scale(value)
+	elif effect_name == "Delay":
+		audio_effects["Delay"].set_feedback_delay_ms(value)
+	elif effect_name == "Distortion":
+		audio_effects["Distortion"].set_drive(value)
 
 func set_params(params):
 	for property in params:
