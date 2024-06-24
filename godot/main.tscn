@@ -1,4 +1,4 @@
-[gd_scene load_steps=471 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=474 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -30,11 +30,14 @@
 [ext_resource type="Shader" path="res://shaders/Pattern.gdshader" id="19_p7tp3"]
 [ext_resource type="Shader" path="res://shaders/Weave.gdshader" id="20_yotuf"]
 [ext_resource type="Shader" path="res://shaders/Drain.gdshader" id="21_v2o2w"]
+[ext_resource type="AudioStream" uid="uid://ds0rdefk0prh1" path="res://art/audio/loop_three_note_b_komiku_soundtrack_05-30-696.wav" id="22_eyric"]
 [ext_resource type="Shader" path="res://shaders/Reflect.gdshader" id="22_x6u0h"]
 [ext_resource type="Shader" path="res://shaders/Bend.gdshader" id="23_88etn"]
+[ext_resource type="AudioStream" uid="uid://bv40q55ddervn" path="res://art/audio/drone_d_komiku_soundtrack_02-36-154.wav" id="24_3pl7r"]
 [ext_resource type="Shader" path="res://shaders/Checkerboard.gdshader" id="24_7hd3x"]
 [ext_resource type="Shader" path="res://shaders/Smudge.gdshader" id="25_ktcmp"]
 [ext_resource type="Shader" path="res://shaders/Swirl.gdshader" id="26_jewvf"]
+[ext_resource type="AudioStream" uid="uid://bmcqfst82fgih" path="res://art/audio/loop_two_note_b_komiku_soundtrack_02-25-412.wav" id="26_srtnw"]
 [ext_resource type="Shader" path="res://shaders/Dissolve.gdshader" id="27_s8c5i"]
 [ext_resource type="Texture2D" uid="uid://cnc26ms7xeop0" path="res://art/tools/BandShuffle.png" id="29_02nn4"]
 [ext_resource type="Theme" uid="uid://cyeaxliunhshn" path="res://Menu.tres" id="29_ktvei"]
@@ -2745,6 +2748,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Waves"]
+stream = ExtResource("22_eyric")
+pitch_scale = 2.4
+bus = &"Pitch"
+script = ExtResource("7_wns1r")
+effect_mode = "ease_in"
+effect_dur = 1.0
+effect_min = 0.5
+effect_max = 0.5
+
 [node name="Rainbow" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_o0c0n")
@@ -2755,6 +2768,14 @@ script = ExtResource("4_t4eif")
 shader_aspect_ratio = true
 shader_pointer = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Rainbow"]
+stream = ExtResource("24_3pl7r")
+bus = &"Pitch"
+script = ExtResource("7_wns1r")
+effect_mode = "velocity"
+effect_min = 0.5
+effect_max = 0.75
+
 [node name="Magnet" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_gp88u")
@@ -2764,6 +2785,16 @@ offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 shader_aspect_ratio = true
 shader_pointer = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Magnet"]
+stream = ExtResource("26_srtnw")
+pitch_scale = 1.5
+bus = &"Filter"
+script = ExtResource("7_wns1r")
+effect_mode = "velocity"
+effect_property = "Filter"
+effect_min = 200.0
+effect_max = 20000.0
 
 [node name="HourGlass" type="Control" parent="CanvasContainer/Canvas"]
 visible = false

@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://vcno2rcgbllq"]
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://vcno2rcgbllq"]
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_48sss"]
 resource_name = "Reverb"
@@ -18,6 +18,9 @@ feedback_level_db = -3.0
 [sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_ag2ld"]
 resource_name = "Distortion"
 mode = 2
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_aqtye"]
+resource_name = "LowPassFilter"
 
 [resource]
 bus/1/name = &"Reverb"
@@ -52,3 +55,17 @@ bus/4/volume_db = 0.0
 bus/4/send = &"Reverb"
 bus/4/effect/0/effect = SubResource("AudioEffectDistortion_ag2ld")
 bus/4/effect/0/enabled = true
+bus/5/name = &"Filter"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = &"Reverb"
+bus/5/effect/0/effect = SubResource("AudioEffectLowPassFilter_aqtye")
+bus/5/effect/0/enabled = true
+bus/6/name = &"Volume"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = &"Reverb"

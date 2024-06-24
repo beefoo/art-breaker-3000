@@ -3,6 +3,7 @@
 extends Control
 
 var audio_player
+var audio_bus_indices = {}
 var audio_effects = {}
 var has_audio = false
 var is_active = true
@@ -24,6 +25,8 @@ func _ready():
 	load_audio_effect("Pitch")
 	load_audio_effect("Delay")
 	load_audio_effect("Distortion")
+	load_audio_effect("Filter")
+	load_audio_bus("Volume")
 
 func _draw():
 	draw_rect(Rect2(Vector2.ZERO, size), Color(0.0, 0.0, 0.0, 0.0))
@@ -95,7 +98,11 @@ func deactivate():
 	is_active = false;
 	set_process(false)
 	hide()
-	
+
+func load_audio_bus(bus_name):
+	var bus_index = AudioServer.get_bus_index(bus_name)
+	audio_bus_indices[bus_name] = bus_index
+
 func load_audio_effect(effect_name):
 	var effect_index = AudioServer.get_bus_index(effect_name)
 	audio_effects[effect_name] = AudioServer.get_bus_effect(effect_index, 0)
@@ -109,6 +116,11 @@ func set_audio_effect_value(effect_name, value):
 		audio_effects["Delay"].set_feedback_delay_ms(value)
 	elif effect_name == "Distortion":
 		audio_effects["Distortion"].set_drive(value)
+	elif effect_name == "Filter":
+		audio_effects["Filter"].set_cutoff(value)
+	elif effect_name == "Volume":
+		var bus_index = audio_bus_indices["Volume"]
+		AudioServer.set_bus_volume_db(bus_index, value)
 
 func set_params(params):
 	for property in params:
