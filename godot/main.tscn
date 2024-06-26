@@ -2688,6 +2688,7 @@ shader_pointer_start = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/SpinShuffle"]
 stream = ExtResource("95_qopq6")
 pitch_scale = 0.9
+bus = &"Reverb"
 script = ExtResource("7_wns1r")
 
 [node name="Pixelate" type="Control" parent="CanvasContainer/Canvas"]
@@ -2738,7 +2739,7 @@ bus = &"Pitch"
 script = ExtResource("7_wns1r")
 effect_mode = "pointer"
 effect_min = 0.5
-effect_max = 4.0
+effect_max = 2.0
 
 [node name="Waves" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2804,6 +2805,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/HourGlass"]
+stream = ExtResource("26_srtnw")
+bus = &"Reverb"
+script = ExtResource("7_wns1r")
+
 [node name="Ghost" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_5pc3o")
@@ -2814,6 +2820,15 @@ script = ExtResource("4_t4eif")
 shader_pointer = true
 shader_pointer_start = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Ghost"]
+stream = ExtResource("15_6sxus")
+pitch_scale = 0.5
+bus = &"Pitch"
+script = ExtResource("7_wns1r")
+effect_mode = "pointer"
+effect_min = 0.2
+effect_max = 1.0
+
 [node name="DiscoFloor" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_2np54")
@@ -2822,6 +2837,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 shader_aspect_ratio = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/DiscoFloor"]
+stream = ExtResource("18_j4w00")
+pitch_scale = 1.2
+bus = &"Reverb"
+script = ExtResource("7_wns1r")
 
 [node name="Whirlpool" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2832,6 +2853,16 @@ offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 shader_aspect_ratio = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Whirlpool"]
+stream = ExtResource("22_eyric")
+bus = &"Reverb"
+script = ExtResource("7_wns1r")
+effect_mode = "ease_in"
+effect_property = "Scale"
+effect_dur = 5.0
+effect_min = 2.0
+effect_max = 0.2
+
 [node name="Pattern" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_17f8v")
@@ -2841,6 +2872,16 @@ offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 shader_aspect_ratio = true
 shader_pointer = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Pattern"]
+stream = ExtResource("95_qopq6")
+pitch_scale = 1.5
+bus = &"Filter"
+script = ExtResource("7_wns1r")
+effect_mode = "velocity"
+effect_property = "Filter"
+effect_min = 500.0
+effect_max = 20000.0
 
 [node name="Weave" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2863,6 +2904,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Drain"]
+stream = ExtResource("36_d0q6s")
+bus = &"Reverb"
+script = ExtResource("7_wns1r")
+effect_mode = "ease_in"
+effect_property = "Scale"
+effect_dur = 5.0
+effect_min = 1.0
+effect_max = 0.2
+
 [node name="Reflect" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_r004f")
@@ -2870,6 +2921,16 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Reflect"]
+stream = ExtResource("30_a2i62")
+pitch_scale = 2.0
+bus = &"Pitch"
+script = ExtResource("7_wns1r")
+effect_mode = "ease_in"
+effect_dur = 1.0
+effect_min = 0.33
+effect_max = 0.33
 
 [node name="Bend" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2881,6 +2942,15 @@ script = ExtResource("4_t4eif")
 shader_aspect_ratio = true
 shader_pointer = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Bend"]
+stream = ExtResource("36_d0q6s")
+pitch_scale = 0.5
+bus = &"Pitch"
+script = ExtResource("7_wns1r")
+effect_mode = "velocity"
+effect_min = 0.5
+effect_max = 1.0
+
 [node name="Checkerboard" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_fe3ex")
@@ -2889,6 +2959,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 shader_aspect_ratio = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Checkerboard"]
+stream = ExtResource("9_uar4p")
+pitch_scale = 1.2
+bus = &"Reverb"
+script = ExtResource("7_wns1r")
 
 [node name="Smudge" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
@@ -2917,6 +2993,17 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Swirl"]
+stream = ExtResource("26_srtnw")
+volume_db = -3.0
+pitch_scale = 2.0
+bus = &"Pitch"
+script = ExtResource("7_wns1r")
+effect_mode = "ease_in"
+effect_dur = 1.0
+effect_min = 0.25
+effect_max = 0.25
+
 [node name="Dissolve" type="Control" parent="CanvasContainer/Canvas"]
 visible = false
 material = SubResource("ShaderMaterial_gmans")
@@ -2924,6 +3011,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_t4eif")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Dissolve"]
+stream = ExtResource("24_3pl7r")
+pitch_scale = 0.75
+bus = &"Reverb"
+script = ExtResource("7_wns1r")
 
 [node name="MainMenu" type="Panel" parent="."]
 layout_mode = 1
