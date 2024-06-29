@@ -1,4 +1,4 @@
-[gd_scene load_steps=479 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=484 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -112,6 +112,10 @@
 [ext_resource type="AudioStream" uid="uid://svh2s5b4q4x4" path="res://art/audio/hit_c_komiku_mushrooms_00-09-208.wav" id="101_ecuij"]
 [ext_resource type="AudioStream" uid="uid://ibguujxcp2eo" path="res://art/audio/transition_a_komiku_mushrooms_00-01-264.wav" id="107_w2qnj"]
 [ext_resource type="AudioStream" uid="uid://2q0k5nfprvy8" path="res://art/audio/transition_b_komiku_mushrooms_00-02-568.wav" id="108_ge4b5"]
+[ext_resource type="Script" path="res://Title.gd" id="113_fd4gl"]
+[ext_resource type="Texture2D" uid="uid://dvlk2n224pvfi" path="res://art/images/metmuseum_436535.png" id="114_thvx8"]
+[ext_resource type="Texture2D" uid="uid://c5u3u66wocypa" path="res://art/artbreaker_3000_title-01.png" id="115_c6mf8"]
+[ext_resource type="AudioStream" uid="uid://bgb7kaaarfutf" path="res://art/audio/phrase_komiku_we_have_to_dance_together_00-00-000.wav" id="116_l5jrm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0prh"]
 bg_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
@@ -2577,6 +2581,9 @@ shader_parameter/border = 0.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7lfk"]
 bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_223p4"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+
 [node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -3832,3 +3839,77 @@ bus = &"Reverb"
 access = 2
 filters = PackedStringArray("*.png")
 use_native_dialog = true
+
+[node name="Credits" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_223p4")
+script = ExtResource("113_fd4gl")
+
+[node name="ImageContainer" type="AspectRatioContainer" parent="Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.5
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Title/ImageContainer"]
+layout_mode = 2
+texture = ExtResource("114_thvx8")
+
+[node name="TitleContainer" type="AspectRatioContainer" parent="Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_right = -100.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 2.0
+
+[node name="TextureRect" type="TextureRect" parent="Title/TitleContainer"]
+layout_mode = 2
+texture = ExtResource("115_c6mf8")
+expand_mode = 1
+
+[node name="StartButton" type="Button" parent="Title"]
+custom_minimum_size = Vector2(359, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -137.0
+offset_right = 104.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("89_kj3un")
+theme_override_font_sizes/font_size = 122
+text = "Start"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Title"]
+stream = ExtResource("116_l5jrm")
+pitch_scale = 1.5
+bus = &"Delay"
