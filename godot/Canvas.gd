@@ -26,6 +26,8 @@ var is_animating = false
 var pressing = false
 var time = 0.0
 
+@onready var audio_player = $AudioStreamPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_pivot_offset(size / 2.0)
@@ -226,7 +228,8 @@ func get_normalized_position(pos):
 func reset_canvas():	
 	if original_texture == null:
 		return
-		
+	
+	audio_player.play(0.0)
 	active_texture = original_texture
 	_on_update_texture(false)
 	
@@ -260,7 +263,7 @@ func resize_and_center():
 func save_image(image_path):
 	if active_texture == null:
 		return
-		
+	
 	var active_image = active_texture.get_image()
 	active_image.save_png(image_path)
 	
@@ -332,6 +335,7 @@ func set_shader_params_start():
 func undo():
 	if active_texture == null || prev_texture == null:
 		return
+	audio_player.play(0.0)
 	var temp_texture = active_texture.duplicate()
 	active_texture = prev_texture
 	prev_texture = temp_texture

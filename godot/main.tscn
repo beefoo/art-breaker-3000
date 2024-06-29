@@ -1,4 +1,4 @@
-[gd_scene load_steps=474 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=479 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -60,6 +60,7 @@
 [ext_resource type="Texture2D" uid="uid://cpsixh7w7k6ab" path="res://art/tools/Distort.png" id="38_57wie"]
 [ext_resource type="Texture2D" uid="uid://lgtodoaycj47" path="res://art/spritesheets/SpinShuffle.png" id="39_r6bd8"]
 [ext_resource type="Texture2D" uid="uid://1srw31v3ss6o" path="res://art/spritesheets/Pixelate.png" id="41_en4gu"]
+[ext_resource type="AudioStream" uid="uid://dsrj56x7chx5k" path="res://art/audio/hit_komiku_soundtrack_01-10-940.wav" id="42_gt250"]
 [ext_resource type="Texture2D" uid="uid://ioh5sbsd8ws7" path="res://art/spritesheets/Kaleidoscope.png" id="43_6p15c"]
 [ext_resource type="Texture2D" uid="uid://quv1mfdhebf1" path="res://art/spritesheets/Distort.png" id="45_nwhch"]
 [ext_resource type="Texture2D" uid="uid://bc62qb0aohis3" path="res://art/tools/Waves.png" id="46_mbuex"]
@@ -107,6 +108,10 @@
 [ext_resource type="AudioStream" uid="uid://y7h7uwc201p2" path="res://art/audio/loop_four_note_komiku_soundtrack_00-44-470.wav" id="95_qopq6"]
 [ext_resource type="Texture2D" uid="uid://cke86173cg5w8" path="res://art/images/artic_24645.png" id="96_hpfex"]
 [ext_resource type="Script" path="res://ItemDetail.gd" id="96_pugxd"]
+[ext_resource type="AudioStream" uid="uid://cymgixd8kkkhr" path="res://art/audio/hit_b_komiku_home_01-04-122.wav" id="100_neens"]
+[ext_resource type="AudioStream" uid="uid://svh2s5b4q4x4" path="res://art/audio/hit_c_komiku_mushrooms_00-09-208.wav" id="101_ecuij"]
+[ext_resource type="AudioStream" uid="uid://ibguujxcp2eo" path="res://art/audio/transition_a_komiku_mushrooms_00-01-264.wav" id="107_w2qnj"]
+[ext_resource type="AudioStream" uid="uid://2q0k5nfprvy8" path="res://art/audio/transition_b_komiku_mushrooms_00-02-568.wav" id="108_ge4b5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0prh"]
 bg_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
@@ -3018,6 +3023,10 @@ pitch_scale = 0.75
 bus = &"Reverb"
 script = ExtResource("7_wns1r")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas"]
+stream = ExtResource("42_gt250")
+bus = &"Reverb"
+
 [node name="MainMenu" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 10
@@ -3539,6 +3548,14 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ToolsMenu/ToolNavButton"]
+stream = ExtResource("101_ecuij")
+bus = &"Reverb"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ToolsMenu"]
+stream = ExtResource("100_neens")
+bus = &"Reverb"
+
 [node name="ImageSelector" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -3738,6 +3755,14 @@ use_native_dialog = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ImageSelector"]
 stream = ExtResource("91_dac4g")
+bus = &"Reverb"
+
+[node name="ButtonAudioPlayer" type="AudioStreamPlayer" parent="ImageSelector"]
+stream = ExtResource("107_w2qnj")
+bus = &"Reverb"
+
+[node name="TransitionAudioPlayer" type="AudioStreamPlayer" parent="ImageSelector"]
+stream = ExtResource("108_ge4b5")
 bus = &"Reverb"
 
 [node name="ItemDetail" type="Panel" parent="."]

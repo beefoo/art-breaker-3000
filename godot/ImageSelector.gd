@@ -7,13 +7,16 @@ var collection_data = []
 var collection_data_file = "data/collection.json"
 var collection_size = 0
 
+@onready var button_audio_player = $ButtonAudioPlayer
+@onready var transition_audio_player = $TransitionAudioPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	button_count = $ImageButtons.get_child_count()
 	# Load collection data
 	load_collection_data(collection_data_file)
 	# Show random set
-	show_random_set()
+	show_random_set(true)
 	# Load listeners
 	$ActionButtons/RandomizeButton.pressed.connect(show_random_set)
 	for i in range(button_count):
@@ -56,6 +59,7 @@ func open_import_dialog():
 	$ImportFileDialog.popup_centered()
 	
 func select_random_image():
+	transition_audio_player.play(0.0)
 	var random_item = collection_data.pick_random()
 	var texture = load("res://art/images/%s.png" % random_item["Id"])
 	image_selected.emit(texture, random_item)
@@ -66,8 +70,11 @@ func set_button_data(button_index, item_data):
 	button.set_item_data(item_data)
 
 # Show a random set of images to select from
-func show_random_set():
+func show_random_set(initial = false):
 	collection_data.shuffle() # Randomize the order
 	
 	for i in range(button_count):
 		set_button_data(i + 1, collection_data[i])
+		
+	if not initial:
+		button_audio_player.play(0.0)

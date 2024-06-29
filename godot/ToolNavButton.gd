@@ -4,6 +4,8 @@ var button_groups = []
 var button_group_count = 0
 var active_group_i = 0
 
+@onready var audio_player = $AudioStreamPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	button_groups = get_parent().get_children().filter(func(node): return node.get_class() == "VBoxContainer")
@@ -14,6 +16,7 @@ func _pressed():
 	active_group_i += 1
 	if active_group_i >= button_group_count:
 		active_group_i = 0
+	audio_player.play(0.0)
 	show_active_group()
 	
 func show_active_group():

@@ -136,6 +136,7 @@ func open_new_dialog():
 	canvas.deactivate()
 	
 func open_save_dialog():
+	canvas.audio_player.play(0.0)
 	#var timestamp = Time.get_datetime_string_from_system().replace("T", "-").replace(":", "")
 	#
 	## Try to use native file selector first
