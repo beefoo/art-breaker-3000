@@ -20,6 +20,9 @@ func _on_close():
 
 func _on_open():
 	pass
+	
+func _on_link_clicked(url):
+	OS.shell_open(url)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -67,9 +70,10 @@ func animate_out():
 	is_animating = true
 	animating_out = true
 	
-func close():
+func close(with_sound=true):
 	animate_out()
-	play_sound()
+	if with_sound:
+		play_sound()
 	closed.emit()
 
 func ease_bounce(n):
@@ -88,9 +92,10 @@ func ease_bounce(n):
 		var n2 = n - 2.65 / d1
 		return n1 * n2 * n2 + 0.984375
 	
-func open():
+func open(with_sound=true):
 	animate_in()
-	play_sound()
+	if with_sound:
+		play_sound()
 	
 func play_sound():
 	await get_tree().create_timer(DELAY_AUDIO).timeout

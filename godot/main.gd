@@ -22,7 +22,6 @@ func _ready():
 	
 	# Load listeners
 	save_file_dialog.file_selected.connect(_on_save_file_selected)
-	
 	image_selector.image_selected.connect(_on_image_selected)
 	item_detail.closed.connect(_on_dialog_close)
 	image_selector.closed.connect(_on_dialog_close)
@@ -116,7 +115,7 @@ func auto_load():
 	canvas.set_original_image(item_texture)
 	canvas.activate()
 	item_detail.set_item(item_texture, data)
-	image_selector.close()
+	image_selector.close(false)
 	tools_menu.focus_on_first_control()
 
 func auto_save_data(data):

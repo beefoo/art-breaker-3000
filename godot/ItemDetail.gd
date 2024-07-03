@@ -4,9 +4,6 @@ extends Modal
 func _ready():	
 	$HBox/TextContainer/CloseButton.pressed.connect(close)
 	$HBox/TextContainer/Text.meta_clicked.connect(_on_link_clicked)
-
-func _on_link_clicked(url):
-	OS.shell_open(url)
 	
 func _on_open():
 	focus_on_first_control()

@@ -3,9 +3,18 @@ extends Modal
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$StartButton.pressed.connect(close)
 
+func _on_open():
+	focus_on_first_control()
+	
+func close():
+	animate_out()
+	audio_player.stop()
+	closed.emit()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func focus_on_first_control():
+	$StartButton.grab_focus()
+
+func play_sound():
+	audio_player.play(0.0)

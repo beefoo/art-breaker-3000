@@ -1,4 +1,4 @@
-[gd_scene load_steps=484 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=486 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -112,6 +112,7 @@
 [ext_resource type="AudioStream" uid="uid://svh2s5b4q4x4" path="res://art/audio/hit_c_komiku_mushrooms_00-09-208.wav" id="101_ecuij"]
 [ext_resource type="AudioStream" uid="uid://ibguujxcp2eo" path="res://art/audio/transition_a_komiku_mushrooms_00-01-264.wav" id="107_w2qnj"]
 [ext_resource type="AudioStream" uid="uid://2q0k5nfprvy8" path="res://art/audio/transition_b_komiku_mushrooms_00-02-568.wav" id="108_ge4b5"]
+[ext_resource type="Script" path="res://Credits.gd" id="113_32dut"]
 [ext_resource type="Script" path="res://Title.gd" id="113_fd4gl"]
 [ext_resource type="Texture2D" uid="uid://dvlk2n224pvfi" path="res://art/images/metmuseum_436535.png" id="114_thvx8"]
 [ext_resource type="Texture2D" uid="uid://c5u3u66wocypa" path="res://art/artbreaker_3000_title-01.png" id="115_c6mf8"]
@@ -2581,6 +2582,9 @@ shader_parameter/border = 0.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7lfk"]
 bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrff3"]
+bg_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_223p4"]
 bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 
@@ -3842,9 +3846,50 @@ use_native_dialog = true
 
 [node name="Credits" type="Panel" parent="."]
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hrff3")
+script = ExtResource("113_32dut")
+
+[node name="Text" type="RichTextLabel" parent="Credits"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 60.0
+offset_right = -60.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=90][url=https://artbreaker.brianfoo.com/][b][color=#ff47e7]Art Breaker 3000[/color][/b][/url] is an app for demolishing and recycling famous artworks efficiently and beautifully. It was created by [url=https://brianfoo.com/][color=#ffc847]Brian Foo[/color][/url] in 2024. Music and audio courtesy of public domain music by [url=https://freemusicarchive.org/music/Komiku/][color=#f7de38]Komiku[/color][/url]. Public domain artworks courtesy of [url=https://www.artic.edu/][color=#ff47e7]The Art Institute of Chicago[/color][/url], [url=https://www.clevelandart.org/][color=#ffc847]The Cleveland Art Museum[/color][/url], [url=https://www.metmuseum.org/][color=#f7de38]The Metropolitan Museum of Art[/color][/url], [url=https://www.nga.gov/][color=#ff47e7]The National Gallery of Art[/color][/url], and [url=https://www.si.edu/][color=#ffc847]The Smithsonian Institution[/color][/url]. This app was created in [url=https://godotengine.org/][color=#f7de38]Godot[/color][/url] and the code is [url=https://github.com/beefoo/artbreaker/][color=#ff47e7]open source[/color][/url].[/font_size]"
+
+[node name="CloseButton" type="Button" parent="Credits"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.5
+offset_top = -41.0
+offset_right = 32.5
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("89_kj3un")
+theme_override_font_sizes/font_size = 80
+text = "Close"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Credits"]
+stream = ExtResource("94_l8yrl")
+bus = &"Reverb"
 
 [node name="Title" type="Panel" parent="."]
 layout_mode = 1
