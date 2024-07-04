@@ -3568,6 +3568,7 @@ stream = ExtResource("100_neens")
 bus = &"Reverb"
 
 [node name="ImageSelector" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3954,7 +3955,11 @@ theme = ExtResource("89_kj3un")
 theme_override_font_sizes/font_size = 122
 text = "Start"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Title"]
+[node name="BackgroundAudioPlayer" type="AudioStreamPlayer" parent="Title"]
 stream = ExtResource("116_l5jrm")
 pitch_scale = 1.5
 bus = &"Delay"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Title"]
+stream = ExtResource("94_l8yrl")
+bus = &"Reverb"

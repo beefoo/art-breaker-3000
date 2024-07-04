@@ -7,9 +7,11 @@ var image_selected = false
 var tools = []
 
 @onready var canvas = $CanvasContainer/Canvas
+@onready var credits = $Credits
 @onready var image_selector = $ImageSelector
 @onready var item_detail = $ItemDetail
 @onready var save_file_dialog = $SaveFileDialog
+@onready var title = $Title
 @onready var tools_menu = $ToolsMenu
 
 # Called when the node enters the scene tree for the first time.
@@ -25,6 +27,8 @@ func _ready():
 	image_selector.image_selected.connect(_on_image_selected)
 	item_detail.closed.connect(_on_dialog_close)
 	image_selector.closed.connect(_on_dialog_close)
+	title.closed.connect(auto_load)
+	credits.closed.connect(_on_dialog_close)
 	canvas.texture_updated.connect(_on_texture_updated)
 	get_viewport().size_changed.connect(_on_resize)
 
@@ -89,11 +93,11 @@ func _on_tool_selected(tool_name, from_user):
 func _process(_delta):
 	if first_process:
 		first_process = false
-		auto_load()
+		#auto_load()
 	
 func auto_load():
 	if not FileAccess.file_exists(auto_save_image_path) or not FileAccess.file_exists(auto_save_data_path):
-		image_selector.focus_on_first_control()
+		image_selector.open()
 		return
 	
 	var image = Image.load_from_file(auto_save_image_path)
@@ -115,7 +119,7 @@ func auto_load():
 	canvas.set_original_image(item_texture)
 	canvas.activate()
 	item_detail.set_item(item_texture, data)
-	image_selector.close(false)
+	#image_selector.close(false)
 	tools_menu.focus_on_first_control()
 
 func auto_save_data(data):

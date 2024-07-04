@@ -47,10 +47,7 @@ func _process(_delta):
 	
 	# Transition between images
 	var n = float(t - animation_start) / float(animation_end - animation_start)
-	n = ease_bounce(n)
-	
-	var new_y = lerpf(position_start, position_end, n)
-	set_position (Vector2(0.0, new_y))
+	animate_step(n)
 
 func animate_in():
 	# Start the transition
@@ -69,6 +66,11 @@ func animate_out():
 	position_end = size.y
 	is_animating = true
 	animating_out = true
+	
+func animate_step(n):
+	n = ease_bounce(n)
+	var new_y = lerpf(position_start, position_end, n)
+	set_position (Vector2(0.0, new_y))
 	
 func close(with_sound=true):
 	animate_out()
