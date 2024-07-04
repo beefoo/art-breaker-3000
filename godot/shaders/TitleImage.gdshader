@@ -15,6 +15,6 @@ void fragment() {
 	float center_band = floor(0.5 / band_size);
 	float band_multiplier = (BANDS - abs(center_band - band)) / BANDS;
 	// animate based on time, base speed, pointer multiplier, acceleration, and direction
-	float x = mod(UV.x + (pow(time, band_multiplier) * BASE_SPEED * direction), 1.0);
+	float x = mod(UV.x + (pow(max(time, 0.0), band_multiplier) * BASE_SPEED * direction), 1.0);
 	COLOR = texture(TEXTURE, vec2(x, UV.y));
 }

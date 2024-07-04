@@ -1,5 +1,6 @@
 extends Modal
 
+var DELAY_SHADER = 0.5
 var time = 0.0
 
 @onready var image_shader = $ImageContainer/TextureRect.material
@@ -7,7 +8,8 @@ var time = 0.0
 
 func custom_process(delta):
 	time += delta
-	image_shader.set_shader_parameter("time", time)
+	if time > DELAY_SHADER:
+		image_shader.set_shader_parameter("time", time - DELAY_SHADER)
 	text_shader.set_shader_parameter("time", time)
 
 # Called when the node enters the scene tree for the first time.
