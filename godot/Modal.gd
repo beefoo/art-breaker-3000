@@ -25,7 +25,9 @@ func _on_link_clicked(url):
 	OS.shell_open(url)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
+	custom_process(delta)
+	
 	if not is_animating:
 		return
 		
@@ -71,6 +73,9 @@ func animate_step(n):
 	n = ease_bounce(n)
 	var new_y = lerpf(position_start, position_end, n)
 	set_position (Vector2(0.0, new_y))
+	
+func custom_process(delta):
+	pass
 	
 func close(with_sound=true):
 	animate_out()
