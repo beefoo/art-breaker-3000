@@ -1,4 +1,4 @@
-[gd_scene load_steps=490 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=493 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -42,7 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://cnc26ms7xeop0" path="res://art/tools/BandShuffle.png" id="29_02nn4"]
 [ext_resource type="Theme" uid="uid://cyeaxliunhshn" path="res://Menu.tres" id="29_ktvei"]
 [ext_resource type="AudioStream" uid="uid://bb7i0gvb5nj71" path="res://art/audio/loop_four_note_b_komiku_soundtrack_03-17-660.wav" id="30_a2i62"]
-[ext_resource type="Script" path="res://MenuButton.gd" id="30_cw20u"]
+[ext_resource type="Script" path="res://MainMenuButton.gd" id="30_cw20u"]
 [ext_resource type="Script" path="res://ToolButton.gd" id="30_vabsa"]
 [ext_resource type="Texture2D" uid="uid://uu08pl7i1tkl" path="res://art/spritesheets/BandShuffle.png" id="31_7iaca"]
 [ext_resource type="Script" path="res://ToolButtonGroup.gd" id="32_mevua"]
@@ -62,7 +62,9 @@
 [ext_resource type="Texture2D" uid="uid://1srw31v3ss6o" path="res://art/spritesheets/Pixelate.png" id="41_en4gu"]
 [ext_resource type="AudioStream" uid="uid://dsrj56x7chx5k" path="res://art/audio/hit_komiku_soundtrack_01-10-940.wav" id="42_gt250"]
 [ext_resource type="Texture2D" uid="uid://ioh5sbsd8ws7" path="res://art/spritesheets/Kaleidoscope.png" id="43_6p15c"]
+[ext_resource type="Shader" path="res://shaders/Logo.gdshader" id="43_8772m"]
 [ext_resource type="Texture2D" uid="uid://quv1mfdhebf1" path="res://art/spritesheets/Distort.png" id="45_nwhch"]
+[ext_resource type="Script" path="res://LogoButton.gd" id="45_tkods"]
 [ext_resource type="Texture2D" uid="uid://bc62qb0aohis3" path="res://art/tools/Waves.png" id="46_mbuex"]
 [ext_resource type="Texture2D" uid="uid://l3i647sp7l48" path="res://art/spritesheets/Waves.png" id="47_tmnht"]
 [ext_resource type="Texture2D" uid="uid://kir8qxrq8dfn" path="res://art/tools/Rainbow.png" id="48_4q7d7"]
@@ -243,6 +245,10 @@ shader_parameter/time = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyoie"]
 bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7nno"]
+shader = ExtResource("43_8772m")
+shader_parameter/time = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_46b5e"]
 shader = ExtResource("32_uoai7")
@@ -3056,6 +3062,19 @@ offset_bottom = 56.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qyoie")
 
+[node name="LogoButton" type="Button" parent="MainMenu"]
+material = SubResource("ShaderMaterial_k7nno")
+layout_mode = 0
+offset_right = 112.0
+offset_bottom = 60.0
+theme = ExtResource("29_ktvei")
+theme_override_font_sizes/font_size = 42
+text = "AB3K"
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("45_tkods")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 1
@@ -3075,6 +3094,7 @@ text = "New"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
+action_name = "ui_new"
 
 [node name="Random" type="Button" parent="MainMenu/HBoxContainer"]
 custom_minimum_size = Vector2(115, 56)
@@ -3085,6 +3105,7 @@ text = "Random"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
+action_name = "ui_random"
 
 [node name="Save" type="Button" parent="MainMenu/HBoxContainer"]
 custom_minimum_size = Vector2(84, 56)
@@ -3095,6 +3116,7 @@ text = "Save"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
+action_name = "ui_save"
 
 [node name="Undo" type="Button" parent="MainMenu/HBoxContainer"]
 custom_minimum_size = Vector2(84, 56)
@@ -3105,6 +3127,7 @@ text = "Undo"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
+action_name = "ui_undo"
 
 [node name="Reset" type="Button" parent="MainMenu/HBoxContainer"]
 custom_minimum_size = Vector2(94, 56)
@@ -3115,6 +3138,7 @@ text = "Reset"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
+action_name = "ui_reset"
 
 [node name="Info" type="Button" parent="MainMenu/HBoxContainer"]
 custom_minimum_size = Vector2(72, 56)
@@ -3125,6 +3149,7 @@ text = "Info"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
+action_name = "ui_info"
 
 [node name="Exit" type="Button" parent="MainMenu/HBoxContainer"]
 custom_minimum_size = Vector2(72, 56)
@@ -3135,6 +3160,7 @@ text = "Exit"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("30_cw20u")
+action_name = "ui_quit"
 
 [node name="ToolsMenu" type="Panel" parent="."]
 layout_mode = 1
@@ -3966,6 +3992,7 @@ grow_vertical = 0
 theme = ExtResource("89_kj3un")
 theme_override_font_sizes/font_size = 122
 text = "Start"
+expand_icon = true
 
 [node name="BackgroundAudioPlayer" type="AudioStreamPlayer" parent="Title"]
 stream = ExtResource("116_l5jrm")

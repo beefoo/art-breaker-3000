@@ -39,6 +39,9 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		_on_cancel()
 		
+	elif event.is_action_pressed("ui_credits"):
+		open_credits_dialog()
+		
 	elif event.is_action_pressed("ui_info"):
 		open_info_dialog()
 		
@@ -129,6 +132,10 @@ func auto_save_data(data):
 
 func auto_save_image():
 	canvas.save_image(auto_save_image_path)
+	
+func open_credits_dialog():
+	credits.open()
+	canvas.deactivate()
 
 func open_info_dialog():
 	item_detail.open()
