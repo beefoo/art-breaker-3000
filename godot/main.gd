@@ -147,17 +147,19 @@ func open_new_dialog():
 	
 func open_save_dialog():
 	canvas.audio_player.play(0.0)
-	#var timestamp = Time.get_datetime_string_from_system().replace("T", "-").replace(":", "")
+	var timestamp = Time.get_datetime_string_from_system().replace("T", "-").replace(":", "")
+	var filename = "art_breaker_%s.png" % timestamp
 	#
 	## Try to use native file selector first
 	#var on_file_selected = func(status, selected_paths, selected_filter_index):
 		#if selected_paths.size() > 0:
 			#_on_save_file_selected(selected_paths[0])
-	#var error = DisplayServer.file_dialog_show("Save image", "", "art_breaker_%s.png" % timestamp, false, DisplayServer.FILE_DIALOG_MODE_SAVE_FILE, PackedStringArray(["*.png"]), on_file_selected)
+	#var error = DisplayServer.file_dialog_show("Save image", "", filename, false, DisplayServer.FILE_DIALOG_MODE_SAVE_FILE, PackedStringArray(["*.png"]), on_file_selected)
 	#
 	## Otherwise, use the Godot file dialog
 	#if error != OK:
 		#$SaveFileDialog.popup_centered()
+	save_file_dialog.set_current_file(filename)
 	save_file_dialog.popup_centered()
 	
 func quit():
