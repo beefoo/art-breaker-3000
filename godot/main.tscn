@@ -2703,7 +2703,7 @@ stream = ExtResource("13_dpipy")
 bus = &"Pitch"
 script = ExtResource("7_wns1r")
 effect_mode = "wave"
-effect_dur = 0.25
+effect_dur = 0.2
 effect_min = 1.0
 effect_max = 1.5
 
@@ -2854,11 +2854,12 @@ shader_pointer_start = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Ghost"]
 stream = ExtResource("15_6sxus")
+volume_db = 6.0
 pitch_scale = 0.5
 bus = &"Pitch"
 script = ExtResource("7_wns1r")
 effect_mode = "pointer"
-effect_min = 0.2
+effect_min = 0.5
 effect_max = 1.0
 
 [node name="DiscoFloor" type="Control" parent="CanvasContainer/Canvas"]
@@ -2976,12 +2977,13 @@ shader_pointer = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasContainer/Canvas/Bend"]
 stream = ExtResource("36_d0q6s")
+volume_db = 4.0
 pitch_scale = 0.5
 bus = &"Pitch"
 script = ExtResource("7_wns1r")
 effect_mode = "velocity"
-effect_min = 0.5
-effect_max = 1.0
+effect_min = 1.0
+effect_max = 2.0
 
 [node name="Checkerboard" type="Control" parent="CanvasContainer/Canvas"]
 visible = false

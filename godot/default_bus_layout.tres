@@ -2,7 +2,7 @@
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_48sss"]
 resource_name = "Reverb"
-room_size = 0.25
+room_size = 0.2
 wet = 0.4
 
 [sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_lxsmx"]
