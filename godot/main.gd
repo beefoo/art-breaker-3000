@@ -100,6 +100,7 @@ func _process(_delta):
 	
 func auto_load():
 	if not FileAccess.file_exists(auto_save_image_path) or not FileAccess.file_exists(auto_save_data_path):
+		image_selector.allow_cancel = false
 		image_selector.open()
 		return
 	

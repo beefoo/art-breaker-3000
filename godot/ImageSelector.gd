@@ -2,6 +2,7 @@ extends Modal
 
 signal image_selected(texture, data)
 
+var allow_cancel = true
 var button_count = 0
 var collection_data = []
 var collection_data_file = "data/collection.json"
@@ -28,6 +29,9 @@ func _ready():
 	$ImportFileDialog.file_selected.connect(_on_import_image_selected)
 	$ActionButtons/CancelButton.pressed.connect(close)
 
+func _on_close():
+	allow_cancel = true
+
 func _on_image_selected(texture, data):
 	image_selected.emit(texture, data)
 	close()
@@ -42,7 +46,8 @@ func _on_import_image_selected(path):
 	_on_image_selected(texture, data)
 	
 func _on_open():
-	$ActionButtons/CancelButton.show()
+	if allow_cancel:
+		$ActionButtons/CancelButton.show()
 	focus_on_first_control()
 
 func focus_on_first_control():
