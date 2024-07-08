@@ -1,4 +1,4 @@
-[gd_scene load_steps=493 format=3 uid="uid://by35kbh6nbtie"]
+[gd_scene load_steps=494 format=3 uid="uid://by35kbh6nbtie"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_1a1nr"]
 [ext_resource type="Theme" uid="uid://b71xgbfr2dyb" path="res://Main.tres" id="1_2pa20"]
@@ -117,6 +117,7 @@
 [ext_resource type="Script" path="res://Credits.gd" id="113_32dut"]
 [ext_resource type="Script" path="res://Title.gd" id="113_fd4gl"]
 [ext_resource type="Texture2D" uid="uid://dvlk2n224pvfi" path="res://art/images/metmuseum_436535.png" id="114_thvx8"]
+[ext_resource type="AudioStream" uid="uid://c20kr83f7n5p5" path="res://art/audio/chime_komiku_home_00-00-583.wav" id="115_1ie3d"]
 [ext_resource type="Texture2D" uid="uid://c5u3u66wocypa" path="res://art/artbreaker_3000_title-01.png" id="115_c6mf8"]
 [ext_resource type="Shader" path="res://shaders/TitleImage.gdshader" id="115_s1noq"]
 [ext_resource type="Shader" path="res://shaders/TitleText.gdshader" id="116_fphva"]
@@ -3884,6 +3885,10 @@ bus = &"Reverb"
 access = 2
 filters = PackedStringArray("*.png")
 use_native_dialog = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SaveFileDialog"]
+stream = ExtResource("115_1ie3d")
+bus = &"Reverb"
 
 [node name="Credits" type="Panel" parent="."]
 visible = false

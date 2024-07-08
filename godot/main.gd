@@ -79,6 +79,7 @@ func _on_resize():
 
 func _on_save_file_selected(path):
 	canvas.save_image(path)
+	$SaveFileDialog/AudioStreamPlayer.play(0.0)
 
 func _on_texture_updated():
 	auto_save_image()
