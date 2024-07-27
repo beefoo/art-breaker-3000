@@ -5,7 +5,7 @@ signal image_selected(texture, data)
 var allow_cancel = true
 var button_count = 0
 var collection_data = []
-var collection_data_file = "data/collection.json"
+var collection_data_file = "res://data/collection.json"
 var collection_size = 0
 
 @onready var button_audio_player = $ButtonAudioPlayer

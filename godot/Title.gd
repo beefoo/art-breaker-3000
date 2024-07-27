@@ -18,7 +18,7 @@ func _ready():
 	focus_on_first_control()
 	$BackgroundAudioPlayer.play(0.0)
 
-func close(with_sound=true):
+func close(_with_sound=true):
 	$BackgroundAudioPlayer.stop()
 	animate_out()	
 	closed.emit()

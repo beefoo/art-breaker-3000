@@ -5,8 +5,8 @@ class_name MainMenuButton extends Button
 func _pressed():
 	trigger_action(action_name)
 
-func trigger_action(name):
+func trigger_action(triggered_action_name):
 	var custom_event = InputEventAction.new()
-	custom_event.action = name
+	custom_event.action = triggered_action_name
 	custom_event.pressed = true
 	Input.parse_input_event(custom_event)

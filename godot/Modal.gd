@@ -74,7 +74,7 @@ func animate_step(n):
 	var new_y = lerpf(position_start, position_end, n)
 	set_position (Vector2(0.0, new_y))
 	
-func custom_process(delta):
+func custom_process(_delta):
 	pass
 	
 func close(with_sound=true):

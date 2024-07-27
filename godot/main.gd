@@ -110,6 +110,11 @@ func auto_load():
 	var json_string = FileAccess.get_file_as_string(auto_save_data_path)
 	var data = JSON.parse_string(json_string)
 	
+	if not data:
+		image_selector.allow_cancel = false
+		image_selector.open()
+		return
+	
 	var item_texture
 	# This is a user-imported image
 	if data.has("Path"):
