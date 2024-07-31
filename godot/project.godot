@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0.168627, 0.168627, 0.168627, 1)
 boot_splash/image="res://icons/splash_1920x1080.png"
 config/icon="res://icons/icon_128x128.png"
+config/macos_native_icon="res://icons/icon.icns"
 config/windows_native_icon="res://icons/icon.ico"
 
 [display]
