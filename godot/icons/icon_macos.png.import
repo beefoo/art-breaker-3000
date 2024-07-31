@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mbduk10xvcs6"
-path="res://.godot/imported/icon-macos.png-a7ee78acabfd2bab94b181602aae18a6.ctex"
+uid="uid://dlajvibm4sxcq"
+path="res://.godot/imported/icon_macos.png-416565229fb31715189160f5ab93af31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon-macos.png"
-dest_files=["res://.godot/imported/icon-macos.png-a7ee78acabfd2bab94b181602aae18a6.ctex"]
+source_file="res://icons/icon_macos.png"
+dest_files=["res://.godot/imported/icon_macos.png-416565229fb31715189160f5ab93af31.ctex"]
 
 [params]
 
