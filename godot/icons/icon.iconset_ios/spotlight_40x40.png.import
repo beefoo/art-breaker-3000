@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8l71v5r1rayb"
-path="res://.godot/imported/icon_square_1024x1024.png-290b6ae4861694937e5f7fe636719e75.ctex"
+uid="uid://ddfypjvaiu60o"
+path="res://.godot/imported/spotlight_40x40.png-cdc4e177bfac048b30d301cbc2ef4b15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/icon_square_1024x1024.png"
-dest_files=["res://.godot/imported/icon_square_1024x1024.png-290b6ae4861694937e5f7fe636719e75.ctex"]
+source_file="res://icons/icon.iconset_ios/spotlight_40x40.png"
+dest_files=["res://.godot/imported/spotlight_40x40.png-cdc4e177bfac048b30d301cbc2ef4b15.ctex"]
 
 [params]
 
