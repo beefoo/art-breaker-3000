@@ -31,3 +31,9 @@ Warning: unable to build chain to self-signed root for signer...
 Solution:
 
 [Add intermediate signing certificate in your system keychain](https://stackoverflow.com/a/66083449)
+
+### Android
+
+```
+keytool -v -genkey -keystore artbreaker.keystore -alias artbreaker -keyalg RSA -validity 10000
+```
