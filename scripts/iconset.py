@@ -28,7 +28,8 @@ def main(args):
             {"filename": "icon_256x256.png", "width": 256, "height": 256},
             {"filename": "icon_256x256@2x.png", "width": 512, "height": 512},
             {"filename": "icon_512x512.png", "width": 512, "height": 512},
-            {"filename": "icon_512x512@2x.png", "width": 1024, "height": 1024}
+            {"filename": "icon_512x512@2x.png", "width": 1024, "height": 1024},
+            {"filename": "icon_512x512@3x.png", "width": 1536, "height": 1536}
         ],
         "ios": [
             {"filename": "app_store_1024x1024.png", "width": 1024, "height": 1024},
