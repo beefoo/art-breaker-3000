@@ -61,6 +61,7 @@ func load_collection_data(data_file):
 	print("Loaded %s collection items" % collection_size)
 	
 func open_import_dialog():
+	$ImportFileDialog.set_current_dir(OS.get_system_dir(OS.SYSTEM_DIR_PICTURES))
 	$ImportFileDialog.popup_centered_clamped()
 	
 func select_random_image():

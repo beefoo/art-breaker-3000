@@ -166,6 +166,7 @@ func open_save_dialog():
 	## Otherwise, use the Godot file dialog
 	#if error != OK:
 		#$SaveFileDialog.popup_centered()
+	save_file_dialog.set_current_dir(OS.get_system_dir(OS.SYSTEM_DIR_PICTURES))
 	save_file_dialog.set_current_file(filename)
 	save_file_dialog.popup_centered_clamped()
 	
