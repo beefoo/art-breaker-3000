@@ -3798,6 +3798,7 @@ text = "Randomize images"
 
 [node name="ImportFileDialog" type="FileDialog" parent="ImageSelector"]
 title = "Open a File"
+size = Vector2i(960, 640)
 ok_button_text = "Open"
 file_mode = 0
 access = 2
@@ -3883,6 +3884,7 @@ stream = ExtResource("94_l8yrl")
 bus = &"Reverb"
 
 [node name="SaveFileDialog" type="FileDialog" parent="."]
+size = Vector2i(960, 640)
 access = 2
 filters = PackedStringArray("*.png")
 show_hidden_files = false

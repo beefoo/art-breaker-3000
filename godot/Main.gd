@@ -167,7 +167,7 @@ func open_save_dialog():
 	#if error != OK:
 		#$SaveFileDialog.popup_centered()
 	save_file_dialog.set_current_file(filename)
-	save_file_dialog.popup_centered()
+	save_file_dialog.popup_centered_clamped()
 	
 func quit():
 	get_tree().quit()
