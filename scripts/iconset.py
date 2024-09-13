@@ -1,6 +1,5 @@
 import argparse
 import os
-import shutil
 
 from PIL import Image
 
@@ -9,7 +8,7 @@ from helper import make_directories
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--in", dest="SOURCE_DIR", default="godot/icons/", help="Path to source icon")
-    parser.add_argument("--preset", dest="PRESET", choices=["macos", "ios"], help="Which preset to use")
+    parser.add_argument("--preset", dest="PRESET", choices=["macos", "ios"], default="macos", help="Which preset to use")
     parser.add_argument("--out", dest="OUTPUT_DIR", default="godot/icons/", help="Path to output iconset")
     parser.add_argument("--overwrite", dest="OVERWRITE", action="store_true", help="Overwrite image files if already exists")
     return parser.parse_args()
@@ -49,6 +48,7 @@ def main(args):
     iconset = iconsets[args.PRESET]
     file_source = f"{args.SOURCE_DIR}icon_{args.PRESET}.png"
     im = Image.open(file_source)
+    im.convert("RGB")
     imw, imh = im.size
     for ico in iconset:
         filepath = f"{args.OUTPUT_DIR}icon.iconset_{args.PRESET}/{ico['filename']}"
@@ -58,11 +58,11 @@ def main(args):
             print(f"Already created {filepath}; skipping.")
             continue
         
-        # If already the same size, just copy it over
-        if imw == ico["width"] and imh == ico["height"]:
-            shutil.copyfile(file_source, filepath)
-            print(f"Created {filepath} via copy")
-            continue
+        # # If already the same size, just copy it over
+        # if imw == ico["width"] and imh == ico["height"]:
+        #     shutil.copyfile(file_source, filepath)
+        #     print(f"Created {filepath} via copy")
+        #     continue
         
         # Resize and save
         resized = im.resize((ico["width"], ico["height"]), Image.Resampling.NEAREST)
