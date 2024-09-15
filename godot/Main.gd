@@ -156,6 +156,13 @@ func open_save_dialog():
 	canvas.audio_player.play(0.0)
 	var timestamp = Time.get_datetime_string_from_system().replace("T", "-").replace(":", "")
 	var filename = "art_breaker_%s.png" % timestamp
+	
+	# For Web, use javascript to download image instead
+	if OS.get_name() == "Web":
+		var image = canvas.get_image()
+		var buffer = image.save_png_to_buffer()
+		JavaScriptBridge.download_buffer(buffer, filename, "image/png")
+		return
 	#
 	## Try to use native file selector first
 	#var on_file_selected = func(status, selected_paths, selected_filter_index):
@@ -171,6 +178,9 @@ func open_save_dialog():
 	save_file_dialog.popup_centered_clamped()
 	
 func quit():
+	if OS.get_name() == "Web":
+		return
+		
 	get_tree().quit()
 		
 func select_random_image():

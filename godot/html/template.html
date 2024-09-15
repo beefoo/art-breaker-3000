@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+<title>$GODOT_PROJECT_NAME</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+    body {
+        margin: 0;
+    }
+    #canvas {
+        position: absolute;
+    }
+    #file-picker {
+        visibility: hidden;
+    }
+</style>
+
+</head>
+<body>
+    <button id="start">Start</button>
+    <input id="file-picker" type="file" accept="image/png, image/jpeg, image/webp" />
+    <canvas id="canvas"></canvas>
+    <script src="$GODOT_URL"></script>
+    <script>
+        window._fileExchange = {};
+        window._fileExchange.upload = function(gd_callback) {
+            const input = document.getElementById('file-picker')
+            input.click();
+            this.cancelled = false;
+            input.addEventListener('change', (event) => {
+                if (event.target.files.length <= 0) {
+                    this.cancelled = true;
+                    return;
+                }
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                this.fileType = file.type;
+                // var fileName = file.name;
+                reader.readAsArrayBuffer(file);
+                reader.onloadend = (evt) => {
+                    if (evt.target.readyState === FileReader.DONE) {
+                        this.result = evt.target.result;
+                        gd_callback();
+                    }
+                }
+            });
+        }
+        const engine = new Engine($GODOT_CONFIG);
+        const startButton = document.getElementById('start');
+        startButton.onclick = (event) => {
+            engine.startGame();
+        };
+    </script>
+</body>
+</html>

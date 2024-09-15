@@ -6,3 +6,4 @@ images/downloads/*
 images/selections/*
 !images/selections/.keep
 api_keys.json
+node_modules/
