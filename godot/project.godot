@@ -21,6 +21,10 @@ config/icon="res://icons/icon_128x128.png"
 config/macos_native_icon="res://icons/icon.icns"
 config/windows_native_icon="res://icons/icon.ico"
 
+[audio]
+
+general/default_playback_type.web=0
+
 [display]
 
 window/size/viewport_width=1920
