@@ -179,6 +179,8 @@ func open_save_dialog():
 	
 func quit():
 	if OS.get_name() == "Web":
+		var js_interface = JavaScriptBridge.get_interface("_gdExchange")
+		js_interface.quit()
 		return
 		
 	get_tree().quit()

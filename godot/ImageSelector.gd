@@ -77,14 +77,14 @@ func open_import_dialog_web_handler(_args):
 
 # Modified from https://github.com/Pukkah/HTML5-File-Exchange-for-Godot/blob/master/addons/HTML5FileExchange/HTML5FileExchange.gd
 func open_import_dialog_web():
-	var js_interface = JavaScriptBridge.get_interface("_fileExchange")
+	var js_interface = JavaScriptBridge.get_interface("_gdExchange")
 	
 	js_interface.upload(js_callback)
 	
 	await web_image_read_completed
 	
 	var image_type = js_interface.fileType;
-	var image_data = JavaScriptBridge.eval("_fileExchange.result", true)
+	var image_data = JavaScriptBridge.eval("_gdExchange.result", true)
 	
 	var image = Image.new()
 	var image_error

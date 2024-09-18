@@ -53,6 +53,10 @@
     }
     #canvas {
         position: absolute;
+        display: none;
+    }
+    #canvas.active {
+        display: block;
     }
     #file-picker {
         visibility: hidden;
@@ -83,7 +87,7 @@
 </head>
 <body>
     <div class="content">
-        <p><strong style="color: #ff47e7">Art Breaker 3000</strong> is an app for demolishing and recycling famous artworks efficiently and beautifully. It was created by <a href="https://brianfoo.com" style="color: #f5ac00">Brian Foo</a> in 2024. Music and audio courtesy of public domain music by <a href="https://freemusicarchive.org/music/Komiku/" target="_blank" style="color: #f7de38">Komiku</a>. Public domain artworks courtesy of <a href="https://www.artic.edu/" target="_blank" style="color: #ff47e7">The Art Institute of Chicago</a>, <a href="https://www.clevelandart.org/" target="_blank" style="color: #f5ac00">The Cleveland Art Museum</a>, <a href="https://www.metmuseum.org/" target="_blank" style="color: #f7de38">The Metropolitan Museum of Art</a>, <a href="https://www.nga.gov/" target="_blank" style="color: #ff47e7">The National Gallery of Art</a>, and <a href="https://www.si.edu/" target="_blank" style="color: #f5ac00">The Smithsonian Institution</a>. This app was created in <a href="https://godotengine.org/" target="_blank" style="color: #f7de38">Godot</a> and the code is <a href="https://github.com/beefoo/artbreaker/" target="_blank" style="color: #ff47e7">open source</a>.</p>
+        <p><strong style="color: #ff47e7">Art Breaker 3000</strong> is an app for demolishing and recycling famous artworks efficiently and beautifully. It was created by <a href="https://brianfoo.com" style="color: #f5ac00">Brian Foo</a> in 2024. Music and audio courtesy of public domain music by <a href="https://freemusicarchive.org/music/Komiku/" target="_blank" style="color: #f7de38">Komiku</a>. Public domain artworks courtesy of <a href="https://www.artic.edu/" target="_blank" style="color: #ff47e7">The Art Institute of Chicago</a>, <a href="https://www.clevelandart.org/" target="_blank" style="color: #f5ac00">The Cleveland Art Museum</a>, <a href="https://www.metmuseum.org/" target="_blank" style="color: #f7de38">The Metropolitan Museum of Art</a>, <a href="https://www.nga.gov/" target="_blank" style="color: #ff47e7">The National Gallery of Art</a>, and <a href="https://www.si.edu/" target="_blank" style="color: #f5ac00">The Smithsonian Institution</a>. This app was created in <a href="https://godotengine.org/" target="_blank" style="color: #f7de38">Godot</a> and the code is <a href="https://github.com/beefoo/art-breaker-3000/" target="_blank" style="color: #ff47e7">open source</a>.</p>
         <p class="button-group">
             <button id="start">Try it in the browser</button>
             <a id="download-pc" href="" download="art-breaker-3000.exe" class="button">Download for PC</a>
@@ -95,9 +99,18 @@
     <canvas id="canvas"></canvas>
     <script src="$GODOT_URL"></script>
     <script>
-        window._fileExchange = {};
-        window._fileExchange.upload = function(gd_callback) {
-            const input = document.getElementById('file-picker')
+        const engine = new Engine($GODOT_CONFIG);
+        let started = false;
+
+        window._gdExchange = {};
+        window._gdExchange.quit = function() {
+            const canvas = document.getElementById('canvas');
+            engine.requestQuit();
+            document.exitFullscreen()
+            canvas.classList.remove('active');
+        };
+        window._gdExchange.upload = function(gd_callback) {
+            const input = document.getElementById('file-picker');
             input.click();
             this.cancelled = false;
             input.addEventListener('change', (event) => {
@@ -118,10 +131,12 @@
                 }
             });
         }
-        const engine = new Engine($GODOT_CONFIG);
+
         const startButton = document.getElementById('start');
         startButton.onclick = (event) => {
             engine.startGame();
+            canvas.classList.add('active');
+            started = true;
         };
     </script>
 </body>
