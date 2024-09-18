@@ -6,83 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style type="text/css">
-    @font-face {
-        font-family: 'Handjet';
-        font-style: normal;
-        font-weight: 100 900;
-        font-display: swap;
-        src: url(fonts/Handjet.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-    body {
-        margin: 0;
-        background: #171717;
-        color: #f1f1f1;
-        font-size: 24px;
-        font-family: 'Handjet', 'Courier New', Courier, monospace;
-        font-optical-sizing: auto;
-    }
-    a {
-        color: #f1f1f1;
-        font-weight: bold;
-    }
-    button,
-    .button {
-        color: #000;
-        display: inline-block;
-        margin: 0 20px 20px 0;
-        padding: 12px 24px;
-        border: none;
-        font-size: 2.4rem;
-        font-family: 'Handjet', 'Courier New', Courier, monospace;
-        font-weight: bold;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    button:focus-visible,
-    .button:focus-visible {
-        outline: 3px solid #ff1b1b;
-    }
-    .content {
-        box-sizing: border-box;
-        font-size: 3rem;
-        padding: 20px;
-        margin: 0 auto;
-        max-width: 1280px;
-    }
-    #canvas {
-        position: absolute;
-        display: none;
-    }
-    #canvas.active {
-        display: block;
-    }
-    #file-picker {
-        visibility: hidden;
-    }
-    #start {
-        background: #ff47e7;
-    }
-    #start:hover {
-        color: #ff47e7;
-        background: #454545;
-    }
-    #download-pc {
-        background: #f5ac00;
-    }
-    #download-pc:hover {
-        color: #f5ac00;
-        background: #454545;
-    }
-    #download-mac {
-        background: #f7de38;
-    }
-    #download-mac:hover {
-        color: #f7de38;
-        background: #2b2b2b;
-    }
-</style>
+<link rel="stylesheet" href="assets/main.css">
 
 </head>
 <body>
@@ -97,47 +21,11 @@
     
     <input id="file-picker" type="file" accept="image/png, image/jpeg, image/webp" />
     <canvas id="canvas"></canvas>
+    
     <script src="$GODOT_URL"></script>
     <script>
         const engine = new Engine($GODOT_CONFIG);
-        let started = false;
-
-        window._gdExchange = {};
-        window._gdExchange.quit = function() {
-            const canvas = document.getElementById('canvas');
-            engine.requestQuit();
-            document.exitFullscreen()
-            canvas.classList.remove('active');
-        };
-        window._gdExchange.upload = function(gd_callback) {
-            const input = document.getElementById('file-picker');
-            input.click();
-            this.cancelled = false;
-            input.addEventListener('change', (event) => {
-                if (event.target.files.length <= 0) {
-                    this.cancelled = true;
-                    return;
-                }
-                const file = event.target.files[0];
-                const reader = new FileReader();
-                this.fileType = file.type;
-                // var fileName = file.name;
-                reader.readAsArrayBuffer(file);
-                reader.onloadend = (evt) => {
-                    if (evt.target.readyState === FileReader.DONE) {
-                        this.result = evt.target.result;
-                        gd_callback();
-                    }
-                }
-            });
-        }
-
-        const startButton = document.getElementById('start');
-        startButton.onclick = (event) => {
-            engine.startGame();
-            canvas.classList.add('active');
-            started = true;
-        };
     </script>
+    <script src="assets/main.js"></script>
 </body>
 </html>
