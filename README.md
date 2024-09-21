@@ -10,7 +10,7 @@ To run the app, simply visit [artbreaker.brianfoo.com](https://artbreaker.brianf
 
 If you'd like to "look under the hood" or make your own tweaks to the app, you will need to download [Godot](https://godotengine.org/). This app was developed using Godot 4.3, so any version of Godot 4.x should work.  Any other version of Godot (e.g. Godot 3.x) will require significant changes to the code.
 
-Once you have Godot installed, clone this repository, open Godot, and select the subfolder `./art-breader-3000/godot/` to view the project. You should be able to run it without any additional steps.
+Once you have Godot installed, clone this repository, open Godot, and select the subfolder `./art-breaker-3000/godot/` to view the project. You should be able to run it without any additional steps.
 
 ## Export notes
 
