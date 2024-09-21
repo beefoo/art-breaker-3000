@@ -1,10 +1,12 @@
 # Art Breaker 3000
 
-## Credits
+**Art Breaker 3000** is an app for demolishing and recycling famous artworks efficiently and beautifully. It was created by [Brian Foo](https://brianfoo.com/) in 2024. Music and audio courtesy of public domain music by [Komiku](https://freemusicarchive.org/music/Komiku/). Public domain artworks courtesy of [The Art Institute of Chicago](https://www.artic.edu/), [The Cleveland Art Museum](https://www.clevelandart.org/), [The Metropolitan Museum of Art](https://www.metmuseum.org/), [The National Gallery of Art](https://www.nga.gov/), and [The Smithsonian Institution](https://www.si.edu/). This app was created in [Godot](https://godotengine.org/) and the code is [open source](https://github.com/beefoo/art-breaker-3000/blob/main/LICENSE).
 
-https://freemusicarchive.org/music/Komiku/Captain_Glouglous_Incredible_Week_Soundtrack
+For a full list of credits, see [credits.md](https://github.com/beefoo/art-breaker-3000/blob/main/credits.md).
 
 ## Export notes
+
+Some debug notes when exporting to different platforms. The latest builds were built from Godot version 4.3.
 
 ### MacOS
 
@@ -22,10 +24,10 @@ Solution:
 
 Error:
 
-``
+```
 Code Signing: Code signing failed, see editor log for details.
 Warning: unable to build chain to self-signed root for signer...
-/Users/brianfoo/Library/Caches/Godot/Artbreaker3000/Artbreaker3000.app: errSecInternalComponent
+/Users/<user>/Library/Caches/Godot/Artbreaker3000/Artbreaker3000.app: errSecInternalComponent
 ```
 
 Solution:
@@ -34,6 +36,19 @@ Solution:
 
 ### Android
 
+Uploading an APK to Google's Play Store requires you to sign using a non-debug keystore file; such file can be generated like this:
+
 ```
 keytool -v -genkey -keystore artbreaker.keystore -alias artbreaker -keyalg RSA -validity 10000
 ```
+
+### Web
+
+The current project exports HTML5 app as a multi-threaded app with stream based audio. Multi-threaded web apps have been known to have issues with running on Mac/IOS devices. This also requires you to set two headers on the server:
+
+```
+Cross-Origin-Opener-Policy=same-origin
+Cross-Origin-Embedder-Policy=require-corp
+```
+
+Alternatively, you can export as a single-threaded web app. To do this, turn off **Variant -> Thread Support** in the Web export settings. And change **Audio -> General -> Default Playback Type.web** to **Sample** in Project settings. This should be maximize compatibility, but removes all audio effects, which is a critical defect IMO.
