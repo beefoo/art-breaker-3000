@@ -1,12 +1,20 @@
 # Art Breaker 3000
 
-**Art Breaker 3000** is an app for demolishing and recycling famous artworks efficiently and beautifully. It was created by [Brian Foo](https://brianfoo.com/) in 2024. Music and audio courtesy of public domain music by [Komiku](https://freemusicarchive.org/music/Komiku/). Public domain artworks courtesy of [The Art Institute of Chicago](https://www.artic.edu/), [The Cleveland Art Museum](https://www.clevelandart.org/), [The Metropolitan Museum of Art](https://www.metmuseum.org/), [The National Gallery of Art](https://www.nga.gov/), and [The Smithsonian Institution](https://www.si.edu/). This app was created in [Godot](https://godotengine.org/) and the code is [open source](https://github.com/beefoo/art-breaker-3000/blob/main/LICENSE).
+[Art Breaker 3000](https://artbreaker.brianfoo.com/) is an app for demolishing and recycling famous artworks efficiently and beautifully. It was created by [Brian Foo](https://brianfoo.com/) in 2024. Music and audio courtesy of public domain music by [Komiku](https://freemusicarchive.org/music/Komiku/). Public domain artworks courtesy of [The Art Institute of Chicago](https://www.artic.edu/), [The Cleveland Art Museum](https://www.clevelandart.org/), [The Metropolitan Museum of Art](https://www.metmuseum.org/), [The National Gallery of Art](https://www.nga.gov/), and [The Smithsonian Institution](https://www.si.edu/). This app was created in [Godot](https://godotengine.org/) and the code is [open source](https://github.com/beefoo/art-breaker-3000/blob/main/LICENSE).
 
 For a full list of credits, see [credits.md](https://github.com/beefoo/art-breaker-3000/blob/main/credits.md).
 
+## Usage
+
+To run the app, simply visit [artbreaker.brianfoo.com](https://artbreaker.brianfoo.com/) to use it in the browser or download desktop versions for Mac and PC.
+
+If you'd like to "look under the hood" or make your own tweaks to the app, you will need to download [Godot](https://godotengine.org/). This app was developed using Godot 4.3, so any version of Godot 4.x should work.  Any other version of Godot (e.g. Godot 3.x) will require significant changes to the code.
+
+Once you have Godot installed, clone this repository, open Godot, and select the subfolder `./art-breader-3000/godot/` to view the project. You should be able to run it without any additional steps.
+
 ## Export notes
 
-Some debug notes when exporting to different platforms. The latest builds were built from Godot version 4.3.
+Some debug notes when exporting to different platforms.
 
 ### MacOS
 
