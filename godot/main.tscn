@@ -3803,7 +3803,6 @@ ok_button_text = "Open"
 file_mode = 0
 access = 2
 filters = PackedStringArray("*.png, *.jpg, *.jpeg ; Supported Images")
-show_hidden_files = false
 use_native_dialog = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ImageSelector"]
@@ -3887,7 +3886,6 @@ bus = &"Reverb"
 size = Vector2i(960, 640)
 access = 2
 filters = PackedStringArray("*.png")
-show_hidden_files = false
 use_native_dialog = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SaveFileDialog"]
@@ -3917,7 +3915,7 @@ offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[font_size=90][url=https://artbreaker.brianfoo.com/][b][color=#ff47e7]Art Breaker 3000[/color][/b][/url] is an app for demolishing and recycling famous artworks efficiently and beautifully. It was created by [url=https://brianfoo.com/][color=#ffc847]Brian Foo[/color][/url] in 2024. Music and audio courtesy of public domain music by [url=https://freemusicarchive.org/music/Komiku/][color=#f7de38]Komiku[/color][/url]. Public domain artworks courtesy of [url=https://www.artic.edu/][color=#ff47e7]The Art Institute of Chicago[/color][/url], [url=https://www.clevelandart.org/][color=#ffc847]The Cleveland Art Museum[/color][/url], [url=https://www.metmuseum.org/][color=#f7de38]The Metropolitan Museum of Art[/color][/url], [url=https://www.nga.gov/][color=#ff47e7]The National Gallery of Art[/color][/url], and [url=https://www.si.edu/][color=#ffc847]The Smithsonian Institution[/color][/url]. This app was created in [url=https://godotengine.org/][color=#f7de38]Godot[/color][/url] and the code is [url=https://github.com/beefoo/artbreaker/][color=#ff47e7]open source[/color][/url].[/font_size]"
+text = "[font_size=90][url=https://artbreaker.brianfoo.com/][b][color=#ff47e7]Art Breaker 3000[/color][/b][/url] is an app for demolishing and recycling famous artworks efficiently and beautifully. It was created by [url=https://brianfoo.com/][color=#ffc847]Brian Foo[/color][/url] in 2024. Music and audio courtesy of public domain music by [url=https://freemusicarchive.org/music/Komiku/][color=#f7de38]Komiku[/color][/url]. Public domain artworks courtesy of [url=https://www.artic.edu/][color=#ff47e7]The Art Institute of Chicago[/color][/url], [url=https://www.clevelandart.org/][color=#ffc847]The Cleveland Art Museum[/color][/url], [url=https://www.metmuseum.org/][color=#f7de38]The Metropolitan Museum of Art[/color][/url], [url=https://www.nga.gov/][color=#ff47e7]The National Gallery of Art[/color][/url], and [url=https://www.si.edu/][color=#ffc847]The Smithsonian Institution[/color][/url]. This app was created in [url=https://godotengine.org/][color=#f7de38]Godot[/color][/url] and the code is [url=https://github.com/beefoo/art-breaker-3000/][color=#ff47e7]open source[/color][/url].[/font_size]"
 
 [node name="CloseButton" type="Button" parent="Credits"]
 custom_minimum_size = Vector2(250, 0)

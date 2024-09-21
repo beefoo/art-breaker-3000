@@ -1,12 +1,15 @@
 extends Modal
 
 signal image_selected(texture, data)
+signal web_image_read_completed
 
 var allow_cancel = true
 var button_count = 0
 var collection_data = []
 var collection_data_file = "res://data/collection.json"
 var collection_size = 0
+
+var js_callback = JavaScriptBridge.create_callback(open_import_dialog_web_handler)
 
 @onready var button_audio_player = $ButtonAudioPlayer
 @onready var transition_audio_player = $TransitionAudioPlayer
@@ -61,8 +64,49 @@ func load_collection_data(data_file):
 	print("Loaded %s collection items" % collection_size)
 	
 func open_import_dialog():
+	# For Web, use javascript to import images instead
+	if OS.get_name() == "Web":
+		open_import_dialog_web()
+		return
+		
 	$ImportFileDialog.set_current_dir(OS.get_system_dir(OS.SYSTEM_DIR_PICTURES))
 	$ImportFileDialog.popup_centered_clamped()
+
+func open_import_dialog_web_handler(_args):
+	emit_signal("web_image_read_completed")
+
+# Modified from https://github.com/Pukkah/HTML5-File-Exchange-for-Godot/blob/master/addons/HTML5FileExchange/HTML5FileExchange.gd
+func open_import_dialog_web():
+	var js_interface = JavaScriptBridge.get_interface("_gdExchange")
+	
+	js_interface.upload(js_callback)
+	
+	await web_image_read_completed
+	
+	var image_type = js_interface.fileType;
+	var image_data = JavaScriptBridge.eval("_gdExchange.result", true)
+	
+	var image = Image.new()
+	var image_error
+	match image_type:
+		"image/png":
+			image_error = image.load_png_from_buffer(image_data)
+		"image/jpeg":
+			image_error = image.load_jpg_from_buffer(image_data)
+		"image/webp":
+			image_error = image.load_webp_from_buffer(image_data)
+			
+	if image_error:
+		print("An error occurred while trying to load the image.")
+		return
+	
+	var data = {
+		"Title": "Custom imported image",
+		"Path": ""
+	}
+	var texture = ImageTexture.create_from_image(image)
+	_on_image_selected(texture, data)
+	
 	
 func select_random_image():
 	transition_audio_player.play(0.0)

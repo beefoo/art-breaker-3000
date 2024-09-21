@@ -216,6 +216,9 @@ func get_absolute_rect():
 	rect.position += parent_position
 	return rect
 	
+func get_image():
+	return active_texture.get_image()
+	
 func get_normalized_position(pos):
 	var canvas_rect = get_absolute_rect()
 	var n_position = Vector2(

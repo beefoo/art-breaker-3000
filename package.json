@@ -1,0 +1,10 @@
+{
+  "name": "art-breaker-3000",
+  "description": "Art Breaker 3000 is an app for demolishing and recycling famous artworks efficiently a",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "express": "^4.20.0"
+  }
+}

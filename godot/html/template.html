@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+<title>Art Breaker 3000</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="assets/main.css">
+
+</head>
+<body>
+    <div class="content">
+        <p><strong style="color: #ff47e7">Art Breaker 3000</strong> is an app for demolishing and recycling famous artworks efficiently and beautifully. It was created by <a href="https://brianfoo.com" style="color: #f5ac00">Brian Foo</a> in 2024. Music and audio courtesy of public domain music by <a href="https://freemusicarchive.org/music/Komiku/" target="_blank" style="color: #f7de38">Komiku</a>. Public domain artworks courtesy of <a href="https://www.artic.edu/" target="_blank" style="color: #ff47e7">The Art Institute of Chicago</a>, <a href="https://www.clevelandart.org/" target="_blank" style="color: #f5ac00">The Cleveland Art Museum</a>, <a href="https://www.metmuseum.org/" target="_blank" style="color: #f7de38">The Metropolitan Museum of Art</a>, <a href="https://www.nga.gov/" target="_blank" style="color: #ff47e7">The National Gallery of Art</a>, and <a href="https://www.si.edu/" target="_blank" style="color: #f5ac00">The Smithsonian Institution</a>. This app was created in <a href="https://godotengine.org/" target="_blank" style="color: #f7de38">Godot</a> and the code is <a href="https://github.com/beefoo/art-breaker-3000/" target="_blank" style="color: #ff47e7">open source</a>.</p>
+        <p class="button-group">
+            <button id="start">Try it in the browser</button>
+            <a id="download-pc" href="" download="art-breaker-3000.exe" class="button">Download for PC</a>
+            <a id="download-mac" href="" download="Artbreaker3000.dmg" class="button">Download for Mac</a>
+        </p>
+    </div>
+    
+    <input id="file-picker" type="file" accept="image/png, image/jpeg, image/webp" />
+    <canvas id="canvas"></canvas>
+    
+    <script src="$GODOT_URL"></script>
+    <script>
+        const engine = new Engine($GODOT_CONFIG);
+    </script>
+    <script src="assets/main.js"></script>
+</body>
+</html>
