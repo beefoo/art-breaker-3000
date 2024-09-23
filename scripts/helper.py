@@ -180,3 +180,8 @@ def write_json(filename, data, indent=0):
             json.dump(data, f, indent=indent)
         else:
             json.dump(data, f)
+
+def write_text(filename, string):
+    """Write string to text file"""
+    with open(filename, 'w', encoding='utf-8', errors="replace") as f:
+        f.write(string)
