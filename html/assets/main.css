@@ -30,6 +30,9 @@ a {
     color: #f1f1f1;
     font-weight: bold;
 }
+p:first-child {
+    margin-top: 0;
+}
 button,
 .button {
     color: #000;
@@ -47,12 +50,16 @@ button:focus-visible,
 .button:focus-visible {
     outline: 3px solid #ff1b1b;
 }
+video {
+    width: 100%;
+    height: auto;
+}
 .content {
     box-sizing: border-box;
     font-size: 3rem;
     padding: 20px;
     margin: 0 auto;
-    max-width: 1280px;
+    max-width: 1024px;
 }
 #canvas {
     position: absolute;
