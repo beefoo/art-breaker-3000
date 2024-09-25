@@ -17,6 +17,14 @@
 		background-position: 0% 50%;
 	}
 }
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
 
 body {
     margin: 0;
@@ -25,13 +33,16 @@ body {
     font-size: 24px;
     font-family: 'Handjet', 'Courier New', Courier, monospace;
     font-optical-sizing: auto;
+    min-height: 100vh;
 }
 a {
     color: #f1f1f1;
-    font-weight: bold;
 }
 p:first-child {
     margin-top: 0;
+}
+small {
+    font-size: 0.667em;
 }
 button,
 .button {
@@ -42,7 +53,6 @@ button,
     border: none;
     font-size: 2.4rem;
     font-family: 'Handjet', 'Courier New', Courier, monospace;
-    font-weight: bold;
     text-decoration: none;
     cursor: pointer;
 }
@@ -61,11 +71,58 @@ video {
     margin: 0 auto;
     max-width: 1024px;
 }
-#canvas {
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #171717;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+body.active #loading {
+    display: flex;
+}
+#loading .spinner {
+    width: 400px;
+    height: 400px;
+    position: relative;
+}
+#loading .spinner div {
     position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+#loading .spinner div.spinner1 {
+    background-image: url(loader1.png);
+    animation: spin 4s ease-in-out infinite;
+}
+#loading .spinner div.spinner2 {
+    background-image: url(loader2.png);
+    animation: spin 2s ease-in-out infinite;
+    animation-direction: reverse;
+}
+#loading .spinner div.spinner3 {
+    background-image: url(loader3.png);
+    animation: spin 1s ease-in-out infinite;
+}
+#loading .loading-text {
+    font-size: 3rem;
+    margin-top: 1rem;
+}
+#canvas {
+    position: fixed;
     display: none;
 }
-#canvas.active {
+body.active #canvas {
     display: block;
 }
 #file-picker {
@@ -76,7 +133,7 @@ video {
 }
 #start:hover {
     color: #ff47e7;
-    background: #454545;
+    background: #2b2b2b;
 }
 #start.loading,
 #start.loading:hover {
@@ -85,12 +142,18 @@ video {
 	animation: gradient 3s ease infinite;
     color: #000;
 }
+p.button-group {
+    margin-bottom: 0.5rem;
+}
+p.button-group + p {
+    margin-top: 0;
+}
 #download-pc {
     background: #f5ac00;
 }
 #download-pc:hover {
     color: #f5ac00;
-    background: #454545;
+    background: #2b2b2b;
 }
 #download-mac {
     background: #f7de38;

@@ -1,15 +1,14 @@
 let started = false;
+const body = document.body;
 const startButton = document.getElementById('start');
-const startButtonText = startButton.innerText;
+const loading = document.getElementById('loading');
 const canvas = document.getElementById('canvas');
 
 window._gdExchange = {};
 window._gdExchange.quit = function() {
-    startButton.classList.remove('loading');
-    startButton.innerText = startButtonText;
+    body.classList.remove('active');
     engine.requestQuit();
     document.exitFullscreen()
-    canvas.classList.remove('active');
     startButton.disabled = false;
 };
 window._gdExchange.upload = function(gd_callback) {
@@ -37,9 +36,7 @@ window._gdExchange.upload = function(gd_callback) {
 
 startButton.onclick = (event) => {
     engine.startGame();
-    canvas.classList.add('active');
-    startButton.classList.add('loading');
-    startButton.innerText = 'Loading...';
+    body.classList.add('active');
     startButton.disabled = true;
     started = true;
 };
