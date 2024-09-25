@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Art Breaker 3000</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Art Breaker 3000 is an app for demolishing and recycling famous artworks efficiently and beautifully.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="Art Breaker 3000">
+    <meta property="og:url" content="https://artbreaker.brianfoo.com/">
+    <meta property="og:image" content="https://artbreaker.brianfoo.com/assets/artbreaker3000.jpg">
+
+    <link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+    <div id="content" class="content">
+        <p>The following is an alternative web version of <a href="/" style="color: #ff47e7">Art Breaker 3000</a> that has less features but is compatible with more browsers and operating systems. Visit the <a href="/" style="color: #f5ac00">homepage</a> for the full-feature web and desktop versions.</p>
+        <p class="button-group">
+            <button id="start">Launch the alternative version</button>
+        </p>
+    </div>
+    <div id="loading">
+        <div class="spinner">
+            <div class="spinner1"></div>
+            <div class="spinner2"></div>
+            <div class="spinner3"></div>
+        </div>
+        <div class="loading-text">Loading...</div>
+    </div>
+    
+    <input id="file-picker" type="file" accept="image/png, image/jpeg, image/webp" />
+    <canvas id="canvas"></canvas>
+    
+    <script src="$GODOT_URL"></script>
+    <script>
+        const engine = new Engine($GODOT_CONFIG);
+    </script>
+    <script src="assets/main.js"></script>
+</body>
+</html>

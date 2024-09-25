@@ -147,6 +147,7 @@ p.button-group {
 }
 p.button-group + p {
     margin-top: 0;
+    line-height: 1.667rem;
 }
 #download-pc {
     background: #f5ac00;
