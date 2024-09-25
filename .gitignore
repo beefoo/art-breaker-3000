@@ -7,3 +7,4 @@ images/selections/*
 !images/selections/.keep
 api_keys.json
 node_modules/
+s3_website.yml

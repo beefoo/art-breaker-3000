@@ -70,6 +70,10 @@ video {
     padding: 20px;
     margin: 0 auto;
     max-width: 1024px;
+    position: relative;
+}
+body.active .content {
+    display: none;
 }
 #loading {
     position: fixed;
@@ -121,6 +125,8 @@ body.active #loading {
 #canvas {
     position: fixed;
     display: none;
+    top: 0;
+    left: 0;
 }
 body.active #canvas {
     display: block;
