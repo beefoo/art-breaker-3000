@@ -8,7 +8,9 @@ window._gdExchange = {};
 window._gdExchange.quit = function() {
     body.classList.remove('active');
     engine.requestQuit();
-    document.exitFullscreen()
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+    }
     startButton.disabled = false;
 };
 window._gdExchange.upload = function(gd_callback) {
@@ -40,3 +42,15 @@ startButton.onclick = (event) => {
     startButton.disabled = true;
     started = true;
 };
+
+
+function checkCompatibility() {
+    const message = document.getElementById('message');
+    if (!message) return;
+
+    if (navigator.userAgent.includes('Mac') && 'ontouchend' in document
+        || navigator.userAgent.includes('Safari')) {
+        message.classList.add('active');
+    }
+}
+checkCompatibility();

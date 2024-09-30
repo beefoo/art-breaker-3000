@@ -122,6 +122,19 @@ body.active #loading {
     font-size: 3rem;
     margin-top: 1rem;
 }
+#message {
+    display: none;
+    max-width: 400px;
+    background: #f7de38;
+    padding: 3px 6px;
+    color: #171717;
+    font-size: 1.67rem;
+    margin-top: 2rem;
+
+}
+#message.active {
+    display: block;
+}
 #canvas {
     position: fixed;
     display: none;
